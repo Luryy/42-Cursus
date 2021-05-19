@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/18 18:45:00 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/05/19 19:48:56 by lyuri-go         ###   ########.fr       */
+/*   Created: 2021/05/19 19:47:35 by lyuri-go          #+#    #+#             */
+/*   Updated: 2021/05/19 19:53:16 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "libft.h"
 
-# include <stdlib.h>
+void	ft_bzero(void *s, size_t n)
+{
+	size_t	i;
+	char	*str;
 
-void	*ft_memset(void *s, int c, size_t n);
-void	ft_bzero(void *s, size_t n);
-int		ft_strlen(char *str);
-void	*ft_calloc(size_t nmemb, size_t size);
-char	*ft_strdup(char *src);
-
-#endif
+	i = 0;
+	str = s;
+	while(i < n)
+	{
+		str[i] = 0;
+		i++;
+	}
+}
