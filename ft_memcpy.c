@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/18 18:45:00 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/05/20 17:57:30 by lyuri-go         ###   ########.fr       */
+/*   Created: 2021/05/20 17:57:42 by lyuri-go          #+#    #+#             */
+/*   Updated: 2021/05/20 18:09:39 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "libft.h"
 
-# include <stdlib.h>
+void	*ft_memcpy(void *dest, const void *src, size_t n)
+{
+	char		*dest_char;
+	const char	*src_char;
 
-void	*ft_memset(void *s, int c, size_t n);
-void	ft_bzero(void *s, size_t n);
-void	*ft_memcpy(void *dest, const void *src, size_t n);
-int		ft_strlen(char *str);
-void	*ft_calloc(size_t nmemb, size_t size);
-char	*ft_strdup(char *src);
-
-#endif
+	dest_char = dest;
+	src_char = src;
+	while(--n + 1)
+		dest_char[n] = src_char[n];
+	return (dest);
+};
