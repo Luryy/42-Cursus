@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/18 18:45:00 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/05/20 18:19:29 by lyuri-go         ###   ########.fr       */
+/*   Created: 2021/05/20 18:19:52 by lyuri-go          #+#    #+#             */
+/*   Updated: 2021/05/20 18:41:01 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "libft.h"
 
-# include <stdlib.h>
+void	*ft_memccpy(void *dest, const void *src, int c, size_t n)
+{
+	char		*dest_char;
+	const char	*src_char;
+	size_t		i;
 
-void	*ft_memset(void *s, int c, size_t n);
-void	ft_bzero(void *s, size_t n);
-void	*ft_memcpy(void *dest, const void *src, size_t n);
-void	*memccpy(void *dest, const void *src, int c, size_t n);
-int		ft_strlen(char *str);
-void	*ft_calloc(size_t nmemb, size_t size);
-char	*ft_strdup(char *src);
-
-#endif
+	dest_char = dest;
+	src_char = src;
+	i = 0;
+	while(i < n)
+	{
+		dest_char[i] = src_char[i];
+		if (src_char[i] == c)
+			return (&dest_char[i + 1]);
+		i++;
+	}
+	return (NULL);
+};
