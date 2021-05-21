@@ -6,7 +6,7 @@
 #    By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/18 18:19:26 by lyuri-go          #+#    #+#              #
-#    Updated: 2021/05/21 11:30:32 by lyuri-go         ###   ########.fr        #
+#    Updated: 2021/05/21 11:49:20 by lyuri-go         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ CC	=	gcc
 FLAGS	=	-Wall -Wextra -Werror
 
 FILES	=	ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c ft_memchr.c \
+			ft_memcmp.c \
 			ft_strlen.c ft_calloc.c ft_strdup.c
 
 OBJ	=	$(FILES:.c=.o)
