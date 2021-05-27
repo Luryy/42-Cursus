@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 18:45:00 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/05/27 11:51:30 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/05/27 15:37:47 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,7 @@ int		ft_toupper(int c);
 int		ft_tolower(int c);
 void	*ft_calloc(size_t nmemb, size_t size);
 char	*ft_strdup(char *src);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+
 
 #endif
