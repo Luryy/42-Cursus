@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 18:46:14 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/05/20 20:16:09 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/05/28 17:53:28 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,19 @@
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	char		*dest_char;
-	const char	*src_char;
-	int			i;
+	unsigned char		*dest_char;
+	const unsigned char	*src_char;
+	size_t			i;
 
-	dest_char = dest;
-	src_char = src;
-	i = -1;
+	dest_char = (unsigned char*)dest;
+	src_char = (unsigned char*)src;
+	i = 0;
 	if (dest > src)
-		while(++i < (int)n)
-			dest_char[i] = src_char[i];
+		while(++i <= n)
+			dest_char[n - i] = src_char[n - i];
 	else
 		while(--n + 1)
-			dest_char[n] = src_char[n];
+			*(dest_char++) = *(src_char++);
 
 	return (dest);
 };
