@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 18:46:39 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/05/25 19:07:37 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/05/28 18:34:01 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,13 @@ static	int	ft_is_inside(const char *principal, const char *inside)
 char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
 	size_t	i;
+	size_t	little_len;
 
 	if (!(*little))
 		return ((char *)big);
 	i = 0;
-	while (*big != '\0' && i < len)
+	little_len = ft_strlen((char *)little);
+	while (*big != '\0' && i + little_len < len)
 	{
 		if (*big == little[0])
 		{
