@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 19:29:56 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/05/25 19:34:55 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/05/28 18:27:23 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	i = 0;
 	while ((s1[i] != '\0' || s2[i] != '\0') && (i < n))
 	{
-		r = s1[i] - s2[i];
+		r = (unsigned char)s1[i] - (unsigned char)s2[i];
 		if (r != 0)
 			return (r);
 		i++;
