@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/21 19:02:25 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/05/21 19:17:30 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/05/28 18:17:57 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	loop = 0;
 	if (size <= dst_length)
 		return (size + src_length);
-	while (loop < (size - dst_length - 1))
+	while (loop < (size - dst_length - 1) && src[loop])
 	{
 		dst[dst_length + loop] = src[loop];
 		loop++;
 	}
 	dst[dst_length + loop] = '\0';
-	return (ft_strlen(dst));
+	return (dst_length + src_length);
 };
