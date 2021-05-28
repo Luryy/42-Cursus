@@ -6,7 +6,7 @@
 #    By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/18 18:19:26 by lyuri-go          #+#    #+#              #
-#    Updated: 2021/05/28 15:44:19 by lyuri-go         ###   ########.fr        #
+#    Updated: 2021/05/28 16:59:13 by lyuri-go         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,3 +37,5 @@ clean:
 
 fclean: clean
 		rm -f $(NAME)
+
+re: fclean all
