@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/28 15:23:31 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/05/28 15:40:56 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/05/29 14:47:56 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,5 @@ void	ft_putendl_fd(char *s, int fd)
 		write(fd, s, 1);
 		s++;
 	};
-	write(1, "\n", fd);
+	write(fd, "\n", 1);
 };
