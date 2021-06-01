@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 19:47:35 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/05/19 19:53:16 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/06/01 16:33:14 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_bzero(void *s, size_t n)
 
 	i = 0;
 	str = s;
-	while(i < n)
+	while (i < n)
 	{
 		str[i] = 0;
 		i++;

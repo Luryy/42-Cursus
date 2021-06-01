@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/27 15:36:21 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/05/27 15:47:52 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/06/01 16:49:28 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,11 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	if (!sub || s == NULL)
 		return (NULL);
 	i = 0;
-	while(s[i + start] != '\0' && (size_t)i < len)
+	while (s[i + start] != '\0' && (size_t)i < len)
 	{
 		sub[i] = s[i + start];
 		i++;
 	}
 	sub[i] = '\0';
-
 	return (sub);
-};
+}

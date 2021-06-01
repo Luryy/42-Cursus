@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 19:14:53 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/05/19 19:45:16 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/06/01 16:44:23 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	*ft_memset(void *s, int c, size_t n)
 
 	i = 0;
 	str = s;
-	while(i < n)
+	while (i < n)
 	{
 		str[i] = c;
 		i++;

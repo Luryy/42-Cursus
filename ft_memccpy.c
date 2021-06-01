@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 18:19:52 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/05/20 18:41:01 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/06/01 16:42:46 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	*ft_memccpy(void *dest, const void *src, int c, size_t n)
 	dest_char = dest;
 	src_char = src;
 	i = 0;
-	while(i < n)
+	while (i < n)
 	{
 		dest_char[i] = src_char[i];
 		if (src_char[i] == c)
@@ -29,4 +29,4 @@ void	*ft_memccpy(void *dest, const void *src, int c, size_t n)
 		i++;
 	}
 	return (NULL);
-};
+}

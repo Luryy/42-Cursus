@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/27 11:14:26 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/05/27 11:19:45 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/06/01 16:33:27 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,4 +17,4 @@ int	ft_isalnum(int c)
 	if (ft_isalpha(c) || ft_isdigit(c))
 		return (1);
 	return (0);
-};
+}

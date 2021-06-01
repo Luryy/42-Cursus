@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/27 16:09:09 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/05/27 16:37:49 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/06/01 16:49:19 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,4 @@ char	*ft_strtrim(char const *s1, char const *set)
 	if (!trim)
 		return (NULL);
 	return (trim);
-};
+}

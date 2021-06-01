@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 19:29:56 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/05/28 18:27:23 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/06/01 16:48:41 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,4 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 		i++;
 	}
 	return (r);
-};
+}

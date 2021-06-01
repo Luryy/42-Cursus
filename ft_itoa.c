@@ -6,15 +6,37 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/27 18:38:34 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/05/27 19:15:30 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/06/01 16:42:30 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+static	int	set_p_size(int n)
+{
+	int	p_size;
+
+	if (n >= 0)
+		p_size = 0;
+	else
+		p_size = 1;
+	return (p_size);
+}
+
+static	unsigned int	set_nb(int n)
+{
+	int	nbr;
+
+	if (n >= 0)
+		nbr = n;
+	else
+		nbr = -n;
+	return (nbr);
+}
+
 static	int	get_number_length(unsigned int nb)
 {
-	int nb_digit_numbers;
+	int	nb_digit_numbers;
 
 	nb_digit_numbers = 0;
 	if (nb == 0)
@@ -31,21 +53,13 @@ static	int	get_number_length(unsigned int nb)
 
 char	*ft_itoa(int n)
 {
-	unsigned	int	nbr;
+	unsigned int	nbr;
 	int				p_size;
 	int				t_size;
 	char			*n_char;
 
-	if (n >= 0)
-	{
-		nbr = n;
-		p_size = 0;
-	}
-	else
-	{
-		nbr = -n;
-		p_size = 1;
-	}
+	nbr = set_nb(n);
+	p_size = set_p_size(n);
 	t_size = get_number_length(nbr) + p_size;
 	n_char = malloc(sizeof(char) * (t_size + 1));
 	if (!n_char)
@@ -60,4 +74,4 @@ char	*ft_itoa(int n)
 	if (n_char[0] == '\0')
 		n_char[0] = '0';
 	return (n_char);
-};
+}

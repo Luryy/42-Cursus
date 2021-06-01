@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/21 19:02:25 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/05/28 18:17:57 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/06/01 16:48:20 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,4 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	}
 	dst[dst_length + loop] = '\0';
 	return (dst_length + src_length);
-};
+}

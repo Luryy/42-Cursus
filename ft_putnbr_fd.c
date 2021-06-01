@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/28 15:44:01 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/05/28 15:49:05 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/06/01 16:44:45 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,4 +18,4 @@ void	ft_putnbr_fd(int n, int fd)
 
 	char_int = ft_itoa(n);
 	ft_putstr_fd(char_int, fd);
-};
+}

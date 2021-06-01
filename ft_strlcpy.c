@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/21 18:06:14 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/05/28 18:24:14 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/06/01 16:48:25 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,4 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 	if (size != 0)
 		dst[i] = '\0';
 	return (ft_strlen((char *)src));
-};
+}

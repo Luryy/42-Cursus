@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 19:36:54 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/05/25 19:44:31 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/06/01 16:32:59 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 int	ft_atoi(const char *nptr)
 {
-	int signal;
-	int number;
+	int	signal;
+	int	number;
 
 	number = 0;
 	signal = 1;
 	while (*nptr == ' ' || *nptr == '\n' || *nptr == '\t'
-	|| *nptr == '\v' || *nptr == '\f' || *nptr == '\r')
+		|| *nptr == '\v' || *nptr == '\f' || *nptr == '\r')
 		nptr++;
 	if (*nptr == '-' || *nptr == '+')
 	{
@@ -34,4 +34,4 @@ int	ft_atoi(const char *nptr)
 		nptr++;
 	}
 	return (signal * number);
-};
+}

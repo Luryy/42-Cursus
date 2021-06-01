@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/27 16:44:00 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/05/29 17:25:02 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/06/01 16:51:04 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 static int	*ft_count_times(char const *s, char c)
 {
-	int i;
-	int is_sequence;
-	int *c_times;
+	int	i;
+	int	is_sequence;
+	int	*c_times;
 
 	i = -1;
 	c_times = malloc(3 * sizeof(int));
 	is_sequence = 1;
-	while(s[++i] != 0)
+	while (s[++i] != 0)
 	{
 		if (s[i] == c)
 		{
@@ -38,13 +38,13 @@ static int	*ft_count_times(char const *s, char c)
 
 void	ft_count_word_length(int *j, const char *s, char c)
 {
-	int i;
-	int n;
+	int	i;
+	int	n;
 
 	i = -1;
 	n = 0;
 	j[n] = 0;
-	while(s[++i] != 0)
+	while (s[++i] != 0)
 	{
 		if (s[i] == c)
 		{
@@ -53,7 +53,6 @@ void	ft_count_word_length(int *j, const char *s, char c)
 		}
 		j[n]++;
 	}
-	return;
 }
 
 char	**ft_split(char const *s, char c)
@@ -74,7 +73,6 @@ char	**ft_split(char const *s, char c)
 	i = -1;
 	k = 0;
 	offset = 0;
-
 	while (++i < c_times[0] + 2)
 	{
 		if (j[i] != 0)
@@ -83,4 +81,4 @@ char	**ft_split(char const *s, char c)
 	}
 	split[k] = '\0';
 	return (split);
-};
+}

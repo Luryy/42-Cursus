@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/28 11:18:21 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/05/28 11:26:42 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/06/01 16:48:36 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	if (!str || s == NULL)
 		return (NULL);
 	i = -1;
-	while(s[++i] != '\0')
+	while (s[++i] != '\0')
 	{
 		str[i] = f(i, s[i]);
 	}
 	return (str);
-};
+}
