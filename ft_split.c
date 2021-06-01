@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/27 16:44:00 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/06/01 16:51:04 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/06/01 17:43:02 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,7 @@ char	**ft_split(char const *s, char c)
 	int		i;
 	int		*j;
 	int		*c_times;
-	int		k;
-	int		offset;
+	int		offset[2];
 
 	if (!s)
 		return (NULL);
@@ -71,14 +70,14 @@ char	**ft_split(char const *s, char c)
 	ft_count_word_length(j, s, c);
 	split = malloc((c_times[1] + 2) * sizeof(char *));
 	i = -1;
-	k = 0;
-	offset = 0;
+	offset[0] = 0;
+	offset[1] = 0;
 	while (++i < c_times[0] + 2)
 	{
 		if (j[i] != 0)
-			split[k++] = ft_substr(s, offset, (size_t)j[i]);
-		offset += j[i] + 1;
+			split[offset[1]++] = ft_substr(s, offset[0], (size_t)j[i]);
+		offset[0] += j[i] + 1;
 	}
-	split[k] = '\0';
+	split[offset[1]] = '\0';
 	return (split);
 }
