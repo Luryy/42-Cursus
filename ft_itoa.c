@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/27 18:38:34 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/06/01 16:42:30 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/06/01 18:57:51 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,12 +66,13 @@ char	*ft_itoa(int n)
 		return (NULL);
 	if (p_size)
 		n_char[0] = '-';
+	n_char[t_size] = '\0';
+	if (nbr == 0)
+		n_char[0] = '0';
 	while (nbr > 0)
 	{
 		n_char[--t_size] = nbr % 10 + '0';
 		nbr /= 10;
 	}
-	if (n_char[0] == '\0')
-		n_char[0] = '0';
 	return (n_char);
 }
