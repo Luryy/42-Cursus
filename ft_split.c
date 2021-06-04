@@ -6,12 +6,11 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/27 16:44:00 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/06/01 19:08:03 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/06/04 17:28:14 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 static int	*ft_count_times(char const *s, char c)
 {
@@ -79,6 +78,6 @@ char	**ft_split(char const *s, char c)
 			split[offset[1]++] = ft_substr(s, offset[0], (size_t)j[i]);
 		offset[0] += j[i] + 1;
 	}
-	split[offset[1]] = (char *) "\0";
+	split[offset[1]] = NULL;
 	return (split);
 }
