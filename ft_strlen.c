@@ -6,15 +6,15 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 19:41:41 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/05/18 19:44:09 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/06/04 19:44:29 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strlen(char *str)
+size_t	ft_strlen(const char *str)
 {
-	int	n;
+	size_t	n;
 
 	n = 0;
 	while (*str++)
