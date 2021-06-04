@@ -6,28 +6,26 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/27 16:44:00 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/06/04 17:28:14 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/06/04 19:36:36 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	*ft_count_times(char const *s, char c)
+static int	ft_count_times(char const *s, char c)
 {
 	int	i;
 	int	is_sequence;
-	int	*c_times;
+	int	c_times;
 
 	i = -1;
-	c_times = malloc(3 * sizeof(int));
+	c_times = 0;
 	is_sequence = 1;
-	while (s[++i] != 0)
+	while (s[++i])
 	{
-		if (s[i] == c)
+		if (s[i] != c && !is_sequence)
 		{
-			c_times[0]++;
-			if (!is_sequence)
-				c_times[1]++;
+			c_times++;
 			is_sequence = 1;
 		}
 		else
@@ -36,48 +34,61 @@ static int	*ft_count_times(char const *s, char c)
 	return (c_times);
 }
 
-void	ft_count_word_length(int *j, const char *s, char c)
+static size_t	size_words(const char *s, char c)
 {
-	int	i;
-	int	n;
+	size_t	len;
+	size_t	i;
 
-	i = -1;
-	n = 0;
-	j[n] = 0;
-	while (s[++i] != 0)
+	len = 0;
+	i = 0;
+	while (s[i] && s[i] != c)
+	{
+		i++;
+		len++;
+	}
+	return (len);
+}
+
+static char	**fill_array(char const *s, char c, char **split)
+{
+	int		i;
+	char	**return_split;
+
+	i = 0;
+	return_split = split;
+	while (s[i])
 	{
 		if (s[i] == c)
 		{
-			n++;
-			j[n] = -1;
+			i++;
+			continue ;
 		}
-		j[n]++;
+		else
+		{
+			*split = ft_substr(&s[i], 0, size_words(&s[i], c));
+			if (!split)
+				return (NULL);
+			i = i + size_words(&s[i], c);
+			split++;
+		}
 	}
+	*split = NULL;
+	return (return_split);
 }
 
 char	**ft_split(char const *s, char c)
 {
 	char	**split;
-	int		i;
-	int		*j;
-	int		*c_times;
-	int		offset[2];
+	int		c_times;
 
 	if (!s)
 		return (NULL);
 	c_times = ft_count_times(s, c);
-	j = malloc((c_times[0] + 2) * sizeof(int));
-	ft_count_word_length(j, s, c);
-	split = malloc((c_times[1] + 2) * sizeof(char *));
-	i = -1;
-	offset[0] = 0;
-	offset[1] = 0;
-	while (++i < c_times[0] + 2)
-	{
-		if (j[i] != 0)
-			split[offset[1]++] = ft_substr(s, offset[0], (size_t)j[i]);
-		offset[0] += j[i] + 1;
-	}
-	split[offset[1]] = NULL;
+	split = (char **)ft_calloc(sizeof(char *), (c_times + 1));
+	if (!split)
+		return (NULL);
+	split = fill_array(s, c, split);
+	if (split == NULL)
+		return (NULL);
 	return (split);
 }
