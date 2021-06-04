@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/27 15:36:21 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/06/04 18:20:13 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/06/04 18:29:14 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,13 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	total_verify = ft_strlen((char *)s + start);
 	if (len > (size_t)total_verify)
 		len = (size_t)total_verify;
+	if (start > (unsigned int)ft_strlen((char *)s))
+	{
+		sub = ft_calloc(sizeof(char), 1);
+		if (!sub)
+			return (NULL);
+		return (sub);
+	}
 	sub = malloc((len + 1) * sizeof(char));
 	if (!sub || s == NULL)
 		return (NULL);
