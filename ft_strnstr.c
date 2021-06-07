@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 18:46:39 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/06/01 16:48:54 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/06/07 17:39:20 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 		return ((char *)big);
 	i = 0;
 	little_len = ft_strlen((char *)little);
-	while (*big != '\0' && i + little_len < len)
+	while (*big != '\0' && i + little_len <= len)
 	{
 		if (*big == little[0])
 		{
