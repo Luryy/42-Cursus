@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/27 16:44:00 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/06/04 19:36:36 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/06/07 18:00:54 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@ static int	ft_count_times(char const *s, char c)
 	is_sequence = 1;
 	while (s[++i])
 	{
-		if (s[i] != c && !is_sequence)
+		if (s[i] != c && is_sequence)
 		{
 			c_times++;
-			is_sequence = 1;
-		}
-		else
 			is_sequence = 0;
+		}
+		else if (s[i] == c)
+			is_sequence = 1;
 	}
 	return (c_times);
 }
