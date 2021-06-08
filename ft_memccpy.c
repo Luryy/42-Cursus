@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 18:19:52 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/06/08 20:48:51 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/06/08 20:50:25 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	*ft_memccpy(void *dest, const void *src, int c, size_t n)
 	while (i < n)
 	{
 		dest_char[i] = src_char[i];
-		if (src_char[i] == c)
+		if (src_char[i] == (unsigned char)c)
 			return (&dest_char[i + 1]);
 		i++;
 	}
