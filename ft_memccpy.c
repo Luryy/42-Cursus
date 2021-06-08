@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 18:19:52 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/06/08 20:47:10 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/06/08 20:48:51 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	*ft_memccpy(void *dest, const void *src, int c, size_t n)
 {
-	char		*dest_char;
-	const char	*src_char;
-	size_t		i;
+	unsigned char	*dest_char;
+	unsigned char	*src_char;
+	size_t			i;
 
 	if (dest == NULL && src == NULL)
 		return (NULL);
