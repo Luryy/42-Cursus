@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 19:36:54 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/06/08 20:58:11 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/06/08 21:03:36 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	ft_atoi(const char *nptr)
 {
-	int				signal;
-	unsigned int	number;
+	int					signal;
+	unsigned long int	number;
 
 	number = 0;
 	signal = 1;
