@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 19:44:29 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/06/01 18:26:53 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/06/08 21:05:47 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ char	*ft_strdup(char *src)
 
 	src_len = ft_strlen(src);
 	p = (char *)malloc(src_len + 1);
+	if (!p)
+		return (NULL);
 	i = -1;
 	while (++i < src_len)
 		p[i] = src[i];
