@@ -6,7 +6,7 @@
 #    By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/18 18:19:26 by lyuri-go          #+#    #+#              #
-#    Updated: 2021/06/10 07:52:08 by lyuri-go         ###   ########.fr        #
+#    Updated: 2021/06/10 07:57:21 by lyuri-go         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ $(NAME):	$(OBJ)
 		$(CC) $(FLAGS) -c $< -o $@
 
 clean:
-		rm -f $(OBJ)
+		rm -f $(OBJ) $(OBJ_S)
 
 fclean: clean
 		rm -f $(NAME)
