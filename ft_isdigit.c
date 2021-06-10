@@ -6,9 +6,11 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/27 11:10:19 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/06/01 16:34:38 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/06/10 18:49:19 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int	ft_isdigit(int c)
 {
