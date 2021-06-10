@@ -6,7 +6,7 @@
 #    By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/18 18:19:26 by lyuri-go          #+#    #+#              #
-#    Updated: 2021/05/28 16:59:13 by lyuri-go         ###   ########.fr        #
+#    Updated: 2021/06/10 07:52:08 by lyuri-go         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,11 @@ FILES	=	ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c ft_memchr.c
 			ft_substr.c ft_strjoin.c ft_strtrim.c ft_split.c ft_itoa.c ft_strmapi.c \
 			ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c
 
+BONUS	=	ft_lstnew.c
+
 OBJ	=	$(FILES:.c=.o)
+
+OBJ_B	=	$(BONUS:.c=.o)
 
 all:	$(NAME)
 
@@ -39,3 +43,6 @@ fclean: clean
 		rm -f $(NAME)
 
 re: fclean all
+
+bonus: $(NAME) $(OBJ_B)
+	ar rc $(NAME) $(OBJ_S)
