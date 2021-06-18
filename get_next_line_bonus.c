@@ -6,11 +6,11 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 18:23:52 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/06/18 18:30:41 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/06/18 18:51:28 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 static char	*ft_join_and_free(char *to_free, char *to_join)
 {

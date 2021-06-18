@@ -6,11 +6,11 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 18:24:10 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/06/18 18:24:10 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/06/18 18:51:40 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 size_t	ft_strlen(const char *str)
 {
