@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/14 08:29:09 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/06/17 08:39:52 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/06/18 09:04:00 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,18 @@ int	get_line(char **str, char **line, int i)
 	return (1);
 }
 
+void	final_verify(char **str, char **line)
+{
+	if (*str)
+	{
+		*line = ft_strdup(*str);
+		free(*str);
+		*str = NULL;
+		return ;
+	}
+	*line = ft_strdup("");
+}
+
 int	get_next_line(int fd, char **line)
 {
 	static char		*str;
@@ -75,12 +87,6 @@ int	get_next_line(int fd, char **line)
 			return (get_line(&str, line, ft_strchr(str, '\n') - str));
 		nr_bytes = read(fd, read_buffer, BUFFER_SIZE);
 	}
-	*line = ft_strdup("");
-	if (str)
-	{
-		*line = ft_strdup(str);
-		free(str);
-		str = NULL;
-	}
+	final_verify(&str, line);
 	return (nr_bytes);
 }
