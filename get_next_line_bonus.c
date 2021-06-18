@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 18:23:52 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/06/18 18:51:28 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/06/18 19:15:29 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int	get_next_line(int fd, char **line)
 	char			read_buffer[BUFFER_SIZE + 1];
 	int				nr_bytes;
 
-	if (fd < 0 || !line || BUFFER_SIZE < 1 || fd > MAX_FILE_DESCRIPTOR)
+	if (fd < 0 || !line || BUFFER_SIZE < 1)
 		return (-1);
 	if (str[fd] && ft_strchr(str[fd], '\n'))
 		return (get_line(&str[fd], line, ft_strchr(str[fd], '\n') - str[fd]));
