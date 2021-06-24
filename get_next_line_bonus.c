@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 18:23:52 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/06/18 19:20:21 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/06/24 07:34:07 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	final_verify(char **str, char **line)
 
 int	get_next_line(int fd, char **line)
 {
-	static char		*str[16];
+	static char		*str[20];
 	char			read_buffer[BUFFER_SIZE + 1];
 	int				nr_bytes;
 
