@@ -6,14 +6,14 @@
 #    By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/28 08:22:29 by lyuri-go          #+#    #+#              #
-#    Updated: 2021/06/28 08:54:57 by lyuri-go         ###   ########.fr        #
+#    Updated: 2021/06/30 08:36:19 by lyuri-go         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	libftprintf.a
 
 CC	=	gcc
-FLAGS	=	-Wall -Wextra -Werror
+FLAGS	=	# -Wall -Wextra -Werror
 
 ARCHIVE_AND_INDEX = ar -rc
 MAKE_EXTERNAL = make -C
@@ -27,14 +27,15 @@ LIBS_PATH = ./libs
 
 LIBFT = libft
 LIBFT_PATH = $(LIBS_PATH)/$(LIBFT)
+COPY_LIBFT = cp $(LIBFT_PATH)/libft.a
 
-SOURCES_FILES =
+SOURCE_FILES = ft_printf.c
 SOURCES = $(addprefix $(SOURCES_PATH)/,$(SOURCE_FILES))
 
 OBJECTS = $(addprefix $(OBJECTS_PATH)/,$(subst .c,.o,$(SOURCE_FILES)))
 
 INCLUDES_FILES = ft_printf.h
-INCLUDES = $(addprefix $(INCLUDES_PATH)/,$(INCLUDES_FILES)))
+INCLUDES = $(addprefix $(INCLUDES_PATH)/,$(INCLUDES_FILES))
 
 all:	$(NAME)
 
@@ -59,3 +60,5 @@ fclean: clean libft_fclean
 	$(REMOVE) $(NAME)
 
 re: fclean all
+
+.PHONY: libft all re libft_fclean clean fclean

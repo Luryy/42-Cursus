@@ -1,20 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/28 08:32:26 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/06/30 08:44:21 by lyuri-go         ###   ########.fr       */
+/*   Created: 2021/06/30 08:09:15 by lyuri-go          #+#    #+#             */
+/*   Updated: 2021/06/30 08:55:09 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include <ft_printf.h>
 
-# include "stdarg.h"
+int	ft_printf(const char *format, ...)
+{
+	va_list	params;
+	char	*str;
 
-int	ft_printf(const char *format, ...);
-
-#endif
+	str = ft_strdup(format);
+	if (!str)
+		return (0);
+	va_start(params, format);
+	va_end(params);
+	free(str);
+	return (1);
+}
