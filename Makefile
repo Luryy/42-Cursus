@@ -6,14 +6,14 @@
 #    By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/28 08:22:29 by lyuri-go          #+#    #+#              #
-#    Updated: 2021/06/30 08:36:19 by lyuri-go         ###   ########.fr        #
+#    Updated: 2021/07/12 18:39:52 by lyuri-go         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	libftprintf.a
 
 CC	=	gcc
-FLAGS	=	# -Wall -Wextra -Werror
+FLAGS	=	-Wall -Wextra -Werror
 
 ARCHIVE_AND_INDEX = ar -rc
 MAKE_EXTERNAL = make -C
