@@ -1,30 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_verify.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/30 08:09:15 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/07/14 09:38:02 by lyuri-go         ###   ########.fr       */
+/*   Created: 2021/07/14 08:57:53 by lyuri-go          #+#    #+#             */
+/*   Updated: 2021/07/14 09:34:41 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_printf.h>
 
-int	ft_printf(const char *format, ...)
+int	ft_isconversion(int c)
 {
-	va_list	params;
-	char	*str;
-	int		count;
+	return (c == 'c' || c == 's' || c == 'p' || c == 'd' || c == 'i'
+		|| c == 'u' || c == 'x' || c == 'X' || c == '%');
+}
 
-	count = 0;
-	str = ft_strdup((char *)format);
-	if (!str)
-		return (0);
-	va_start(params, format);
-	count += ft_handle_input(str, params);
-	va_end(params);
-	free(str);
-	return (count);
+int	ft_isflag(int c)
+{
+	return (c == '-' || c == '0' || c == '.' || c == '*' || c == ' ');
 }
