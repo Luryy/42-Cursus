@@ -6,7 +6,7 @@
 #    By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/28 08:22:29 by lyuri-go          #+#    #+#              #
-#    Updated: 2021/07/14 09:27:03 by lyuri-go         ###   ########.fr        #
+#    Updated: 2021/07/20 08:31:34 by lyuri-go         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ LIBFT = libft
 LIBFT_PATH = $(LIBS_PATH)/$(LIBFT)
 COPY_LIBFT = cp $(LIBFT_PATH)/libft.a
 
-SOURCE_FILES =	ft_controller.c ft_flags.c ft_handle.c ft_helpers.c ft_print_c.c \
+SOURCE_FILES =	ft_controller.c ft_flags.c ft_handle.c ft_helpers_p.c ft_helpers.c ft_print_c.c \
 				ft_printf.c ft_print_int.c ft_print_p.c ft_print_percent.c ft_print_s.c \
 				ft_print_u.c ft_print_width.c ft_print_x.c ft_verify.c
 

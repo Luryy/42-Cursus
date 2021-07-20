@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 08:40:08 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/07/14 09:14:43 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/07/20 08:40:41 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,7 @@ static int	ft_output(char *str, int num, t_flags flags)
 		ft_putchar_fd('-', 1);
 	if (flags.dot >= 0)
 		count += ft_print_width(flags.dot - 1, ft_strlen(str) - 1, 1);
-	ft_putstr_fd(str, 1);
-	count += ft_strlen(str);
+	count += ft_putsp(str, ft_strlen(str));
 	return (count);
 }
 

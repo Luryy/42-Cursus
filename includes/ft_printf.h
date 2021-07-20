@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 08:32:26 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/07/14 09:34:22 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/07/20 08:31:12 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ int		ft_isconversion(int c);
 int		ft_isflag(int c);
 int		ft_handle(int c, t_flags flags, va_list args);
 
+int		ft_putchar(char c);
 int		ft_putsp(char *str, int len);
 char	*ft_str_to_lowercase(char *str);
 char	*ft_utl_base(size_t nbr, int base);

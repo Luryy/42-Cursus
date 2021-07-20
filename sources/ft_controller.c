@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 19:05:51 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/07/14 09:08:34 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/07/20 08:40:05 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,15 +63,15 @@ int	ft_handle_input(const char *str, va_list args)
 	while (str[i])
 	{
 		flags = ft_init_flags();
-		if (str[i] != '%' && count++)
-			ft_putchar_fd(str[i], 1);
+		if (str[i] != '%')
+			count += ft_putchar(str[i]);
 		else if (str[i] == '%' && str[i + 1])
 		{
 			i = ft_parse(str, ++i, &flags, args);
 			if (ft_isconversion(str[i]))
 				count += ft_handle((char)flags.type, flags, args);
-			else if (str[i] && count++)
-				ft_putchar_fd(str[i], 1);
+			else if (str[i])
+				count += ft_putchar(str[i]);
 		}
 		i++;
 	}

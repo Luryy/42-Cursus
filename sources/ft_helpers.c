@@ -6,24 +6,11 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 09:22:57 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/07/14 09:33:08 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/07/20 08:30:32 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_printf.h>
-
-int	ft_putsp(char *str, int len)
-{
-	int	i;
-
-	i = 0;
-	while (str[i] && i < len)
-	{
-		ft_putchar_fd(str[i], 1);
-		i++;
-	}
-	return (i);
-}
 
 char	*ft_str_to_lowercase(char *str)
 {
