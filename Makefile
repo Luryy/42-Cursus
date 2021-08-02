@@ -6,7 +6,7 @@
 #    By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/28 08:22:29 by lyuri-go          #+#    #+#              #
-#    Updated: 2021/07/20 08:31:34 by lyuri-go         ###   ########.fr        #
+#    Updated: 2021/08/02 16:00:48 by lyuri-go         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,4 +64,6 @@ fclean: clean libft_fclean
 
 re: fclean all
 
-.PHONY: libft all re libft_fclean clean fclean
+bonus: all
+
+.PHONY: libft all re libft_fclean clean fclean bonus
