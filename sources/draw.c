@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 17:54:11 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/09/16 19:16:44 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/09/16 19:23:02 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	draw(t_dot **matrix)
 	int		y;
 	int		x;
 
-	print_menu(PRM);
+	print_menu(matrix[0][0]);
 	y = 0;
 	while (matrix[y])
 	{
@@ -69,9 +69,9 @@ void	draw(t_dot **matrix)
 		while (1)
 		{
 			if (matrix[y + 1])
-				line(matrix[y][x], matrix[y + 1][x], &PRM);
+				line(matrix[y][x], matrix[y + 1][x], &matrix[0][0]);
 			if (!matrix[y][x].is_last)
-				line(matrix[y][x], matrix[y][x + 1], &PRM);
+				line(matrix[y][x], matrix[y][x + 1], &matrix[0][0]);
 			if (matrix[y][x].is_last)
 				break ;
 			x++;

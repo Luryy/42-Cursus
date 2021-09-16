@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 17:59:50 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/09/16 18:49:11 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/09/16 19:23:02 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,43 +24,43 @@ int	is_key(int key)
 void	do_key(int key, t_dot **matrix)
 {
 	if (key == 24 || key == 69)
-		PRM.scale += 3;
+		matrix[0][0].scale += 3;
 	if (key == 27 || key == 78)
-		PRM.scale -= 3;
+		matrix[0][0].scale -= 3;
 	if (key == 91 || key == 28)
-		PRM.z_scale += 1;
+		matrix[0][0].z_scale += 1;
 	if (key == 84 || key == 19)
-		PRM.z_scale -= 1;
+		matrix[0][0].z_scale -= 1;
 	if (key == '~')
-		PRM.shift_y -= 10;
+		matrix[0][0].shift_y -= 10;
 	if (key == '}')
-		PRM.shift_y += 10;
+		matrix[0][0].shift_y += 10;
 	if (key == '{')
-		PRM.shift_x -= 10;
+		matrix[0][0].shift_x -= 10;
 	if (key == '|')
-		PRM.shift_x += 10;
+		matrix[0][0].shift_x += 10;
 	if (key == 49 || key == 87 || key == 23)
-		PRM.is_isometric = (PRM.is_isometric) ? 0 : 1;
+		matrix[0][0].is_isometric = (matrix[0][0].is_isometric) ? 0 : 1;
 	if (key == 86 || key == 21)
-		PRM.angle += 0.05;
+		matrix[0][0].angle += 0.05;
 	if (key == 88 || key == 22)
-		PRM.angle -= 0.05;
+		matrix[0][0].angle -= 0.05;
 }
 
 int	deal_key(int key, t_dot **matrix)
 {
 	if (is_key(key))
 	{
-		mlx_clear_window(PRM.mlx_ptr, PRM.win_ptr);
+		mlx_clear_window(matrix[0][0].mlx_ptr, matrix[0][0].win_ptr);
 		do_key(key, matrix);
-		print_menu(PRM);
+		print_menu(matrix[0][0]);
 		draw(matrix);
 	}
 	if (key == 6 || key == 7 || key == 0 || key == 1 || key == 3)
 		new_window(key, matrix);
 	if (key == '5')
 	{
-		mlx_destroy_window(PRM.mlx_ptr, PRM.win_ptr);
+		mlx_destroy_window(matrix[0][0].mlx_ptr, matrix[0][0].win_ptr);
 		free(matrix);
 		exit(0);
 	}

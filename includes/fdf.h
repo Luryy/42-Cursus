@@ -6,14 +6,12 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/23 08:45:17 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/09/16 19:21:22 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/09/16 19:23:06 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
-
-# define PRM matrix[0][0]
 
 # include <stdio.h>
 # include <fcntl.h>

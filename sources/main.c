@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 08:25:24 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/09/16 18:49:53 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/09/16 19:23:02 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@ int	main(int argc, char **argv)
 	if (argc == 2)
 	{
 		matrix = read_map(*++argv);
-		set_default(&PRM);
+		set_default(&matrix[0][0]);
 		draw(matrix);
-		mlx_key_hook(PRM.win_ptr, deal_key, matrix);
-		mlx_loop(PRM.mlx_ptr);
+		mlx_key_hook(matrix[0][0].win_ptr, deal_key, matrix);
+		mlx_loop(matrix[0][0].mlx_ptr);
 	}
 	return (1);
 }
