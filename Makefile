@@ -6,7 +6,7 @@
 #    By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/23 08:39:36 by lyuri-go          #+#    #+#              #
-#    Updated: 2021/09/14 18:52:18 by lyuri-go         ###   ########.fr        #
+#    Updated: 2021/09/16 18:19:15 by lyuri-go         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ LIBFT_PATH = ./$(LIBS_PATH)/$(LIBFT)
 MLX = minilibx
 MLX_PATH = ./$(LIBS_PATH)/$(MLX)
 
-SOURCE_FILES = main.c
+SOURCE_FILES = main.c change_window_size.c draw.c isometric.c map.c print_menu.c set_param.c deal_key.c ft_error.c
 
 SOURCES = $(addprefix $(SOURCES_PATH)/,$(SOURCE_FILES))
 

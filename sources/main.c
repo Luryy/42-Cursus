@@ -6,37 +6,38 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 08:25:24 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/09/14 19:28:37 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/09/16 18:49:53 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fdf.h>
 
+void	set_default(t_dot *param)
+{
+	param->scale = 20;
+	param->z_scale = 1;
+	param->is_isometric = 1;
+	param->angle = 0.523599;
+	param->win_x = 2000;
+	param->win_y = 1000;
+	param->shift_x = param->win_x / 3;
+	param->shift_y = param->win_y / 3;
+	param->mlx_ptr = mlx_init();
+	param->win_ptr =\ 
+	mlx_new_window(param->mlx_ptr, param->win_x, param->win_y, "FDF");
+}
+
 int	main(int argc, char **argv)
 {
-	int	fd;
+	t_dot	**matrix;
 
 	if (argc == 2)
 	{
-		fd = open(argv[1], O_RDONLY);
-		if (!fd)
-			return (0);
-//
-		int j = 1;
-		char *line = 0;
-		char *lineadress[66];
-		int i;
-
-		while ((i = get_next_line(fd, &line)) > 0)
-		{
-			printf("|%s\n", line);
-			lineadress[j - 1] = line;
-			j++;
-		}
-		printf("|%s\n", line);
-		free(line);
-		close(fd);
-//
+		matrix = read_map(*++argv);
+		set_default(&PRM);
+		draw(matrix);
+		mlx_key_hook(PRM.win_ptr, deal_key, matrix);
+		mlx_loop(PRM.mlx_ptr);
 	}
 	return (1);
 }
