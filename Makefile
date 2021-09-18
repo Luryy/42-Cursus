@@ -6,7 +6,7 @@
 #    By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/23 08:39:36 by lyuri-go          #+#    #+#              #
-#    Updated: 2021/09/18 12:26:23 by lyuri-go         ###   ########.fr        #
+#    Updated: 2021/09/18 14:11:31 by lyuri-go         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME	=	fdf
 CC	=	gcc
 FLAGS	=	-Wall -Wextra -Werror -O3
 FLAGS	=	-O3
-LIBRARIES = -L$(MLX_PATH) -lmlx -L/usr/lib -lXext -lX11 -lm -lz -L$(LIBFT_PATH) -lft
+LIBRARIES = -L$(MLX_PATH) -lmlx -L/usr/lib -lXext -lX11 -lm -L$(LIBFT_PATH) -lft
 INCLUDES = -I$(INCLUDES_PATH) -I$(LIBFT_PATH) -I$(MLX_PATH)
 
 MAKE_EXTERNAL = make -C
