@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 08:25:24 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/09/18 10:48:42 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/09/18 12:15:11 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void	set_default(t_dot *param)
 	param->z_scale = 1;
 	param->is_isometric = 1;
 	param->angle = 0.523599;
-	param->win_x = 2000;
-	param->win_y = 1000;
+	param->win_x = X_WIN_SIZE;
+	param->win_y = Y_WIN_SIZE;
 	param->shift_x = param->win_x / 3;
 	param->shift_y = param->win_y / 3;
 	param->mlx_ptr = mlx_init();

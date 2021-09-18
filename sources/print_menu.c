@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 18:03:40 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/09/16 18:51:32 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/09/18 12:49:30 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,9 @@ void	print_menu(t_dot param)
 	char	*menu;
 
 	menu = "up, down, left, right: move picture";
-	mlx_string_put(param.mlx_ptr, param.win_ptr, 10, 5, 0x03fc35, menu);
-	menu = "5, spase: 3d/2d mode; +, -: zoom";
-	mlx_string_put(param.mlx_ptr, param.win_ptr, 10, 20, 0x03fc35, menu);
-	menu = "8, 2: z-scale; 4, 6: rotation";
-	mlx_string_put(param.mlx_ptr, param.win_ptr, 10, 35, 0x03fc35, menu);
-	menu = "f: full screen mode";
-	mlx_string_put(param.mlx_ptr, param.win_ptr, 10, 50, 0x03fc35, menu);
+	mlx_string_put(param.mlx_ptr, param.win_ptr, 10, 15, 0x03fc35, menu);
+	menu = "space: switch projections; +, -: zoom";
+	mlx_string_put(param.mlx_ptr, param.win_ptr, 10, 30, 0x03fc35, menu);
+	menu = "1,2: z-scale; 8, 9: rotation";
+	mlx_string_put(param.mlx_ptr, param.win_ptr, 10, 45, 0x03fc35, menu);
 }

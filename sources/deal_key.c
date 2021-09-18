@@ -6,59 +6,41 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 17:59:50 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/09/16 19:23:02 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/09/18 12:55:05 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fdf.h>
 
-int	is_key(int key)
+void	command_keys(int key, t_dot **matrix)
 {
-	return (key == 24 || key == 69 || key == 27 || key == 78 ||\ 
-	key == 91 || key == 28 || key == 84 || key == 19 ||\ 
-	key == '~' || key == '}' || key == '{' || key == '|' ||\ 
-	key == 87 || key == 23 || key == 86 || key == 21 ||\ 
-	key == 49 || key == 88 || key == 22);
-}
-
-void	do_key(int key, t_dot **matrix)
-{
-	if (key == 24 || key == 69)
+	if (key == KMORE)
 		matrix[0][0].scale += 3;
-	if (key == 27 || key == 78)
+	else if (key == KLESS)
 		matrix[0][0].scale -= 3;
-	if (key == 91 || key == 28)
+	else if (key == K1)
 		matrix[0][0].z_scale += 1;
-	if (key == 84 || key == 19)
+	else if (key == K2)
 		matrix[0][0].z_scale -= 1;
-	if (key == '~')
-		matrix[0][0].shift_y -= 10;
-	if (key == '}')
-		matrix[0][0].shift_y += 10;
-	if (key == '{')
-		matrix[0][0].shift_x -= 10;
-	if (key == '|')
-		matrix[0][0].shift_x += 10;
-	if (key == 49 || key == 87 || key == 23)
-		matrix[0][0].is_isometric = (matrix[0][0].is_isometric) ? 0 : 1;
-	if (key == 86 || key == 21)
+	else if (key == KSPACE)
+		matrix[0][0].is_isometric = !matrix[0][0].is_isometric;
+	else if (key == K8)
 		matrix[0][0].angle += 0.05;
-	if (key == 88 || key == 22)
+	else if (key == K9)
 		matrix[0][0].angle -= 0.05;
+	else
+		return ;
+	mlx_clear_window(matrix[0][0].mlx_ptr, matrix[0][0].win_ptr);
+	print_menu(matrix[0][0]);
+	draw(matrix);
 }
 
 int	deal_key(int key, t_dot **matrix)
 {
-	if (is_key(key))
-	{
-		mlx_clear_window(matrix[0][0].mlx_ptr, matrix[0][0].win_ptr);
-		do_key(key, matrix);
-		print_menu(matrix[0][0]);
-		draw(matrix);
-	}
-	if (key == 6 || key == 7 || key == 0 || key == 1 || key == 3)
-		new_window(key, matrix);
-	if (key == '5')
+	command_keys(key, matrix);
+	if (key == KLEFT || key == KUP || key == KDOWN || key == KRIGHT)
+		move(key, matrix);
+	if (key == KESC)
 	{
 		mlx_destroy_window(matrix[0][0].mlx_ptr, matrix[0][0].win_ptr);
 		free(matrix);
