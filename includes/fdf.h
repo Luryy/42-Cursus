@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/23 08:45:17 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/09/18 12:35:26 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/09/18 13:58:18 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,14 @@ typedef struct s_dot
 
 # define X_WIN_SIZE 1500
 # define Y_WIN_SIZE 600
+
+# define C_WHITE 0xFFFFFF
+# define C_RED 0xFF0000
+# define C_LIGTH_RED 0xFF0F1c
+# define C_GREEN 0x00FF00
+
+# define INIT_ANGLE 0.523599
+# define INIT_SCALE 20
 
 t_dot			**read_map(char *file_name);
 void			draw(t_dot **matrix);

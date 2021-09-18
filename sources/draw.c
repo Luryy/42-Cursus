@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 17:54:11 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/09/16 19:23:02 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/09/18 13:54:42 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 void	set_color(t_dot a, t_dot b, int *color)
 {
 	if (b.z != a.z)
-		*color = 0xfc031c;
+		*color = C_LIGTH_RED;
 	else if (b.z || a.z)
-		*color = 0xfc0345;
+		*color = C_RED;
 	else
-		*color = 0xBBFAFF;
+		*color = C_WHITE;
 }
 
 float	fmodule(float i)
