@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 08:25:24 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/09/16 19:23:02 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/09/18 10:48:42 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ int	main(int argc, char **argv)
 		draw(matrix);
 		mlx_key_hook(matrix[0][0].win_ptr, deal_key, matrix);
 		mlx_loop(matrix[0][0].mlx_ptr);
+	} else {
+		ft_error("Incorrect params");
 	}
 	return (1);
 }

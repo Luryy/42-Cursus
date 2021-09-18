@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 18:18:20 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/09/16 18:19:23 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/09/18 10:53:13 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 void	ft_error(char *msg)
 {
-	printf("%s\n", msg);
+	perror(msg);
 	exit(1);
 }
