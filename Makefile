@@ -6,11 +6,11 @@
 #    By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/23 08:39:36 by lyuri-go          #+#    #+#              #
-#    Updated: 2021/09/16 18:19:15 by lyuri-go         ###   ########.fr        #
+#    Updated: 2021/09/18 10:19:33 by lyuri-go         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	fdf.a
+NAME	=	fdf
 
 CC	=	gcc
 FLAGS	=	-Wall -Wextra -Werror -O3
