@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/23 08:45:17 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/09/18 13:58:18 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/09/20 21:41:36 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,9 @@ typedef struct s_dot
 	float		y;
 	float		z;
 	int			is_last;
+}				t_dot;
 
-	int			color;
+typedef struct s_win {
 	int			scale;
 	int			z_scale;
 	int			shift_x;
@@ -38,7 +39,12 @@ typedef struct s_dot
 	int			win_y;
 	void		*mlx_ptr;
 	void		*win_ptr;
-}				t_dot;
+}				t_win;
+
+typedef struct s_var {
+	t_dot		***dot;
+	t_win		**winfo;
+}				t_var;
 
 # define KSPACE 32
 # define KLESS 45
@@ -65,12 +71,12 @@ typedef struct s_dot
 # define INIT_SCALE 20
 
 t_dot			**read_map(char *file_name);
-void			draw(t_dot **matrix);
-void			set_param(t_dot *a, t_dot *b, t_dot *param);
-int				deal_key(int key, t_dot **matrix);
+void			draw(t_dot **matrix, t_win *winfo);
+void			set_param(t_dot *a, t_dot *b, t_win *winfo);
+int				deal_key(int key, t_var *var);
 void			isometric(t_dot *dot, double angle);
-void			print_menu(t_dot param);
+void			print_menu(t_win *param);
 void			ft_error(char *msg);
-void			move(int key, t_dot **matrix);
+void			move(int key, t_dot **matrix, t_win *winfo);
 
 #endif

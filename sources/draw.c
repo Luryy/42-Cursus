@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 17:54:11 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/09/18 13:54:42 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/09/20 21:01:43 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ float	fmodule(float i)
 		return (i);
 }
 
-void	line(t_dot a, t_dot b, t_dot *param)
+void	line(t_dot a, t_dot b, t_win *param)
 {
 	float	step_x;
 	float	step_y;
@@ -56,12 +56,12 @@ void	line(t_dot a, t_dot b, t_dot *param)
 	}
 }
 
-void	draw(t_dot **matrix)
+void	draw(t_dot **matrix, t_win *winfo)
 {
 	int		y;
 	int		x;
 
-	print_menu(matrix[0][0]);
+	print_menu(winfo);
 	y = 0;
 	while (matrix[y])
 	{
@@ -69,9 +69,9 @@ void	draw(t_dot **matrix)
 		while (1)
 		{
 			if (matrix[y + 1])
-				line(matrix[y][x], matrix[y + 1][x], &matrix[0][0]);
+				line(matrix[y][x], matrix[y + 1][x], winfo);
 			if (!matrix[y][x].is_last)
-				line(matrix[y][x], matrix[y][x + 1], &matrix[0][0]);
+				line(matrix[y][x], matrix[y][x + 1], winfo);
 			if (matrix[y][x].is_last)
 				break ;
 			x++;

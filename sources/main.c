@@ -6,13 +6,13 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 08:25:24 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/09/20 20:33:13 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/09/20 21:56:34 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fdf.h>
 
-void	set_default(t_dot *param)
+void	set_default(t_win *param)
 {
 	param->scale = INIT_SCALE;
 	param->z_scale = 1;
@@ -30,14 +30,19 @@ void	set_default(t_dot *param)
 int	main(int argc, char **argv)
 {
 	t_dot	**matrix;
+	t_win	*winfo;
+	t_var	var;
 
+	winfo = (t_win *)malloc(sizeof(t_win));
+	var.dot = &matrix;
+	var.winfo = &winfo;
 	if (argc == 2)
 	{
 		matrix = read_map(*++argv);
-		set_default(&matrix[0][0]);
-		draw(matrix);
-		mlx_key_hook(matrix[0][0].win_ptr, deal_key, matrix);
-		mlx_loop(matrix[0][0].mlx_ptr);
+		set_default(winfo);
+		draw(matrix, winfo);
+		mlx_key_hook(winfo->win_ptr, deal_key, &var);
+		mlx_loop(winfo->mlx_ptr);
 	}
 	else
 	{

@@ -6,44 +6,44 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 17:59:50 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/09/18 12:55:05 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/09/20 21:46:16 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fdf.h>
 
-void	command_keys(int key, t_dot **matrix)
+void	command_keys(int key, t_dot **matrix, t_win *winfo)
 {
 	if (key == KMORE)
-		matrix[0][0].scale += 3;
+		winfo->scale += 3;
 	else if (key == KLESS)
-		matrix[0][0].scale -= 3;
+		winfo->scale -= 3;
 	else if (key == K1)
-		matrix[0][0].z_scale += 1;
+		winfo->z_scale += 1;
 	else if (key == K2)
-		matrix[0][0].z_scale -= 1;
+		winfo->z_scale -= 1;
 	else if (key == KSPACE)
-		matrix[0][0].is_isometric = !matrix[0][0].is_isometric;
+		winfo->is_isometric = !winfo->is_isometric;
 	else if (key == K8)
-		matrix[0][0].angle += 0.05;
+		winfo->angle += 0.05;
 	else if (key == K9)
-		matrix[0][0].angle -= 0.05;
+		winfo->angle -= 0.05;
 	else
 		return ;
-	mlx_clear_window(matrix[0][0].mlx_ptr, matrix[0][0].win_ptr);
-	print_menu(matrix[0][0]);
-	draw(matrix);
+	mlx_clear_window(winfo->mlx_ptr, winfo->win_ptr);
+	print_menu(winfo);
+	draw(matrix, winfo);
 }
 
-int	deal_key(int key, t_dot **matrix)
+int	deal_key(int key, t_var *var)
 {
-	command_keys(key, matrix);
+	command_keys(key, *(var->dot), *(var->winfo));
 	if (key == KLEFT || key == KUP || key == KDOWN || key == KRIGHT)
-		move(key, matrix);
+		move(key, *(var->dot), *(var->winfo));
 	if (key == KESC)
 	{
-		mlx_destroy_window(matrix[0][0].mlx_ptr, matrix[0][0].win_ptr);
-		free(matrix);
+		mlx_destroy_window((*(var->winfo))->mlx_ptr, (*(var->winfo))->win_ptr);
+		free(*(var->winfo));
 		exit(0);
 	}
 	return (0);
