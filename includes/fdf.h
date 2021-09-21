@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/23 08:45:17 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/09/20 21:41:36 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/09/21 19:48:45 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdio.h>
 # include <fcntl.h>
 # include <math.h>
+# include <errno.h>
 
 # include "../libs/libft/libft.h"
 # include "../libs/minilibx/mlx.h"

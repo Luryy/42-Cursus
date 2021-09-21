@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 08:25:24 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/09/20 21:56:34 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/09/21 19:53:12 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int	main(int argc, char **argv)
 	}
 	else
 	{
+		errno = 5;
 		ft_error("Incorrect params");
 	}
 	return (1);
