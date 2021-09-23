@@ -1,0 +1,9 @@
+fdf.a
+objects
+.vscode
+*.o
+libft.a
+libmlx.a
+mlx-test
+mainex.c
+fdf
