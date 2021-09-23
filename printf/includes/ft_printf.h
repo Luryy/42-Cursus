@@ -6,14 +6,14 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 08:32:26 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/08/13 20:03:19 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/07/20 08:31:12 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# include "../../libft/libft.h"
+# include "../libs/libft/libft.h"
 # include <stdarg.h>
 # include <stdlib.h>
 # include <stdio.h>
