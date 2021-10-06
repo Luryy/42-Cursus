@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 08:36:42 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/10/06 14:46:46 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/10/06 14:58:44 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ int	main(int argc, char *argv[])
 		ft_printf("Wrong input. Should be SERVER PID + MESSAGE\n");
 		return (1);
 	}
+	sig.sa_flags = SA_SIGINFO;
 	sig.sa_sigaction = handle_client;
 	sigaction(SIGUSR1, &sig, 0);
 	sigaction(SIGUSR2, &sig, 0);

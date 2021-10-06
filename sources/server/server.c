@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 08:36:42 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/10/06 14:43:26 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/10/06 14:58:34 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,17 +31,19 @@ static void	ft_sigaction(int sig, siginfo_t *siginfo, void *context)
 		letter = 0;
 	}
 	if (sig == SIGUSR2)
-	{
 		letter += 1 << count;
-	}
 	count++;
 	if (count == 8)
 	{
 		if (letter == 0)
+		{
 			ft_finish(siginfo->si_pid);
+			return ;
+		}
 		else
 			write(1, &letter, 1);
 	}
+	kill(siginfo->si_pid, SIGUSR2);
 }
 
 int	main(void)
