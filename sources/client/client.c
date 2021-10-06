@@ -6,13 +6,13 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 08:36:42 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/10/05 18:52:55 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/10/06 10:12:23 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minitalk.h>
 
-void	handle_client(int sig)
+static void	handle_client(int sig)
 {
 	if (sig == SIGUSR1)
 	{
@@ -21,25 +21,24 @@ void	handle_client(int sig)
 	}
 }
 
-void	send_char(int pid, unsigned char c)
+static void	ft_kill(int pid, int signal)
+{
+	kill(pid, signal);
+	usleep(1100);
+}
+
+static void	send_char(int pid, unsigned char c)
 {
 	int	count;
 
-	count = 0;
-	while (count < 8)
+	count = -1;
+	while (++count < 8)
 	{
-		if (c % 2 == 0 || c == 0)
-		{
-			kill(pid, SIGUSR1);
-			usleep(1100);
-		}
+		if (c % 2 == 0)
+			ft_kill(pid, SIGUSR1);
 		else
-		{
-			kill(pid, SIGUSR2);
-			usleep(1100);
-		}
+			ft_kill(pid, SIGUSR2);
 		c /= 2;
-		count++;
 	}
 }
 

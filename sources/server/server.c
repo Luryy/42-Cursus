@@ -6,13 +6,13 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 08:36:42 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/10/05 18:51:38 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/10/06 10:14:55 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minitalk.h>
 
-void	ft_sigaction(int sig, siginfo_t *siginfo, void *context)
+static void	ft_sigaction(int sig, siginfo_t *siginfo, void *context)
 {
 	static unsigned int	count;
 	static unsigned int	letter;
