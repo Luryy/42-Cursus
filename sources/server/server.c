@@ -6,11 +6,18 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 08:36:42 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/10/06 10:14:55 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/10/06 11:16:30 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minitalk.h>
+
+static void	ft_finish(int pid)
+{
+	write(1, "\n", 1);
+	if (kill(pid, SIGUSR1))
+		ft_printf("Error to notify client\n");
+}
 
 static void	ft_sigaction(int sig, siginfo_t *siginfo, void *context)
 {
@@ -31,13 +38,11 @@ static void	ft_sigaction(int sig, siginfo_t *siginfo, void *context)
 	if (count == 8)
 	{
 		if (letter == 0)
-		{
-			write(1, "\n", 1);
-			kill(siginfo->si_pid, SIGUSR1);
-		}
+			ft_finish(siginfo->si_pid);
 		else
 			write(1, &letter, 1);
 	}
+	kill(siginfo->si_pid, SIGUSR2);
 }
 
 int	main(void)
