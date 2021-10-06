@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 08:36:42 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/10/06 14:58:44 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/10/06 15:25:08 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void	handle_client(int sig, siginfo_t *siginfo, void *context)
 static void	ft_kill(int pid, int signal)
 {
 	kill(pid, signal);
-	usleep(50);
+	usleep(10000);
 }
 
 static void	send_char(int pid, unsigned char c)
