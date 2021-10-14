@@ -6,7 +6,7 @@
 #    By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/14 07:48:42 by lyuri-go          #+#    #+#              #
-#    Updated: 2021/10/14 08:18:40 by lyuri-go         ###   ########.fr        #
+#    Updated: 2021/10/14 08:27:15 by lyuri-go         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,12 +39,12 @@ OBJECTS = $(addprefix $(OBJECTS_PATH)/,$(subst .c,.o,$(SOURCE_FILES)))
 HEADERS_FILES = push_swap.h
 HEADERS_FDF = $(addprefix $(INCLUDES_PATH)/,$(HEADERS_FILES))
 
-all:	libft $(NAME)
+all:	$(LIBFT) $(NAME)
 
 $(NAME):	$(OBJECTS)
 	$(CC) $(FLAGS) $(OBJECTS) $(INCLUDES) $(LIBRARIES) -o $(NAME)
 
-libft:
+$(LIBFT):
 	$(MAKE_EXTERNAL) $(LIBFT_PATH)
 
 $(OBJECTS_PATH)/%.o:	$(SOURCES_PATH)/%.c $(HEADERS_FDF)
