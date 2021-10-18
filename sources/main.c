@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 08:00:00 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/10/18 20:16:38 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/10/18 20:44:03 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,10 @@ int	main(int argc, char **argv)
 {
 	t_content	content;
 
+	content.list_a = NULL;
+	content.list_b = NULL;
 	if (argc <= 1)
 		return (0);
-	ft_init_args(argc, argv, &content.list_a);
+	ft_init_args(argc, argv, &content);
 	return (1);
 }

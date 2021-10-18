@@ -6,14 +6,14 @@
 #    By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/14 07:48:42 by lyuri-go          #+#    #+#              #
-#    Updated: 2021/10/18 20:12:05 by lyuri-go         ###   ########.fr        #
+#    Updated: 2021/10/18 20:46:51 by lyuri-go         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 NAME	=	push_swap
 
-CC	=	gcc
+CC	=	gcc -g
 FLAGS	=	-Wall -Wextra -Werror
 LIBRARIES = -L$(LIBFT_PATH) -lft
 INCLUDES = -I$(INCLUDES_PATH) -I$(LIBFT_PATH)
@@ -30,7 +30,7 @@ LIBS_PATH = ./libs
 LIBFT = libft
 LIBFT_PATH = ./$(LIBS_PATH)/$(LIBFT)
 
-SOURCE_FILES = main.c ft_init_args.c
+SOURCE_FILES = main.c ft_init_args.c ft_clean.c
 
 SOURCES = $(addprefix $(SOURCES_PATH)/,$(SOURCE_FILES))
 
@@ -40,6 +40,7 @@ HEADERS_FILES = push_swap.h
 HEADERS_FDF = $(addprefix $(INCLUDES_PATH)/,$(HEADERS_FILES))
 
 all:	$(LIBFT) $(NAME)
+	echo "\033[0;31mdebbuger active"
 
 $(NAME):	$(OBJECTS)
 	$(CC) $(FLAGS) $(OBJECTS) $(INCLUDES) $(LIBRARIES) -o $(NAME)
