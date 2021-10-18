@@ -1,23 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_init_args.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/14 08:00:00 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/10/18 20:16:38 by lyuri-go         ###   ########.fr       */
+/*   Created: 2021/10/18 08:58:30 by lyuri-go          #+#    #+#             */
+/*   Updated: 2021/10/18 19:43:03 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-int	main(int argc, char **argv)
+void	ft_init_args(int argc, char **argv, t_list **list)
 {
-	t_content	content;
+	int		i;
+	t_info	*info;
+	t_list	*i_list;
 
-	if (argc <= 1)
-		return (0);
-	ft_init_args(argc, argv, &content.list_a);
-	return (1);
+	i = 0;
+	while (++i < argc)
+	{
+		info = malloc(sizeof(t_info));
+		info->value = ft_atoi(argv[i]);
+		i_list = ft_lstnew(info);
+		if (i == 1)
+			*list = i_list;
+		else
+			ft_lstadd_back(list, i_list);
+	}
+	return ;
 }
