@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 20:21:44 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/10/20 09:03:29 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/10/20 09:28:52 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_clean(t_content *content)
 
 void	ft_error(t_content *content)
 {
-	ft_putstr_fd("Error\n", 1);
+	ft_putstr_fd("Error\n", 2);
 	ft_clean(content);
 	exit(EXIT_FAILURE);
 }
