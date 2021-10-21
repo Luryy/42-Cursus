@@ -6,7 +6,7 @@
 #    By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/14 07:48:42 by lyuri-go          #+#    #+#              #
-#    Updated: 2021/10/20 11:24:44 by lyuri-go         ###   ########.fr        #
+#    Updated: 2021/10/20 20:32:11 by lyuri-go         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,8 @@ LIBFT = libft
 LIBFT_PATH = ./$(LIBS_PATH)/$(LIBFT)
 
 SOURCE_FILES =	main.c ft_init_args.c ft_clean.c ft_operations_helpers.c \
-				ft_operations_s_p.c ft_operations_r.c ft_operations_rr.c
+				ft_operations_s_p.c ft_operations_r.c ft_operations_rr.c \
+				ft_index.c
 
 SOURCES = $(addprefix $(SOURCES_PATH)/,$(SOURCE_FILES))
 

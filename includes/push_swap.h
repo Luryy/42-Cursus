@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 07:57:18 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/10/20 11:31:43 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/10/20 20:32:01 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 
 typedef struct s_info {
 	int				value;
+	int				index;
+	struct s_list	*next_ordered;
 }	t_info;
 
 typedef struct s_content {
@@ -47,5 +49,7 @@ void	ft_rr(t_content *content);
 void	ft_rra(t_content *content);
 void	ft_rrb(t_content *content);
 void	ft_rrr(t_content *content);
+
+void	ft_index(t_list *list_init);
 
 #endif

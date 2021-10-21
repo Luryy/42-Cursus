@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 08:58:30 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/10/20 10:11:32 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/10/20 18:41:42 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,10 @@ void	ft_init_args(int argc, char **argv, t_content *content)
 		info = malloc(sizeof(t_info));
 		info->value = ft_atoi(argv[i]);
 		ft_validate(argv[i], content, info);
+		if (i == 1)
+			info->next_ordered = NULL;
+		else
+			info->next_ordered = last_item;
 		i_list = ft_lstnew(info);
 		if (i == 1)
 			content->list_a = i_list;

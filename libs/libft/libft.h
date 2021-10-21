@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 18:45:00 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/06/10 18:35:59 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/10/20 18:56:38 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 typedef struct s_list
 {
-	void			*content;
+	struct s_info	*content;
 	struct s_list	*next;
 }	t_list;
 void	*ft_memset(void *s, int c, size_t n);
