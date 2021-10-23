@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 08:58:30 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/10/20 18:41:42 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/10/23 12:42:38 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static void	ft_validate(char *argv, t_content *content, t_info *info)
 	}
 }
 
-void	ft_init_args(int argc, char **argv, t_content *content)
+static void	ft_parse_nbrs(char **argv, t_content *content)
 {
 	int		i;
 	t_info	*info;
@@ -55,7 +55,7 @@ void	ft_init_args(int argc, char **argv, t_content *content)
 	t_list	*last_item;
 
 	i = 0;
-	while (++i < argc)
+	while (argv[++i])
 	{
 		info = malloc(sizeof(t_info));
 		info->value = ft_atoi(argv[i]);
@@ -71,5 +71,42 @@ void	ft_init_args(int argc, char **argv, t_content *content)
 			ft_lstadd_back(&last_item, i_list);
 		last_item = i_list;
 	}
+}
+
+static void	ft_parse_str(char **argv, t_content *content)
+{
+	int		i;
+	t_info	*info;
+	t_list	*i_list;
+	t_list	*last_item;
+
+	i = -1;
+	while (argv[++i])
+	{
+		info = malloc(sizeof(t_info));
+		info->value = ft_atoi(argv[i]);
+		ft_validate(argv[i], content, info);
+		if (i == 0)
+			info->next_ordered = NULL;
+		else
+			info->next_ordered = last_item;
+		i_list = ft_lstnew(info);
+		if (i == 0)
+			content->list_a = i_list;
+		else
+			ft_lstadd_back(&last_item, i_list);
+		last_item = i_list;
+	}
+}
+
+void	ft_init_args(int argc, char **argv, t_content *content)
+{
+	if (argc == 2 && argv[1][0] > 9)
+	{
+		argv = ft_split(argv[1], ' ');
+		ft_parse_str(argv, content);
+	}
+	else
+		ft_parse_nbrs(argv, content);
 	return ;
 }
