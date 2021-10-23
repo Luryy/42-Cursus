@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 18:24:08 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/10/20 20:56:02 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/10/23 10:41:05 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	ft_swap_next_ordered_begin(t_list **begin, t_list *up)
 	*begin = next;
 }
 
-static void	ft_sort(t_list **begin)
+static void	ft_sort_list(t_list **begin)
 {
 	t_list	*iterator;
 	t_list	*prev;
@@ -65,7 +65,7 @@ void	ft_index(t_list *list_init)
 	t_list	*begin;
 
 	begin = ft_lstlast(list_init);
-	ft_sort(&begin);
+	ft_sort_list(&begin);
 	i = 0;
 	while (begin->content->next_ordered)
 	{

@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 08:58:30 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/10/23 13:07:53 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/10/23 13:17:11 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,23 +35,12 @@ static void	ft_validate(char **argv, t_content *content, t_info *info, int i)
 	{
 		if (argv[i][j] != '+' && argv[i][j] != '-'
 			&& argv[i][j] != ' ' && !ft_isdigit(argv[i][j]))
-		{
-			free(info);
-			while (argv[i])
-				free(argv[i++]);
-			free(argv);
-			ft_error(content);
-		}
+			ft_validation_error(content, info, argv, i);
 	}
 	if (ft_validate_duplicated(content->list_a, info->value))
-	{
-		free(info);
-		while (argv[i])
-			free(argv[i++]);
-		free(argv);
-		ft_error(content);
-	}
-	free(argv[i]);
+		ft_validation_error(content, info, argv, i);
+	if (content->is_string_params)
+		free(argv[i]);
 }
 
 static void	ft_parse_nbrs(char **argv, t_content *content)
@@ -111,10 +100,14 @@ void	ft_init_args(int argc, char **argv, t_content *content)
 	if (argc == 2 && argv[1][0] > 9)
 	{
 		argv = ft_split(argv[1], ' ');
+		content->is_string_params = 1;
 		ft_parse_str(argv, content);
 		free(argv);
 	}
 	else
+	{
+		content->is_string_params = 0;
 		ft_parse_nbrs(argv, content);
+	}
 	return ;
 }

@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_content_info.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/14 08:00:00 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/10/23 14:42:40 by lyuri-go         ###   ########.fr       */
+/*   Created: 2021/10/23 10:18:38 by lyuri-go          #+#    #+#             */
+/*   Updated: 2021/10/23 15:45:17 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-int	main(int argc, char **argv)
+void	ft_set_content_info(t_content *content)
 {
-	t_content	content;
+	int	list_size;
 
-	content.list_a = NULL;
-	content.list_b = NULL;
-	if (argc <= 1)
-		return (0);
-	ft_init_args(argc, argv, &content);
-	ft_index(content.list_a);
-	ft_set_content_info(&content);
-	ft_sort(&content);
-	ft_clean(&content);
-	return (1);
+	list_size = ft_lstsize(content->list_a);
+	content->length = list_size;
+	content->total_nb = list_size;
+	content->groups = ft_max(1, list_size / 150);
+	content->groups_len = list_size / content->groups;
+	content->biggest_sequence = ft_biggest_seq_tag(content->list_a, 1);
 }

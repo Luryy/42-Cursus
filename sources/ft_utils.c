@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/14 08:00:00 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/10/23 14:42:40 by lyuri-go         ###   ########.fr       */
+/*   Created: 2021/10/23 10:23:31 by lyuri-go          #+#    #+#             */
+/*   Updated: 2021/10/23 11:21:23 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <push_swap.h>
-
-int	main(int argc, char **argv)
+int	ft_max(int nb_1, int nb_2)
 {
-	t_content	content;
+	if (nb_1 > nb_2)
+		return (nb_1);
+	return (nb_2);
+}
 
-	content.list_a = NULL;
-	content.list_b = NULL;
-	if (argc <= 1)
-		return (0);
-	ft_init_args(argc, argv, &content);
-	ft_index(content.list_a);
-	ft_set_content_info(&content);
-	ft_sort(&content);
-	ft_clean(&content);
-	return (1);
+int	ft_min(int nb_1, int nb_2)
+{
+	if (nb_1 < nb_2)
+		return (nb_1);
+	return (nb_2);
+}
+
+int	ft_abs(int nb)
+{
+	if (nb < 0)
+		return (-nb);
+	return (nb);
 }
