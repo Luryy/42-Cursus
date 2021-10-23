@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 08:58:30 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/10/23 12:42:38 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/10/23 13:07:53 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,25 +26,32 @@ static int	ft_validate_duplicated(t_list *list, int value)
 	return (0);
 }
 
-static void	ft_validate(char *argv, t_content *content, t_info *info)
+static void	ft_validate(char **argv, t_content *content, t_info *info, int i)
 {
-	int	i;
+	int	j;
 
-	i = -1;
-	while (argv[++i])
+	j = -1;
+	while (argv[i][++j])
 	{
-		if (argv[i] != '+' && argv[i] != '-'
-			&& argv[i] != ' ' && !ft_isdigit(argv[i]))
+		if (argv[i][j] != '+' && argv[i][j] != '-'
+			&& argv[i][j] != ' ' && !ft_isdigit(argv[i][j]))
 		{
 			free(info);
+			while (argv[i])
+				free(argv[i++]);
+			free(argv);
 			ft_error(content);
 		}
 	}
 	if (ft_validate_duplicated(content->list_a, info->value))
 	{
 		free(info);
+		while (argv[i])
+			free(argv[i++]);
+		free(argv);
 		ft_error(content);
 	}
+	free(argv[i]);
 }
 
 static void	ft_parse_nbrs(char **argv, t_content *content)
@@ -59,7 +66,7 @@ static void	ft_parse_nbrs(char **argv, t_content *content)
 	{
 		info = malloc(sizeof(t_info));
 		info->value = ft_atoi(argv[i]);
-		ft_validate(argv[i], content, info);
+		ft_validate(argv, content, info, i);
 		if (i == 1)
 			info->next_ordered = NULL;
 		else
@@ -85,7 +92,7 @@ static void	ft_parse_str(char **argv, t_content *content)
 	{
 		info = malloc(sizeof(t_info));
 		info->value = ft_atoi(argv[i]);
-		ft_validate(argv[i], content, info);
+		ft_validate(argv, content, info, i);
 		if (i == 0)
 			info->next_ordered = NULL;
 		else
@@ -105,6 +112,7 @@ void	ft_init_args(int argc, char **argv, t_content *content)
 	{
 		argv = ft_split(argv[1], ' ');
 		ft_parse_str(argv, content);
+		free(argv);
 	}
 	else
 		ft_parse_nbrs(argv, content);
