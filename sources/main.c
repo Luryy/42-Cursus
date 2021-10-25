@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 08:00:00 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/10/25 10:26:55 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/10/25 18:06:09 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,5 @@ int	main(int argc, char **argv)
 	ft_set_content_info(&content);
 	ft_sort(&content);
 	ft_clean(&content);
-	return (1);
+	return (0);
 }
