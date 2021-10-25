@@ -6,14 +6,14 @@
 #    By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/14 07:48:42 by lyuri-go          #+#    #+#              #
-#    Updated: 2021/10/23 15:45:42 by lyuri-go         ###   ########.fr        #
+#    Updated: 2021/10/25 11:13:07 by lyuri-go         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 NAME	=	push_swap
 
-CC	=	gcc -g
+CC	=	gcc
 FLAGS	=	-Wall -Wextra -Werror
 LIBRARIES = -L$(LIBFT_PATH) -lft
 INCLUDES = -I$(INCLUDES_PATH) -I$(LIBFT_PATH)
@@ -43,7 +43,12 @@ HEADERS_FILES = push_swap.h
 HEADERS_FDF = $(addprefix $(INCLUDES_PATH)/,$(HEADERS_FILES))
 
 all:	$(LIBFT) $(NAME)
+
+debug: set_debug_flag re
 	echo "\033[0;31mdebbuger active"
+
+set_debug_flag:
+	$(eval CC = gcc -g)
 
 $(NAME):	$(OBJECTS)
 	$(CC) $(FLAGS) $(OBJECTS) $(INCLUDES) $(LIBRARIES) -o $(NAME)
