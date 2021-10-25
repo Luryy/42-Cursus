@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/23 10:23:31 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/10/25 10:03:29 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/10/25 11:33:54 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,21 +42,20 @@ int	ft_atoi_safe(t_content *content, char **argv, t_info *inf, int i)
 	number = 0;
 	signal = 1;
 	nptr = argv[i];
-	while (*nptr == ' ' || *nptr == '\n' || *nptr == '\t'
-		|| *nptr == '\v' || *nptr == '\f' || *nptr == '\r')
+	while (*nptr == ' ')
 		nptr++;
 	if (*nptr == '-' || *nptr == '+')
-	{
-		if (*nptr == '-')
+		if (*nptr++ == '-')
 			signal *= -1;
-		nptr++;
-	}
+	if (!ft_isdigit(*nptr))
+		ft_validation_error(content, inf, argv, i);
 	while (*nptr >= 48 && *nptr <= 57)
 	{
 		number = (*nptr - 48) + (number * 10);
 		nptr++;
 	}
-	if ((number > MAX_INT && signal > 0) || (signal < 0 && number > -MIN_INT))
+	if ((number > MAX_INT && signal > 0) || (signal < 0 && number > -MIN_INT)
+		|| (*nptr && *nptr != ' '))
 		ft_validation_error(content, inf, argv, i);
 	return (signal * number);
 }
