@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/23 10:23:31 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/10/25 11:33:54 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/10/25 11:48:12 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,12 @@ int	ft_atoi_safe(t_content *content, char **argv, t_info *inf, int i)
 	while (*nptr == ' ')
 		nptr++;
 	if (*nptr == '-' || *nptr == '+')
+	{
 		if (*nptr++ == '-')
 			signal *= -1;
-	if (!ft_isdigit(*nptr))
-		ft_validation_error(content, inf, argv, i);
+		if (!ft_isdigit(*nptr))
+			ft_validation_error(content, inf, argv, i);
+	}
 	while (*nptr >= 48 && *nptr <= 57)
 	{
 		number = (*nptr - 48) + (number * 10);
