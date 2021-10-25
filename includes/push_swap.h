@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 07:57:18 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/10/25 10:26:15 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/10/25 18:36:56 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,17 +50,17 @@ void	ft_push_top(t_list **x1, t_list **x2);
 void	ft_shift_up(t_list **x);
 void	ft_shift_down(t_list **x);
 
-void	ft_sa(t_content *content);
-void	ft_sb(t_content *content);
-void	ft_ss(t_content *content);
-void	ft_pa(t_content *content);
-void	ft_pb(t_content *content);
-void	ft_ra(t_content *content);
-void	ft_rb(t_content *content);
-void	ft_rr(t_content *content);
-void	ft_rra(t_content *content);
-void	ft_rrb(t_content *content);
-void	ft_rrr(t_content *content);
+void	ft_sa(t_content *content, int print);
+void	ft_sb(t_content *content, int print);
+void	ft_ss(t_content *content, int print);
+void	ft_pa(t_content *content, int print);
+void	ft_pb(t_content *content, int print);
+void	ft_ra(t_content *content, int print);
+void	ft_rb(t_content *content, int print);
+void	ft_rr(t_content *content, int print);
+void	ft_rra(t_content *content, int print);
+void	ft_rrb(t_content *content, int print);
+void	ft_rrr(t_content *content, int print);
 
 void	ft_index(t_list *list_init);
 

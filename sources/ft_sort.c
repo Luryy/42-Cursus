@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/23 09:54:55 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/10/23 16:02:41 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/10/25 18:37:57 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,17 +38,17 @@ static void	ft_actions(t_content *content, int top_distance)
 {
 	if (content->list_a && ft_should_swap(content->list_a))
 	{
-		ft_sa(content);
+		ft_sa(content, 1);
 		content->biggest_sequence = ft_biggest_seq_tag(content->list_a, 1);
 	}
 	else if (content->list_a && !content->list_a->content->tag_keep
 		&& top_distance == 0)
 	{
-		ft_pb(content);
+		ft_pb(content, 1);
 		(content->length)--;
 	}
 	else if (content->groups == 1)
-		ft_rr(content);
+		ft_rr(content, 1);
 	else
 		ft_rotate(content, ft_min(1, ft_max(-1, top_distance)), 0);
 }
@@ -58,7 +58,7 @@ static void	ft_improve(t_content *content)
 	if (content->length == 5 && content->biggest_sequence == 2
 		&& ft_should_swap(content->list_a)
 		&& content->list_a->content->index == 1)
-		ft_rra(content);
+		ft_rra(content, 1);
 }
 
 static void	ft_refill_a_from_b(t_content *content)
@@ -70,7 +70,7 @@ static void	ft_refill_a_from_b(t_content *content)
 	{
 		ft_set_rotation(content, MAX_INT, &a_rot, &b_rot);
 		ft_rotate(content, a_rot, b_rot);
-		ft_pa(content);
+		ft_pa(content, 1);
 		(content->length)++;
 	}
 	ft_rotate(content, ft_distance_to_index(content->list_a, 0), 0);
