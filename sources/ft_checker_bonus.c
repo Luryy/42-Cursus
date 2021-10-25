@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 17:58:42 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/10/25 18:39:15 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/10/25 19:06:01 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,27 @@
 
 static int	ft_operations(char *operation, t_content *content)
 {
-	if (!ft_strncmp(operation, "ra", 2))
+	if (!ft_strncmp(operation, "ra", 3))
 		ft_ra(content, 0);
-	else if (!ft_strncmp(operation, "rb", 2))
+	else if (!ft_strncmp(operation, "rb", 3))
 		ft_rb(content, 0);
-	else if (!ft_strncmp(operation, "rr", 2))
+	else if (!ft_strncmp(operation, "rr", 3))
 		ft_rr(content, 0);
-	else if (!ft_strncmp(operation, "rra", 2))
+	else if (!ft_strncmp(operation, "rra", 4))
 		ft_rra(content, 0);
-	else if (!ft_strncmp(operation, "rrb", 2))
+	else if (!ft_strncmp(operation, "rrb", 4))
 		ft_rrb(content, 0);
-	else if (!ft_strncmp(operation, "rrr", 2))
+	else if (!ft_strncmp(operation, "rrr", 4))
 		ft_rrr(content, 0);
-	else if (!ft_strncmp(operation, "sa", 2))
+	else if (!ft_strncmp(operation, "sa", 3))
 		ft_sa(content, 0);
-	else if (!ft_strncmp(operation, "sb", 2))
+	else if (!ft_strncmp(operation, "sb", 3))
 		ft_sb(content, 0);
-	else if (!ft_strncmp(operation, "ss", 2))
+	else if (!ft_strncmp(operation, "ss", 3))
 		ft_ss(content, 0);
-	else if (!ft_strncmp(operation, "pa", 2))
+	else if (!ft_strncmp(operation, "pa", 3))
 		ft_pa(content, 0);
-	else if (!ft_strncmp(operation, "pb", 2))
+	else if (!ft_strncmp(operation, "pb", 3))
 		ft_pb(content, 0);
 	else
 		return (0);
