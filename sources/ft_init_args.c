@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 08:58:30 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/10/23 16:26:43 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/10/25 09:05:05 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static void	ft_parse_nbrs(char **argv, t_content *content)
 	while (argv[++i])
 	{
 		info = malloc(sizeof(t_info));
-		info->value = ft_atoi(argv[i]);
+		info->value = ft_atoi_safe(content, argv, info, i);
 		ft_validate(argv, content, info, i);
 		if (i == 1)
 			info->next_ordered = NULL;
@@ -80,7 +80,7 @@ static void	ft_parse_str(char **argv, t_content *content)
 	while (argv[++i])
 	{
 		info = malloc(sizeof(t_info));
-		info->value = ft_atoi(argv[i]);
+		info->value = ft_atoi_safe(content, argv, info, i);
 		ft_validate(argv, content, info, i);
 		if (i == 0)
 			info->next_ordered = NULL;

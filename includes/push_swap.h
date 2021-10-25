@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 07:57:18 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/10/23 16:02:41 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/10/25 09:04:24 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ void	ft_set_rotation(t_content *cont, int max_dis, int *a_rot, int *b_rot);
 int		ft_max(int nb_1, int nb_2);
 int		ft_min(int nb_1, int nb_2);
 int		ft_abs(int nb);
+int		ft_atoi_safe(t_content *content, char **arv, t_info *inf, int i);
 
 int		ft_biggest_seq_tag(t_list *start, int tag);
 
