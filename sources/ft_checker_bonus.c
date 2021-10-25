@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 17:58:42 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/10/25 19:06:01 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/10/25 19:36:48 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,9 @@ int	main(int argc, char **argv)
 	ft_init_args(argc, argv, &content);
 	ft_listen(&content);
 	if (ft_is_sequence(content.list_a) && !content.list_b)
-		ft_putstr_fd("OK", 1);
+		ft_putstr_fd("OK\n", 1);
 	else
-		ft_putstr_fd("KO", 1);
+		ft_putstr_fd("KO\n", 1);
 	ft_clean(&content);
 	return (0);
 }
