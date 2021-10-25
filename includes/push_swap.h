@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 07:57:18 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/10/25 09:04:24 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/10/25 10:26:15 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ void	ft_sort(t_content *content);
 
 void	ft_set_content_info(t_content *content);
 int		ft_distance_to_index(t_list *a, int tag);
+int		ft_is_sequence(t_list *list_a);
 t_list	*ft_get_closest_group(t_list *list, int actual_group, int group_total);
 void	ft_set_rotation(t_content *cont, int max_dis, int *a_rot, int *b_rot);
 
