@@ -6,7 +6,7 @@
 #    By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/14 07:48:42 by lyuri-go          #+#    #+#              #
-#    Updated: 2021/10/25 18:23:47 by lyuri-go         ###   ########.fr        #
+#    Updated: 2021/11/01 17:20:01 by lyuri-go         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -91,5 +91,11 @@ fclean: clean libft_fclean
 
 re: fclean all
 
-.PHONY: all re libft_fclean libft_clean clean fclean bonus
+compress:
+	tar -cf ./libs/libs.tar ./libs/*
+
+extract:
+	tar -xvf ./libs/libs.tar
+
+.PHONY: all re libft_fclean libft_clean clean fclean bonus compress extract
 
