@@ -6,8 +6,14 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 22:30:36 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/11/01 22:53:14 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/11/03 14:10:36 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef MINISHELL_H
+
+# define MINISHELL_H
+
 # include "../libs/libft/libft.h"
+
+#endif

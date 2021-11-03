@@ -6,13 +6,13 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 22:26:48 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/11/01 22:52:43 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/11/03 14:06:17 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-int	main()
+int	main(void)
 {
 	int	i;
 
