@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 14:35:41 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/11/05 15:06:20 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/11/05 15:36:44 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,16 @@ static void	ft_set_data(int argc, char **argv, t_shared_data *data)
 		data->meals_to_full = ft_atoi_positive(argv[5]);
 }
 
+static int	ft_init_mutex(t_shared_data *data)
+{
+	if (pthread_mutex_init(&data->m_print, NULL) \
+	|| pthread_mutex_init(&data->m_death, NULL) \
+	|| pthread_mutex_init(&data->m_food, NULL) \
+	|| pthread_mutex_init(&data->m_status, NULL))
+		return (1);
+	return (0);
+}
+
 int	ft_init_args(int argc, char **argv, t_shared_data *data)
 {
 	if (argc != 5 && argc != 6)
@@ -56,5 +66,10 @@ int	ft_init_args(int argc, char **argv, t_shared_data *data)
 		return (1);
 	}
 	ft_set_data(argc, argv, data);
+	if (ft_init_mutex(data))
+	{
+		printf("Error: Mutex failed\n");
+		return (1);
+	}
 	return (0);
 }
