@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 14:48:34 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/11/03 14:51:26 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/11/05 14:55:29 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,51 @@
 
 # define PHILO_H
 
-# include <unistd.h>
+# include <stdio.h>
+# include <pthread.h>
+// # include <sys/time.h>
+// # include <sys/types.h>
+
+# include <stdint.h>
+
+enum e_application_status
+{
+	LIVE,
+	DEAD,
+	FULL,
+};
+
+typedef struct s_shared_data
+{
+	int				app_status;
+	int				philosophers;
+	int				time_die;
+	int				time_eat;
+	int				time_sleep;
+	int				meals_to_full;
+	int				philos_full;
+	uint64_t		start;
+	pthread_t		t_death;
+	pthread_mutex_t	m_print;
+	pthread_mutex_t	m_food;
+	pthread_mutex_t	m_death;
+	pthread_mutex_t	m_status;
+}	t_shared_data;
+
+typedef struct s_philosophers
+{
+	int				id;
+	int				num_meals;
+	uint64_t		last_meal;
+	pthread_t		thread_ph;
+	pthread_mutex_t	left_fork;
+	pthread_mutex_t	*right_fork;
+	t_shared_data	*shared_data;
+}	t_philosophers;
+
+int	ft_init_args(int argc, char **argv, t_shared_data *data);
+
+int	ft_atoi_positive(const char *nptr);
+int	ft_isdigit(int c);
 
 #endif
