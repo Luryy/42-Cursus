@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 14:48:34 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/11/05 14:55:29 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/11/05 16:33:18 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@
 
 # include <stdio.h>
 # include <pthread.h>
-// # include <sys/time.h>
-// # include <sys/types.h>
+# include <sys/time.h>
 
 # include <stdint.h>
 
@@ -37,7 +36,7 @@ typedef struct s_shared_data
 	int				time_sleep;
 	int				meals_to_full;
 	int				philos_full;
-	uint64_t		start;
+	uint64_t		start_timestamp;
 	pthread_t		t_death;
 	pthread_mutex_t	m_print;
 	pthread_mutex_t	m_food;
@@ -56,9 +55,10 @@ typedef struct s_philosophers
 	t_shared_data	*shared_data;
 }	t_philosophers;
 
-int	ft_init_args(int argc, char **argv, t_shared_data *data);
+int			ft_init_args(int argc, char **argv, t_shared_data *data);
 
-int	ft_atoi_positive(const char *nptr);
-int	ft_isdigit(int c);
+int			ft_atoi_positive(const char *nptr);
+int			ft_isdigit(int c);
+uint64_t	ft_gettime(void);
 
 #endif

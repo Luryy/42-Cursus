@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 14:35:41 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/11/05 15:36:44 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/11/05 16:34:30 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ static void	ft_set_data(int argc, char **argv, t_shared_data *data)
 	data->app_status = LIVE;
 	if (argc == 6)
 		data->meals_to_full = ft_atoi_positive(argv[5]);
+	data->start_timestamp = ft_gettime();
 }
 
 static int	ft_init_mutex(t_shared_data *data)
