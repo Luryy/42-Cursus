@@ -6,14 +6,14 @@
 #    By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/03 14:43:01 by lyuri-go          #+#    #+#              #
-#    Updated: 2021/11/05 15:01:36 by lyuri-go         ###   ########.fr        #
+#    Updated: 2021/11/06 20:00:11 by lyuri-go         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	philo
 
 CC	=	gcc
-FLAGS	=	-Wall -Wextra -Werror
+FLAGS	=	-Wall -Wextra -Werror -pthread
 INCLUDES = -I$(INCLUDES_PATH)
 
 MAKE_EXTERNAL = make -C
@@ -24,7 +24,7 @@ SOURCES_PATH = ./sources
 OBJECTS_PATH = ./objects
 INCLUDES_PATH = ./includes
 
-SOURCE_FILES =	main.c ft_init_args.c ft_utils.c
+SOURCE_FILES =	main.c ft_init_args.c ft_utils.c ft_philos.c
 
 SOURCES = $(addprefix $(SOURCES_PATH)/,$(SOURCE_FILES))
 
