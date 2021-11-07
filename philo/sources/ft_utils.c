@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 14:40:37 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/11/05 16:32:31 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/11/07 18:10:23 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,30 @@ uint64_t	ft_gettime(void)
 	if (gettimeofday(&time, NULL))
 		return (0);
 	return (time.tv_sec * 1000 + time.tv_usec / 1000);
+}
+
+void	ft_log(t_philosophers *philo, int status)
+{
+	uint64_t	now;
+	char		*status_str[5];
+
+	status_str[0] = "\e[31mis DEAD\e[0m";
+	status_str[1] = "\e[32mis eating\e[0m";
+	status_str[2] = "\e[35mis sleeping\e[0m";
+	status_str[3] = "\e[34mis thinking\e[0m";
+	status_str[4] = "has taken a fork";
+	pthread_mutex_lock(&philo->shared_data->m_print);
+	now = ((ft_gettime() - philo->shared_data->start_timestamp));
+	if (philo->shared_data->app_status == LIVE)
+		printf("[\e[33m%lu\e[0m] %d %s\n", now, philo->id, status_str[status]);
+	pthread_mutex_unlock(&philo->shared_data->m_print);
+}
+
+void	ft_delay(uint64_t time, t_shared_data *data)
+{
+	uint64_t	timer;
+
+	timer = ft_gettime();
+	while ((ft_gettime() - timer) < time && data->app_status == LIVE)
+		usleep(1);
 }
