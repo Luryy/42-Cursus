@@ -6,11 +6,29 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 15:55:59 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/11/07 18:35:49 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/11/08 12:59:41 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo.h>
+
+static void	ft_full_eat(t_philosophers *philo)
+{
+	if (philo->shared_data->app_status == LIVE)
+	{
+		pthread_mutex_lock(&philo->shared_data->m_food);
+		philo->num_meals++;
+		if (philo->num_meals == philo->shared_data->meals_to_full)
+			philo->shared_data->philos_full++;
+		pthread_mutex_unlock(&philo->shared_data->m_food);
+		if (philo->shared_data->philos_full == philo->shared_data->philosophers)
+		{
+			pthread_mutex_lock(&philo->shared_data->m_status);
+			philo->shared_data->app_status = FULL;
+			return ;
+		}
+	}
+}
 
 static void	ft_get_forks(t_philosophers *philo)
 {
@@ -30,22 +48,23 @@ static void	ft_get_forks(t_philosophers *philo)
 	}
 }
 
-static void	ft_eat(t_philosophers *ph)
+static void	ft_eat(t_philosophers *philo)
 {
-	if (ph->shared_data->philosophers == 1)
+	if (philo->shared_data->philosophers == 1)
 	{
 		usleep(1);
-		ft_eat(ph);
+		ft_eat(philo);
 		return ;
 	}
-	ft_get_forks(ph);
-	pthread_mutex_lock(&ph->shared_data->m_food);
-	ph->last_meal = ft_gettime();
-	pthread_mutex_unlock(&ph->shared_data->m_food);
-	ft_log(ph, 1);
-	ft_delay(ph->shared_data->time_eat, ph->shared_data);
-	pthread_mutex_unlock(ph->right_fork);
-	pthread_mutex_unlock(&ph->left_fork);
+	ft_get_forks(philo);
+	pthread_mutex_lock(&philo->shared_data->m_food);
+	philo->last_meal = ft_gettime();
+	pthread_mutex_unlock(&philo->shared_data->m_food);
+	ft_log(philo, 1);
+	ft_delay(philo->shared_data->time_eat, philo->shared_data);
+	ft_full_eat(philo);
+	pthread_mutex_unlock(philo->right_fork);
+	pthread_mutex_unlock(&philo->left_fork);
 }
 
 void	*ft_runner(void *params)
