@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 14:48:34 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/11/07 18:10:50 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/11/08 13:09:33 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <pthread.h>
 # include <sys/time.h>
 
-# include <stdint.h>
+typedef unsigned long	t_uint64;
 
 enum e_application_status
 {
@@ -38,7 +38,7 @@ typedef struct s_shared_data
 	int				time_sleep;
 	int				meals_to_full;
 	int				philos_full;
-	uint64_t		start_timestamp;
+	t_uint64		start_timestamp;
 	pthread_t		t_death;
 	pthread_mutex_t	m_print;
 	pthread_mutex_t	m_food;
@@ -50,7 +50,7 @@ typedef struct s_philosophers
 {
 	int				id;
 	int				num_meals;
-	uint64_t		last_meal;
+	t_uint64		last_meal;
 	pthread_t		thread_ph;
 	pthread_mutex_t	left_fork;
 	pthread_mutex_t	*right_fork;
@@ -61,10 +61,12 @@ t_philosophers	*ft_init_args(int argc, char **argv, t_shared_data *data);
 
 int				ft_atoi_positive(const char *nptr);
 int				ft_isdigit(int c);
-uint64_t		ft_gettime(void);
+t_uint64		ft_gettime(void);
 void			ft_log(t_philosophers *philo, int status);
-void			ft_delay(uint64_t time, t_shared_data *data);
+void			ft_delay(t_uint64 time, t_shared_data *data);
 
 int				ft_philos(t_philosophers *philos);
+
+void			*ft_philo_death(void *params);
 
 #endif

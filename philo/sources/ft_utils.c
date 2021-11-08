@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 14:40:37 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/11/07 18:10:23 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/11/08 13:09:21 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	ft_isdigit(int c)
 	return (1);
 }
 
-uint64_t	ft_gettime(void)
+t_uint64	ft_gettime(void)
 {
 	struct timeval	time;
 
@@ -53,7 +53,7 @@ uint64_t	ft_gettime(void)
 
 void	ft_log(t_philosophers *philo, int status)
 {
-	uint64_t	now;
+	t_uint64	now;
 	char		*status_str[5];
 
 	status_str[0] = "\e[31mis DEAD\e[0m";
@@ -68,9 +68,9 @@ void	ft_log(t_philosophers *philo, int status)
 	pthread_mutex_unlock(&philo->shared_data->m_print);
 }
 
-void	ft_delay(uint64_t time, t_shared_data *data)
+void	ft_delay(t_uint64 time, t_shared_data *data)
 {
-	uint64_t	timer;
+	t_uint64	timer;
 
 	timer = ft_gettime();
 	while ((ft_gettime() - timer) < time && data->app_status == LIVE)
