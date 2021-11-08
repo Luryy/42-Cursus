@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 15:55:59 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/11/08 12:59:41 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/11/08 13:16:41 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,14 @@ static void	ft_eat(t_philosophers *philo)
 void	*ft_runner(void *params)
 {
 	t_philosophers	*philo;
+	pthread_t		t_death;
 
 	philo = (t_philosophers *)params;
+	if (pthread_create(&t_death, NULL, &ft_philo_death, philo))
+	{
+		printf("Error: Thread creation failed\n");
+		return (0);
+	}
 	while (philo->shared_data->app_status == LIVE)
 	{
 		ft_eat(philo);

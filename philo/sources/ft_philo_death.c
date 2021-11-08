@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 13:03:40 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/11/08 13:09:21 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/11/08 13:13:31 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	*ft_philo_death(void *params)
 			philo->shared_data->app_status = DEAD;
 			break ;
 		}
-		ft_usleep(5);
+		ft_delay(5, philo->shared_data);
 	}
 	return (NULL);
 }
