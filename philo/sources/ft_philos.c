@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 15:55:59 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/11/08 13:16:41 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/11/08 13:21:10 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,11 @@ void	*ft_runner(void *params)
 	if (pthread_create(&t_death, NULL, &ft_philo_death, philo))
 	{
 		printf("Error: Thread creation failed\n");
+		return (0);
+	}
+	if (pthread_detach(t_death))
+	{
+		printf("Error: Thread detach failed\n");
 		return (0);
 	}
 	while (philo->shared_data->app_status == LIVE)
