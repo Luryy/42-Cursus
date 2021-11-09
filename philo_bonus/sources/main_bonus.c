@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 00:32:38 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/11/09 22:58:19 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/11/09 23:35:14 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,18 +41,12 @@ static void	ft_exiter(t_data *data)
 	int	i;
 	int	wstatus;
 
-	while (waitpid(-1, &wstatus, 0) > 0)
+	while (waitpid(0, &wstatus, 0) > 0)
 	{
-		if (WIFEXITED(wstatus))
-		{
-			if (!WEXITSTATUS(wstatus))
-			{
-				i = -1;
-				while (++i < data->philosophers)
-					kill(data->pid_arr[i], 15);
-				break ;
-			}
-		}
+		i = -1;
+		while (++i < data->philosophers)
+			kill(data->pid_arr[i], SIGTERM);
+		break ;
 		usleep(10);
 	}
 	free(data->pid_arr);
