@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 00:30:48 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/11/09 23:09:24 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/11/10 00:08:37 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,18 +51,21 @@ static int	ft_init_semaphore(t_data *data)
 	sem_unlink("m_death");
 	sem_unlink("m_print");
 	sem_unlink("m_status");
+	sem_unlink("philos_full");
 	data->forks = sem_open(
 			"forks", 100, S_IRWXU, (unsigned int)data->philosophers);
 	data->m_food = sem_open("m_food", 100, S_IRWXU, 1);
 	data->m_death = sem_open("m_death", 100, S_IRWXU, 1);
 	data->m_print = sem_open("m_print", 100, S_IRWXU, 1);
 	data->m_status = sem_open("m_status", 100, S_IRWXU, 1);
+	data->philos_full = sem_open("philos_full", 100, S_IRWXU, 0);
 	data->pid_arr = malloc(sizeof(*data->pid_arr) * data->philosophers);
 	if (data->forks == SEM_FAILED
 		|| data->m_food == SEM_FAILED
 		|| data->m_death == SEM_FAILED
 		|| data->m_print == SEM_FAILED
 		|| data->m_status == SEM_FAILED
+		|| data->philos_full == SEM_FAILED
 		|| !data->pid_arr)
 		return (1);
 	return (0);

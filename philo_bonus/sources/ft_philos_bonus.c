@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 00:32:05 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/11/09 23:34:46 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/11/10 00:14:29 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,8 @@ static void	ft_full_eat(t_data *data)
 		sem_wait(data->m_food);
 		data->num_meals++;
 		if (data->num_meals == data->meals_to_full)
-			data->philos_full++;
+			sem_post(data->philos_full);
 		sem_post(data->m_food);
-		if (data->philos_full == data->philosophers)
-		{
-			sem_wait(data->m_status);
-			data->app_status = FULL;
-			return ;
-		}
 	}
 }
 

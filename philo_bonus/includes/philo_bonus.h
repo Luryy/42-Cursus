@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 00:28:09 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/11/09 22:55:37 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/11/10 00:06:44 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ typedef struct s_data
 	int				time_eat;
 	int				time_sleep;
 	int				meals_to_full;
-	int				philos_full;
+	sem_t			*philos_full;
 	t_uint64		start_timestamp;
 	pthread_t		t_death;
 	sem_t			*m_print;
