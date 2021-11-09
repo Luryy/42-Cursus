@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 00:28:09 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/11/09 01:08:21 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/11/09 22:55:37 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 # include <sys/time.h>
 # include <semaphore.h>
 # include <sys/stat.h>
+# include <signal.h>
+# include <sys/wait.h>
 
 typedef unsigned long	t_uint64;
 
@@ -64,7 +66,5 @@ void			ft_log(t_data *data, int status);
 void			ft_delay(t_uint64 time, t_data *data);
 
 int				ft_philos(t_data *data);
-
-void			*ft_philo_death(void *params);
 
 #endif

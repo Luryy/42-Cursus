@@ -6,7 +6,7 @@
 #    By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/03 14:43:01 by lyuri-go          #+#    #+#              #
-#    Updated: 2021/11/09 00:49:20 by lyuri-go         ###   ########.fr        #
+#    Updated: 2021/11/09 22:46:18 by lyuri-go         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ OBJECTS_PATH = ./objects
 INCLUDES_PATH = ./includes
 
 SOURCE_FILES =	main_bonus.c ft_init_args_bonus.c ft_utils_bonus.c \
-				# ft_philos_bonus.c ft_philo_death_bonus.c
+				ft_philos_bonus.c
 
 SOURCES = $(addprefix $(SOURCES_PATH)/,$(SOURCE_FILES))
 

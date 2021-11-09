@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 00:32:38 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/11/09 01:33:25 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/11/09 22:58:19 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,35 @@ int	ft_philos_data_fork(t_data *data)
 			data->id = i + 1;
 			break ;
 		}
-		printf("%d %d i\n", data->pid, getpid());
 	}
 	return (1);
+}
+
+static void	ft_exiter(t_data *data)
+{
+	int	i;
+	int	wstatus;
+
+	while (waitpid(-1, &wstatus, 0) > 0)
+	{
+		if (WIFEXITED(wstatus))
+		{
+			if (!WEXITSTATUS(wstatus))
+			{
+				i = -1;
+				while (++i < data->philosophers)
+					kill(data->pid_arr[i], 15);
+				break ;
+			}
+		}
+		usleep(10);
+	}
+	free(data->pid_arr);
+	sem_unlink("forks");
+	sem_unlink("m_food");
+	sem_unlink("m_death");
+	sem_unlink("m_print");
+	sem_unlink("m_status");
 }
 
 int	main(int argc, char **argv)
@@ -45,7 +71,9 @@ int	main(int argc, char **argv)
 		return (1);
 	if (!ft_philos_data_fork(&data))
 		return (1);
-	// ft_philos(philos);
-	// free(data.pid_arr);
+	if (!data.pid)
+		ft_philos(&data);
+	else
+		ft_exiter(&data);
 	return (0);
 }

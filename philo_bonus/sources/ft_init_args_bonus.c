@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 00:30:48 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/11/09 01:08:51 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/11/09 23:09:24 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int	ft_init_args(int argc, char **argv, t_data *data)
 	ft_set_data(argc, argv, data);
 	if (ft_init_semaphore(data))
 	{
-		printf("Error: Mutex failed\n");
+		printf("Error: Semaphore failed\n");
 		return (0);
 	}
 	return (1);

@@ -6,74 +6,87 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 00:32:05 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/11/09 00:32:10 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/11/09 22:49:30 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo_bonus.h>
 
-static void	ft_full_eat(t_philosophers *philo)
+static void	ft_full_eat(t_data *data)
 {
-	if (philo->shared_data->app_status == LIVE)
+	if (data->app_status == LIVE)
 	{
-		pthread_mutex_lock(&philo->shared_data->m_food);
-		philo->num_meals++;
-		if (philo->num_meals == philo->shared_data->meals_to_full)
-			philo->shared_data->philos_full++;
-		pthread_mutex_unlock(&philo->shared_data->m_food);
-		if (philo->shared_data->philos_full == philo->shared_data->philosophers)
+		sem_wait(data->m_food);
+		data->num_meals++;
+		if (data->num_meals == data->meals_to_full)
+			data->philos_full++;
+		sem_post(data->m_food);
+		if (data->philos_full == data->philosophers)
 		{
-			pthread_mutex_lock(&philo->shared_data->m_status);
-			philo->shared_data->app_status = FULL;
+			sem_wait(data->m_status);
+			data->app_status = FULL;
 			return ;
 		}
 	}
 }
 
-static void	ft_get_forks(t_philosophers *philo)
+static void	ft_get_forks(t_data *data)
 {
-	if (!(philo->id % 2))
-	{
-		pthread_mutex_lock(&philo->left_fork);
-		ft_log(philo, 4);
-		pthread_mutex_lock(philo->right_fork);
-		ft_log(philo, 4);
-	}
-	else
-	{
-		pthread_mutex_lock(philo->right_fork);
-		ft_log(philo, 4);
-		pthread_mutex_lock(&philo->left_fork);
-		ft_log(philo, 4);
-	}
+	sem_wait(data->forks);
+	ft_log(data, 4);
+	sem_wait(data->forks);
+	ft_log(data, 4);
 }
 
-static void	ft_eat(t_philosophers *philo)
+static void	ft_eat(t_data *data)
 {
-	if (philo->shared_data->philosophers == 1)
+	if (data->philosophers == 1)
 	{
 		usleep(1);
-		ft_eat(philo);
+		ft_eat(data);
 		return ;
 	}
-	ft_get_forks(philo);
-	pthread_mutex_lock(&philo->shared_data->m_food);
-	philo->last_meal = ft_gettime();
-	pthread_mutex_unlock(&philo->shared_data->m_food);
-	ft_log(philo, 1);
-	ft_delay(philo->shared_data->time_eat, philo->shared_data);
-	ft_full_eat(philo);
-	pthread_mutex_unlock(philo->right_fork);
-	pthread_mutex_unlock(&philo->left_fork);
+	ft_get_forks(data);
+	sem_wait(data->m_food);
+	data->last_meal = ft_gettime();
+	sem_post(data->m_food);
+	ft_log(data, 1);
+	ft_delay(data->time_eat, data);
+	ft_full_eat(data);
+	sem_post(data->forks);
+	sem_post(data->forks);
 }
 
-void	*ft_runner(void *params)
+static void	*ft_philo_death(void *params)
 {
-	t_philosophers	*philo;
-	pthread_t		t_death;
+	t_data		*data;
+	t_uint64	time;
+	t_uint64	last_meat_time;
 
-	philo = (t_philosophers *)params;
-	if (pthread_create(&t_death, NULL, &ft_philo_death, philo))
+	data = (t_data *)params;
+	while (data->app_status == LIVE)
+	{
+		sem_wait(data->m_death);
+		time = ft_gettime();
+		last_meat_time = time - data->last_meal;
+		sem_post(data->m_death);
+		if (last_meat_time > (t_uint64)data->time_die)
+		{
+			sem_wait(data->m_status);
+			ft_log(data, 0);
+			data->app_status = DEAD;
+			exit (0);
+		}
+		ft_delay(5, data);
+	}
+	return (0);
+}
+
+int	ft_philos(t_data *data)
+{
+	pthread_t	t_death;
+
+	if (pthread_create(&t_death, NULL, &ft_philo_death, data))
 	{
 		printf("Error: Thread creation failed\n");
 		return (0);
@@ -83,38 +96,12 @@ void	*ft_runner(void *params)
 		printf("Error: Thread detach failed\n");
 		return (0);
 	}
-	while (philo->shared_data->app_status == LIVE)
+	while (data->app_status == LIVE)
 	{
-		ft_eat(philo);
-		ft_log(philo, 2);
-		ft_delay(philo->shared_data->time_sleep, philo->shared_data);
-		ft_log(philo, 3);
-	}
-	return (0);
-}
-
-int	ft_philos(t_philosophers *philos)
-{
-	int	i;
-
-	i = -1;
-	while (++i < philos->shared_data->philosophers)
-	{
-		if (pthread_create(&philos[i].thread_ph, NULL, &ft_runner, &philos[i]))
-		{
-			printf("Error: Thread creation failed\n");
-			return (0);
-		}
-		ft_delay(1, philos->shared_data);
-	}
-	i = -1;
-	while (++i < philos->shared_data->philosophers)
-	{
-		if (pthread_join(philos[i].thread_ph, NULL))
-		{
-			printf("Error: Thread join failed\n");
-			return (0);
-		}
+		ft_eat(data);
+		ft_log(data, 2);
+		ft_delay(data->time_sleep, data);
+		ft_log(data, 3);
 	}
 	return (1);
 }
