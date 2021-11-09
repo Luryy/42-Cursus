@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 00:33:05 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/11/09 01:05:13 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/11/09 23:11:10 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,8 @@ void	ft_log(t_data *data, int status)
 	now = ((ft_gettime() - data->start_timestamp));
 	if (data->app_status == LIVE)
 		printf("[\e[33m%lu\e[0m] %d %s\n", now, data->id, status_str[status]);
-	sem_post(data->m_print);
+	if (status)
+		sem_post(data->m_print);
 }
 
 void	ft_delay(t_uint64 time, t_data *data)
