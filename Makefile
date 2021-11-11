@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: coder <coder@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/01 22:24:23 by lyuri-go          #+#    #+#              #
-#    Updated: 2021/11/01 22:52:47 by lyuri-go         ###   ########.fr        #
+#    Updated: 2021/11/11 13:53:56 by coder            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ NAME	=	minishell
 
 CC	=	gcc
 FLAGS	=	-Wall -Wextra -Werror
-LIBRARIES = -L$(LIBFT_PATH) -lft
+LIBRARIES = -L$(LIBFT_PATH) -lft -lreadline
 INCLUDES = -I$(INCLUDES_PATH) -I$(LIBFT_PATH)
 
 MAKE_EXTERNAL = make -C

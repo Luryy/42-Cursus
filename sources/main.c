@@ -3,20 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 22:26:48 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/11/03 14:06:17 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/11/11 13:56:58 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-int	main(void)
+int	main(int argc, char **argv, char **envp)
 {
-	int	i;
-
-	i = ft_strlen("testando");
-	ft_putnbr_fd(i, 1);
+	(void)argc;
+	(void)argv;
+	(void)envp;
+	while (1)
+		readline("minishell > ");
 	return (0);
 }
