@@ -6,7 +6,7 @@
 #    By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/01 22:24:23 by lyuri-go          #+#    #+#              #
-#    Updated: 2021/11/16 21:27:35 by lyuri-go         ###   ########.fr        #
+#    Updated: 2021/11/16 22:08:35 by lyuri-go         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,15 +31,19 @@ LIBS_PATH = ./libs
 LIBFT = libft
 LIBFT_PATH = ./$(LIBS_PATH)/$(LIBFT)
 
-SOURCE_FILES =	main.c ft_execute.c ft_pwd.c
+SOURCE_FILES =	main.c ft_execute.c cmd/ft_pwd.c
 
 # SOURCE_B_FILES =
 
 SOURCES = $(addprefix $(SOURCES_PATH)/,$(SOURCE_FILES))
 
+SOURCE_DIRS = cmd
+
 # SOURCES_B = $(addprefix $(SOURCES_PATH)/,$(SOURCE_B_FILES))
 
 OBJECTS = $(addprefix $(OBJECTS_PATH)/,$(subst .c,.o,$(SOURCE_FILES)))
+
+OBJECTS_DIRS = $(addprefix $(OBJECTS_PATH)/,$(SOURCE_DIRS))
 
 # OBJECTS_B = $(addprefix $(OBJECTS_PATH)/,$(subst .c,.o,$(SOURCE_B_FILES)))
 
@@ -66,7 +70,7 @@ $(LIBFT):
 	$(MAKE_EXTERNAL) $(LIBFT_PATH)
 
 $(OBJECTS_PATH)/%.o:	$(SOURCES_PATH)/%.c $(HEADERS)
-		$(SAFE_MAKEDIR) $(OBJECTS_PATH)
+		$(SAFE_MAKEDIR) $(OBJECTS_PATH) $(OBJECTS_DIRS)
 		$(CC) $(FLAGS) $(INCLUDES) -c $< -o $@
 
 libft_clean:
