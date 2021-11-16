@@ -6,7 +6,7 @@
 #    By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/01 22:24:23 by lyuri-go          #+#    #+#              #
-#    Updated: 2021/11/15 19:48:04 by lyuri-go         ###   ########.fr        #
+#    Updated: 2021/11/16 21:27:35 by lyuri-go         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ LIBS_PATH = ./libs
 LIBFT = libft
 LIBFT_PATH = ./$(LIBS_PATH)/$(LIBFT)
 
-SOURCE_FILES =	main.c ft_execute.c
+SOURCE_FILES =	main.c ft_execute.c ft_pwd.c
 
 # SOURCE_B_FILES =
 

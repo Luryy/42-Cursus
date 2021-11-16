@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 19:41:12 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/11/15 19:51:52 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/11/16 21:22:04 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,7 @@ void	ft_execute(char *line)
 		ft_putstr_fd("TODO - exec: cd", 1);
 		// ft_cd();
 	else if (!ft_strncmp(line, "pwd", 3))
-		ft_putstr_fd("TODO - exec: pwd", 1);
-		// ft_pwd();
+		ft_pwd();
 	else if (!ft_strncmp(line, "export", 6))
 		ft_putstr_fd("TODO - exec: export", 1);
 		// ft_export();
