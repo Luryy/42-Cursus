@@ -1,30 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_signals.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/01 22:26:48 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/11/23 18:51:52 by lyuri-go         ###   ########.fr       */
+/*   Created: 2021/11/23 18:19:57 by lyuri-go          #+#    #+#             */
+/*   Updated: 2021/11/23 18:46:52 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-int	main(int argc, char **argv, char **envp)
+static void	handle(int sig)
 {
-	char	*line;
-
-	(void)argc;
-	(void)argv;
-	(void)envp;
-	ft_signals();
-	while (1)
+	if (sig == SIGINT)
 	{
-		line = readline("minishell > ");
-		add_history(line);
-		ft_execute(line);
+		ft_putstr_fd("\n", 1);
+		rl_on_new_line();
+		rl_replace_line("", 0);
+		rl_redisplay();
 	}
-	return (0);
+	else if (sig == SIGQUIT)
+		ft_putstr_fd("\b\b  \b\b", 1);
+}
+
+void	ft_signals(void)
+{
+	signal(SIGINT, handle);
+	signal(SIGQUIT, handle);
 }

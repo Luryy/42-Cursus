@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 19:41:12 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/11/16 21:22:04 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/11/23 18:52:18 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,10 @@
 void	ft_execute(char *line)
 {
 	if (!line)
-		return ;
+	{
+		printf("exit\n");
+		exit(EXIT_SUCCESS);
+	}
 	if (!ft_strncmp(line, "echo", 4))
 		ft_putstr_fd("TODO - exec: echo", 1);
 		// ft_echo();
