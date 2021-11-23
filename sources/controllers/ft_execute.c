@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 19:41:12 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/11/23 18:52:18 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/11/23 20:31:42 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,26 +20,26 @@ void	ft_execute(char *line)
 		exit(EXIT_SUCCESS);
 	}
 	if (!ft_strncmp(line, "echo", 4))
-		ft_putstr_fd("TODO - exec: echo", 1);
+		printf("TODO - exec: echo");
 		// ft_echo();
 	else if (!ft_strncmp(line, "cd", 2))
-		ft_putstr_fd("TODO - exec: cd", 1);
+		printf("TODO - exec: cd");
 		// ft_cd();
 	else if (!ft_strncmp(line, "pwd", 3))
 		ft_pwd();
 	else if (!ft_strncmp(line, "export", 6))
-		ft_putstr_fd("TODO - exec: export", 1);
+		printf("TODO - exec: export");
 		// ft_export();
 	else if (!ft_strncmp(line, "unset", 5))
-		ft_putstr_fd("TODO - exec: unset", 1);
+		printf("TODO - exec: unset");
 		// ft_unset();
 	else if (!ft_strncmp(line, "env", 3))
-		ft_putstr_fd("TODO - exec: env", 1);
+		printf("TODO - exec: env");
 		// ft_env();
 	else if (!ft_strncmp(line, "exit", 4))
-		ft_putstr_fd("TODO - exec: exit", 1);
+		printf("TODO - exec: exit");
 		// ft_exit();
 	else
-		ft_putstr_fd("TODO - exec: bin", 1);
+		printf("TODO - exec: bin");
 		// exec_bin();
 }
