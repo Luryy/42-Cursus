@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 22:30:36 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/11/23 19:26:13 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/11/23 20:43:11 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,7 @@ void	ft_load_history(void);
 void	ft_add_history(char *in);
 
 void	ft_pwd(void);
+
+int		ft_get_env(char *env, char **envp);
 
 #endif
