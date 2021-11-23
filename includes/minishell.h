@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 22:30:36 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/11/23 21:34:21 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/11/23 21:47:48 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include <signal.h>
 # include <fcntl.h>
 
-# define HISTORY_FILE ".minishell_history"
+# define HISTORY_FILE "/.minishell_history"
 
 typedef struct s_mini {
 	char	**envs;
