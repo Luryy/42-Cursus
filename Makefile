@@ -6,7 +6,7 @@
 #    By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/01 22:24:23 by lyuri-go          #+#    #+#              #
-#    Updated: 2021/11/23 20:44:07 by lyuri-go         ###   ########.fr        #
+#    Updated: 2021/11/23 21:33:01 by lyuri-go         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ SOURCE_FILES =	main.c \
 				controllers/ft_execute.c controllers/ft_signals.c \
 				controllers/ft_history.c \
 				cmd/ft_pwd.c \
-				utils/ft_get_env.c
+				utils/ft_get_env.c utils/ft_mini_singleton.c
 
 # SOURCE_B_FILES =
 
