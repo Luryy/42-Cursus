@@ -1,31 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_history.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/01 22:26:48 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/11/23 19:27:39 by lyuri-go         ###   ########.fr       */
+/*   Created: 2021/11/23 19:10:29 by lyuri-go          #+#    #+#             */
+/*   Updated: 2021/11/23 20:12:29 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-int	main(int argc, char **argv, char **envp)
+void	ft_load_history(void)
 {
+	int		fd;
 	char	*line;
 
-	(void)argc;
-	(void)argv;
-	(void)envp;
-	ft_signals();
-	ft_load_history();
-	while (1)
+	fd = open(HISTORY_FILE, O_CREAT | O_RDWR | O_APPEND, 0777);
+	while (get_next_line(fd, &line) > 0)
 	{
-		line = readline("minishell > ");
-		ft_execute(line);
-		ft_add_history(line);
+		add_history(line);
+		free(line);
 	}
-	return (0);
+	close(fd);
+}
+
+void	ft_add_history(char *cmd)
+{
+	int		fd;
+
+	if (!cmd[0])
+		return ;
+	fd = open(HISTORY_FILE, O_CREAT | O_RDWR | O_APPEND, 0777);
+	ft_putstr_fd(cmd, fd);
+	ft_putstr_fd("\n", fd);
+	add_history(cmd);
+	close(fd);
 }
