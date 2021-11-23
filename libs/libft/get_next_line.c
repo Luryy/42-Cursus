@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/14 08:29:09 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/11/23 19:35:04 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/11/23 20:14:35 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,28 +65,28 @@ void	final_verify(char **str, char **line)
 		*str = NULL;
 		return ;
 	}
-	*line = ft_strdup("");
+	*line = "";
 }
 
 int	get_next_line(int fd, char **line)
 {
-	static char		*str;
-	static char		read_buffer[BUFFER_SIZE + 1];
+	static char		*str[20];
+	char			read_buffer[BUFFER_SIZE + 1];
 	int				nr_bytes;
 
-	if (fd < 0 || !line || BUFFER_SIZE < 1 || fd > MAX_FILE_DESCRIPTOR)
+	if (fd < 0 || !line || BUFFER_SIZE < 1 || read(fd, read_buffer, 0) < 0)
 		return (-1);
-	if (str && ft_strchr(str, '\n'))
-		return (get_line(&str, line, ft_strchr(str, '\n') - str));
+	if (str[fd] && ft_strchr(str[fd], '\n'))
+		return (get_line(&str[fd], line, ft_strchr(str[fd], '\n') - str[fd]));
 	nr_bytes = read(fd, read_buffer, BUFFER_SIZE);
 	while (nr_bytes > 0)
 	{
 		read_buffer[nr_bytes] = '\0';
-		str = ft_join_and_free(str, read_buffer);
-		if (ft_strchr(str, '\n'))
-			return (get_line(&str, line, ft_strchr(str, '\n') - str));
+		str[fd] = ft_join_and_free(str[fd], read_buffer);
+		if (ft_strchr(str[fd], '\n'))
+			return (get_line(&str[fd], line, ft_strchr(str[fd], 10) - str[fd]));
 		nr_bytes = read(fd, read_buffer, BUFFER_SIZE);
 	}
-	final_verify(&str, line);
+	final_verify(&str[fd], line);
 	return (nr_bytes);
 }
