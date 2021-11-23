@@ -6,7 +6,7 @@
 #    By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/01 22:24:23 by lyuri-go          #+#    #+#              #
-#    Updated: 2021/11/16 22:08:35 by lyuri-go         ###   ########.fr        #
+#    Updated: 2021/11/23 18:18:17 by lyuri-go         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,13 +31,13 @@ LIBS_PATH = ./libs
 LIBFT = libft
 LIBFT_PATH = ./$(LIBS_PATH)/$(LIBFT)
 
-SOURCE_FILES =	main.c ft_execute.c cmd/ft_pwd.c
+SOURCE_FILES =	main.c controllers/ft_execute.c cmd/ft_pwd.c
 
 # SOURCE_B_FILES =
 
 SOURCES = $(addprefix $(SOURCES_PATH)/,$(SOURCE_FILES))
 
-SOURCE_DIRS = cmd
+SOURCE_DIRS = cmd controllers
 
 # SOURCES_B = $(addprefix $(SOURCES_PATH)/,$(SOURCE_B_FILES))
 
