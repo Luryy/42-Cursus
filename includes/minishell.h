@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 22:30:36 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/11/23 21:47:48 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/11/24 19:48:35 by elima-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	ft_signals(void);
 void	ft_load_history(void);
 void	ft_add_history(char *in);
 
+void	ft_echo(char **argv);
 void	ft_pwd(void);
 
 char	*ft_get_env(char *env);

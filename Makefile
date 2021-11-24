@@ -6,7 +6,7 @@
 #    By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/01 22:24:23 by lyuri-go          #+#    #+#              #
-#    Updated: 2021/11/24 19:06:06 by elima-me         ###   ########.fr        #
+#    Updated: 2021/11/24 19:25:24 by elima-me         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ LIBFT_PATH = ./$(LIBS_PATH)/$(LIBFT)
 SOURCE_FILES =	main.c \
 				controllers/ft_execute.c controllers/ft_signals.c \
 				controllers/ft_history.c \
-				cmd/ft_pwd.c \
+				cmd/ft_pwd.c cmd/ft_echo.c \
 				utils/ft_get_env.c utils/ft_mini_singleton.c
 
 # SOURCE_B_FILES =

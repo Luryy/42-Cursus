@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_echo.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/01 22:26:48 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/11/24 19:50:04 by elima-me         ###   ########.fr       */
+/*   Created: 2021/11/24 19:10:40 by elima-me          #+#    #+#             */
+/*   Updated: 2021/11/24 19:46:26 by elima-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-int	main(int argc, char **argv, char **envp)
+void	ft_echo(char **argv)
 {
-	char	*line;
-	t_mini	*mini;
+	int	i;
+	int	flag;
 
-	(void)argc;
-	(void)argv;
-	mini = mini_s();
-	mini->envs = envp;
-	ft_signals();
-	ft_load_history();
-	while (1)
+	flag = ft_strncmp("-n", argv[0], 3);
+	i = -1;
+	if (!flag)
+		i++;
+	while (argv[++i])
 	{
-		line = readline("minishell > ");
-		ft_execute(line);
-		ft_add_history(line);
+		ft_putstr_fd(argv[i], 1);
+		write(1, " ", 1);
 	}
-	return (0);
+	if (flag)
+		write(1, "\n", 1);
 }
