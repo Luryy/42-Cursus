@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/01 22:24:23 by lyuri-go          #+#    #+#              #
-#    Updated: 2021/11/23 21:33:01 by lyuri-go         ###   ########.fr        #
+#    Updated: 2021/11/24 19:06:06 by elima-me         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ LIBRARIES = -L$(LIBFT_PATH) -lft -lreadline
 INCLUDES = -I$(INCLUDES_PATH) -I$(LIBFT_PATH)
 
 MAKE_EXTERNAL = make -C
-REMOVE = rm -f
+REMOVE = rm -rf
 SAFE_MAKEDIR = mkdir -p
 
 SOURCES_PATH = ./sources
@@ -57,15 +57,18 @@ HEADERS = $(addprefix $(INCLUDES_PATH)/,$(HEADERS_FILES))
 all:	$(LIBFT) $(NAME)
 
 # bonus:	$(LIBFT) $(CHECKER_NAME)
+valgrind: all
+	valgrind --tool=memcheck --leak-check=full --track-origins=yes -s ./minishell
+
 
 debug: set_debug_flag re
 	echo "\033[0;31mdebbuger active"
 
 set_debug_flag:
-	$(eval CC = gcc -g)
+	$(eval CC = gcc -g -fsanitize=address)
 
 $(NAME):	$(OBJECTS)
-	$(CC) $(FLAGS) $(OBJECTS) $(INCLUDES) $(LIBRARIES) -o $(NAME)
+	$(CC) $(FLAGS) $(OBJECTS) $(INCLUDES) $(LIBRARIES) -o $(NAME) 
 
 # $(CHECKER_NAME): $(OBJECTS_B)
 # 	$(CC) $(FLAGS) $(OBJECTS_B) $(INCLUDES) $(LIBRARIES) -o $(CHECKER_NAME)
@@ -85,9 +88,11 @@ libft_fclean:
 
 clean: libft_clean
 	$(REMOVE) $(OBJECTS) $(OBJECTS_B)
+	$(REMOVE) $(OBJECTS_PATH)
 
 fclean: clean libft_fclean
 	$(REMOVE) $(NAME) $(CHECKER_NAME)
+
 
 re: fclean all
 
