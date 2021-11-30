@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/01 22:24:23 by lyuri-go          #+#    #+#              #
-#    Updated: 2021/11/24 19:25:24 by elima-me         ###   ########.fr        #
+#    Updated: 2021/11/30 22:43:18 by lyuri-go         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,13 +35,14 @@ SOURCE_FILES =	main.c \
 				controllers/ft_execute.c controllers/ft_signals.c \
 				controllers/ft_history.c \
 				cmd/ft_pwd.c cmd/ft_echo.c \
-				utils/ft_get_env.c utils/ft_mini_singleton.c
+				utils/ft_get_env.c utils/ft_mini_singleton.c \
+				parsers/ft_parser.c
 
 # SOURCE_B_FILES =
 
 SOURCES = $(addprefix $(SOURCES_PATH)/,$(SOURCE_FILES))
 
-SOURCE_DIRS = cmd controllers utils
+SOURCE_DIRS = cmd controllers utils parsers
 
 # SOURCES_B = $(addprefix $(SOURCES_PATH)/,$(SOURCE_B_FILES))
 
@@ -68,7 +69,7 @@ set_debug_flag:
 	$(eval CC = gcc -g -fsanitize=address)
 
 $(NAME):	$(OBJECTS)
-	$(CC) $(FLAGS) $(OBJECTS) $(INCLUDES) $(LIBRARIES) -o $(NAME) 
+	$(CC) $(FLAGS) $(OBJECTS) $(INCLUDES) $(LIBRARIES) -o $(NAME)
 
 # $(CHECKER_NAME): $(OBJECTS_B)
 # 	$(CC) $(FLAGS) $(OBJECTS_B) $(INCLUDES) $(LIBRARIES) -o $(CHECKER_NAME)
