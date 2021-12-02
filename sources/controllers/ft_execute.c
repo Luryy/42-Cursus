@@ -6,7 +6,7 @@
 /*   By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 19:41:12 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/12/01 18:36:16 by elima-me         ###   ########.fr       */
+/*   Updated: 2021/12/02 18:35:00 by elima-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ static void	ft_execute_cmd(t_exec *exec)
 		printf("TODO - exec: unset");
 		// ft_unset();
 	else if (!ft_strncmp(exec->cmd, "env", 3))
-		printf("TODO - exec: env");
-		// ft_env();
+		// printf("TODO - exec: env");
+		ft_env();
 	else if (!ft_strncmp(exec->cmd, "exit", 4))
 		ft_exit(exec);
 	else
