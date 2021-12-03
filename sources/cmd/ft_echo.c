@@ -17,6 +17,11 @@ void	ft_echo(char **argv)
 	int	i;
 	int	flag;
 
+	if (argv[0] == NULL)
+	{
+		write(1, "\n", 1);
+		return ;
+	}
 	flag = ft_strncmp("-n", argv[0], 3);
 	i = -1;
 	if (!flag)
