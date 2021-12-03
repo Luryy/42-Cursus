@@ -53,6 +53,7 @@ void	ft_add_history(char *in);
 void	ft_echo(char **argv);
 void	ft_pwd(void);
 void	ft_exit(t_exec *exec);
+void	ft_env(void);
 
 // UTILS
 char	*ft_get_env(char *env);

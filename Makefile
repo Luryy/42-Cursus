@@ -34,7 +34,7 @@ LIBFT_PATH = ./$(LIBS_PATH)/$(LIBFT)
 SOURCE_FILES =	main.c \
 				controllers/ft_execute.c controllers/ft_signals.c \
 				controllers/ft_history.c \
-				cmd/ft_pwd.c cmd/ft_echo.c cmd/ft_exit.c\
+				cmd/ft_pwd.c cmd/ft_echo.c cmd/ft_exit.c cmd/ft_env.c\
 				utils/ft_get_env.c utils/ft_mini_singleton.c \
 				parsers/ft_parser.c parsers/ft_special.c
 
