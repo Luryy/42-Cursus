@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 22:30:36 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/12/08 21:58:34 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/12/08 20:35:13 by elima-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ void	ft_echo(char **argv);
 void	ft_pwd(void);
 void	ft_exit(t_exec *exec);
 void	ft_env(void);
+void	ft_export(char **args);
 
 // UTILS
 char	*ft_get_env(char *env);
