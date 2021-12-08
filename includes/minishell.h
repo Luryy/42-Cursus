@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 22:30:36 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/12/02 18:37:29 by elima-me         ###   ########.fr       */
+/*   Updated: 2021/12/02 22:44:15 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,6 @@ t_mini	*mini_s(void);
 //PARSERS
 void	ft_parser(char *line, t_exec *exec_info);
 void	ft_free_parser(t_exec *exec);
+void	ft_parse_special(char *line, int *init_arg, t_exec *exec);
 
 #endif
