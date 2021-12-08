@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 22:30:36 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/12/02 22:44:15 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/12/08 21:58:34 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,6 @@ t_mini	*mini_s(void);
 void	ft_parser(char *line, t_exec *exec_info);
 void	ft_free_parser(t_exec *exec);
 void	ft_parse_special(char *line, int *init_arg, t_exec *exec);
+char	*ft_substr_clean(char *line, int init_arg, int len);
 
 #endif

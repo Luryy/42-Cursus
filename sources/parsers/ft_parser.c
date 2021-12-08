@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 19:12:12 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/12/03 17:39:47 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/12/08 21:58:57 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ static int	ft_parser_args(char *line, int init_arg, t_exec *exec, int arg_nb)
 	while (line[end_arg] && line[end_arg] != ' ' && line[end_arg] != '\t')
 		ft_parse_special(line, &end_arg, exec);
 	if (end_arg != init_arg)
-		exec->args[arg_nb] = ft_substr(line, init_arg, end_arg - init_arg);
+		exec->args[arg_nb] = \
+		ft_substr_clean(line, init_arg, end_arg - init_arg);
 	else
 		exec->args[arg_nb] = '\0';
 	return (end_arg);
