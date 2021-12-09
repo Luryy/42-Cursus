@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 21:30:05 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/12/09 23:51:37 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/12/10 00:32:34 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ static char	*ft_get_env_name(int *line_len, int *line_ref, char *line)
 	i = -1;
 	(*line_len) = 1;
 	env_name = malloc(100 * sizeof(char));
-	while (line[(*line_ref)] != '\"' && line[(*line_ref)] != '\''
-		&& line[++(*line_ref)] && line[(*line_ref)] != ' ' && (*line_len)++)
+	while (line[++(*line_ref)] != '\"' && line[(*line_ref)] != '\''
+		&& line[(*line_ref)] && line[(*line_ref)] != ' ' && (*line_len)++)
 		env_name[++i] = line[*line_ref];
 	env_name[++i] = '\0';
 	return (env_name);
@@ -49,23 +49,31 @@ static int	ft_includ_env(int *line_ref, char *line, int *arg_ref, char *arg)
 	return (env_len - line_len);
 }
 
-static char	*ft_parse_str_env(char *line, int init_arg, int len, int *parsed_le)
+static char	*ft_parse_str_env(char *ln, int init_arg, int len, int *parsed_le)
 {
 	char	*arg_line;
-	int		line_ref;
-	int		arg_ref;
+	int		ln_ref;
+	int		arg_rf;
+	int		should_parse;
 
-	line_ref = -1;
-	arg_ref = 0;
+	ln_ref = -1;
+	arg_rf = 0;
+	should_parse = 1;
 	arg_line = malloc(10000 * sizeof(char));
 	*parsed_le = len;
-	while (line[++line_ref])
+	while (ln[++ln_ref])
 	{
-		if (line[line_ref] == '$' && line_ref >= init_arg
-			&& line_ref < init_arg + len)
-			*parsed_le += ft_includ_env(&line_ref, line, &arg_ref, arg_line);
+		if (ln_ref >= init_arg && ln_ref < init_arg + len)
+		{
+			if (ln[ln_ref] == '\'')
+				should_parse *= -1;
+			if (ln[ln_ref] == '$' && (should_parse > 0 || ln[init_arg] == '\"'))
+				*parsed_le += ft_includ_env(&ln_ref, ln, &arg_rf, arg_line);
+			else
+				arg_line[arg_rf++] = ln[ln_ref];
+		}
 		else
-			arg_line[arg_ref++] = line[line_ref];
+			arg_line[arg_rf++] = ln[ln_ref];
 	}
 	return (arg_line);
 }
