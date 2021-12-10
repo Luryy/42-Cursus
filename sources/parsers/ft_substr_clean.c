@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 21:30:05 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/12/10 20:29:31 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/12/10 20:41:37 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,15 @@ char	*ft_substr_clean(char *line, int init_arg, int len)
 		final_line = '\0';
 	else if (line[init_arg] == '\"' || line[init_arg] == '\'')
 		final_line = ft_substr(arg_line, init_arg + 1, parsed_len - 2);
+	else if (line[init_arg + len - 1] == '|')
+		final_line = ft_substr(arg_line, init_arg, len - 1);
+	else if (line[init_arg + len - 1] == '<' || line[init_arg + len - 1] == '>')
+	{
+		if (line[init_arg + len - 2] == '<' || line[init_arg + len - 2] == '>')
+			final_line = ft_substr(arg_line, init_arg, len - 2);
+		else
+			final_line = ft_substr(arg_line, init_arg, len - 1);
+	}
 	else
 		final_line = ft_substr(arg_line, init_arg, parsed_len);
 	free(arg_line);
