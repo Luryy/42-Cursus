@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 21:30:05 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/12/10 00:32:34 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2021/12/10 20:29:31 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static char	*ft_parse_str_env(char *ln, int init_arg, int len, int *parsed_le)
 	ln_ref = -1;
 	arg_rf = 0;
 	should_parse = 1;
-	arg_line = malloc(10000 * sizeof(char));
+	arg_line = ft_calloc(sizeof(char), 10000);
 	*parsed_le = len;
 	while (ln[++ln_ref])
 	{
