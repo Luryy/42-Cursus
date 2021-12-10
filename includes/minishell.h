@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 22:30:36 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/12/08 20:35:13 by elima-me         ###   ########.fr       */
+/*   Updated: 2021/12/10 20:48:47 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void	ft_execute(char *line);
 void	ft_signals(void);
 void	ft_load_history(void);
 void	ft_add_history(char *in);
+void	ft_free(t_exec *exec);
 
 // CMDS
 void	ft_echo(char **argv);

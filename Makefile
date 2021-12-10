@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/01 22:24:23 by lyuri-go          #+#    #+#              #
-#    Updated: 2021/12/08 20:29:02 by elima-me         ###   ########.fr        #
+#    Updated: 2021/12/10 20:52:24 by lyuri-go         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ LIBFT_PATH = ./$(LIBS_PATH)/$(LIBFT)
 
 SOURCE_FILES =	main.c \
 				controllers/ft_execute.c controllers/ft_signals.c \
-				controllers/ft_history.c \
+				controllers/ft_history.c controllers/ft_free.c\
 				cmd/ft_pwd.c cmd/ft_echo.c cmd/ft_exit.c cmd/ft_env.c\
 				cmd/ft_export.c \
 				utils/ft_get_env.c utils/ft_mini_singleton.c \
