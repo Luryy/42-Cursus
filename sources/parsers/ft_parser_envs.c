@@ -6,7 +6,7 @@
 /*   By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 19:40:18 by elima-me          #+#    #+#             */
-/*   Updated: 2021/12/10 22:18:27 by elima-me         ###   ########.fr       */
+/*   Updated: 2021/12/12 14:51:08 by elima-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void	fill_envs(t_env **envs, char *key, char *value)
 	ft_env_add_front(envs, ft_new_node(key, value, 1));
 }
 
-static int	split_key(char *env)
+int	split_key(char *env)
 {
 	int	i;
 
@@ -53,7 +53,6 @@ void	ft_parser_envs(char **envp)
 	char	*key;
 	char	*value;
 
-	mini_s()->envs = (t_env *)ft_calloc(sizeof(t_env), 1);
 	count_env = -1;
 	split = 0;
 	while (envp[++count_env])

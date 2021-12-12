@@ -6,24 +6,50 @@
 /*   By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 20:16:46 by elima-me          #+#    #+#             */
-/*   Updated: 2021/12/08 20:46:34 by elima-me         ###   ########.fr       */
+/*   Updated: 2021/12/12 14:53:08 by elima-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-void    ft_export(char **args)
+static int	find_and_change_var(char *key, char *value)
 {
-    t_mini *mini;
-    int i;
+	t_env	*temp;
 
-    i = 0;
-    mini = mini_s();
-    while (mini->envs[i])
+	temp = mini_s()->envs;
+	while (temp->next != NULL)
 	{
-        i++;
+		if (!ft_strncmp(key, temp->key, ft_strlen(key)))
+		{
+			free(key);
+			key = NULL;
+			free(temp->value);
+			temp->value = NULL;
+			temp->value = value;
+			return (1);
+		}
+		temp = temp->next;
 	}
-	mini->envs[i] = ft_strdup(args[0]);
-	i++;
-	mini->envs[i] = '\0';
+	return (0);
+}
+
+void	ft_export(char **args)
+{
+	int		count_args;
+	int		split;
+	char	*key;
+	char	*value;
+
+	count_args = 0;
+	while (args[count_args])
+	{
+		split = split_key(args[count_args]);
+		key = ft_substr(args[count_args], 0, split);
+		value = ft_substr(args[count_args], split + 1,
+				ft_strlen(args[count_args]));
+		if (find_and_change_var(key, value))
+			return ;
+		ft_env_add_front(&mini_s()->envs, ft_new_node(key, value, 1));
+		count_args++;
+	}
 }

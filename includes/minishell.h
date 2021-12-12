@@ -6,7 +6,7 @@
 /*   By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 22:30:36 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/12/10 22:16:22 by elima-me         ###   ########.fr       */
+/*   Updated: 2021/12/12 14:49:53 by elima-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ typedef struct s_env {
 	char			*key;
 	char			*value;
 	struct s_env	*next;
-	int		visible;
-} t_env;
+	int				visible;
+}	t_env;
 
 enum e_cmd_next_type {
 	LAST,
@@ -69,7 +69,6 @@ void	ft_unset(char **arg);
 char	*ft_get_env(char *env);
 t_env	*ft_new_node(char *key, char *value, int visible);
 void	ft_env_add_front(t_env **envs, t_env *new);
-void	ft_env_add_back(t_env **envs, t_env *new);
 t_mini	*mini_s(void);
 
 //PARSERS
@@ -79,5 +78,6 @@ void	ft_parse_special(char *line, int *init_arg, t_exec *exec);
 char	*ft_substr_clean(char *line, int init_arg, int len);
 void	ft_parser_envs(char **envp);
 void	ft_free_env(void);
+int		split_key(char *env);
 
 #endif
