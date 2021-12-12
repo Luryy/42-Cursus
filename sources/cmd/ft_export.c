@@ -6,7 +6,7 @@
 /*   By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 20:16:46 by elima-me          #+#    #+#             */
-/*   Updated: 2021/12/12 14:53:08 by elima-me         ###   ########.fr       */
+/*   Updated: 2021/12/12 15:09:57 by elima-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ static int	find_and_change_var(char *key, char *value)
 			free(temp->value);
 			temp->value = NULL;
 			temp->value = value;
+			temp->visible = 1;
 			return (1);
 		}
 		temp = temp->next;
