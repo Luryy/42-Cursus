@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/01 22:24:23 by lyuri-go          #+#    #+#              #
-#    Updated: 2021/12/10 20:52:24 by lyuri-go         ###   ########.fr        #
+#    Updated: 2021/12/10 20:54:36 by elima-me         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,9 +35,10 @@ SOURCE_FILES =	main.c \
 				controllers/ft_execute.c controllers/ft_signals.c \
 				controllers/ft_history.c controllers/ft_free.c\
 				cmd/ft_pwd.c cmd/ft_echo.c cmd/ft_exit.c cmd/ft_env.c\
-				cmd/ft_export.c \
-				utils/ft_get_env.c utils/ft_mini_singleton.c \
-				parsers/ft_parser.c parsers/ft_special.c parsers/ft_substr_clean.c
+				cmd/ft_export.c cmd/ft_unset.c \
+				utils/ft_get_env.c utils/ft_mini_singleton.c utils/ft_node.c\
+				parsers/ft_parser.c parsers/ft_special.c parsers/ft_substr_clean.c \
+				parsers/ft_parser_envs.c 
 
 # SOURCE_B_FILES =
 

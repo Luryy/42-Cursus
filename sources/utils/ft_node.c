@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_env.c                                       :+:      :+:    :+:   */
+/*   ft_node.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/23 20:40:25 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/12/12 14:51:35 by elima-me         ###   ########.fr       */
+/*   Created: 2021/12/09 19:50:37 by elima-me          #+#    #+#             */
+/*   Updated: 2021/12/12 14:51:47 by elima-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-char	*ft_get_env(char *env)
+void	ft_env_add_front(t_env **envs, t_env *new)
 {
-	t_env	*envs;
+	if (!envs)
+		return ;
+	new->next = *envs;
+	*envs = new;
+}
 
-	envs = (mini_s()->envs);
-	while (envs->next != NULL)
-	{
-		if (!ft_strncmp(env, envs->key, ft_strlen(env)))
-			return (envs->value);
-		envs = envs->next;
-	}
-	return (NULL);
+t_env	*ft_new_node(char *key, char *value, int visible)
+{
+	t_env	*node;
+
+	node = (t_env *)ft_calloc(sizeof(t_env), 1);
+	node->key = key;
+	node->value = value;
+	node->visible = visible;
+	node->next = NULL;
+	return (node);
 }

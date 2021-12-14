@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_env.c                                       :+:      :+:    :+:   */
+/*   ft_unset.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/23 20:40:25 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/12/12 14:51:35 by elima-me         ###   ########.fr       */
+/*   Created: 2021/12/08 21:01:55 by elima-me          #+#    #+#             */
+/*   Updated: 2021/12/12 15:14:39 by elima-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-char	*ft_get_env(char *env)
+void	ft_unset(char **args)
 {
-	t_env	*envs;
+	t_env	*temp;
+	int		count_args;
 
-	envs = (mini_s()->envs);
-	while (envs->next != NULL)
+	count_args = 0;
+	while (args[count_args])
 	{
-		if (!ft_strncmp(env, envs->key, ft_strlen(env)))
-			return (envs->value);
-		envs = envs->next;
+		temp = mini_s()->envs;
+		while (temp->next != NULL)
+		{
+			if (!ft_strncmp(args[count_args], temp->key,
+					ft_strlen(args[count_args])))
+				temp->visible = 0;
+			temp = temp->next;
+		}
+		count_args++;
 	}
-	return (NULL);
 }

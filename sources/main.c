@@ -6,7 +6,7 @@
 /*   By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 22:26:48 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/11/24 19:50:04 by elima-me         ###   ########.fr       */
+/*   Updated: 2021/12/10 20:50:51 by elima-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,10 @@
 int	main(int argc, char **argv, char **envp)
 {
 	char	*line;
-	t_mini	*mini;
 
 	(void)argc;
 	(void)argv;
-	mini = mini_s();
-	mini->envs = envp;
+	ft_parser_envs(envp);
 	ft_signals();
 	ft_load_history();
 	while (1)
