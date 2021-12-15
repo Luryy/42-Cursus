@@ -6,7 +6,7 @@
 /*   By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 22:30:36 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/12/12 14:49:53 by elima-me         ###   ########.fr       */
+/*   Updated: 2021/12/15 19:51:14 by elima-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ void	ft_exit(t_exec *exec);
 void	ft_env(void);
 void	ft_export(char **args);
 void	ft_unset(char **arg);
+void	ft_cd(char **path);
 
 // UTILS
 char	*ft_get_env(char *env);
