@@ -6,7 +6,7 @@
 /*   By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 19:41:12 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/12/12 15:15:17 by elima-me         ###   ########.fr       */
+/*   Updated: 2021/12/20 18:19:39 by elima-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,7 @@ static void	ft_execute_cmd(t_exec *exec)
 	if (!ft_strncmp(exec->cmd, "echo", 4))
 		ft_echo(exec->args);
 	else if (!ft_strncmp(exec->cmd, "cd", 2))
-		printf("TODO - exec: cd");
-		// ft_cd();
+		ft_cd(exec->args);
 	else if (!ft_strncmp(exec->cmd, "pwd", 3))
 		ft_pwd();
 	else if (!ft_strncmp(exec->cmd, "export", 6))
@@ -30,8 +29,7 @@ static void	ft_execute_cmd(t_exec *exec)
 	else if (!ft_strncmp(exec->cmd, "exit", 4))
 		ft_exit(exec);
 	else
-		printf("TODO - exec: bin");
-		// exec_bin();
+		ft_exec_bin(exec->cmd, exec->args, exec->next_type);
 }
 
 void	ft_execute(char *line)
