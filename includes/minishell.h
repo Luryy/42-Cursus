@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 22:30:36 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/12/21 19:18:31 by elima-me         ###   ########.fr       */
+/*   Updated: 2021/12/23 22:18:09 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,5 +85,9 @@ char	*ft_substr_clean(char *line, int init_arg, int len);
 void	ft_parser_envs(char **envp);
 void	ft_free_env(void);
 int		split_key(char *env);
+
+//REDIRECTS
+void	ft_pipe(t_exec	*exec_info, int i, int fd_in);
+void	ft_execute_cmd(t_exec *exec, int shouldfork);
 
 #endif
