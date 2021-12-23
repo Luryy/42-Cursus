@@ -6,7 +6,7 @@
 /*   By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 22:30:36 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/12/12 14:49:53 by elima-me         ###   ########.fr       */
+/*   Updated: 2021/12/21 19:18:31 by elima-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 # include <readline/history.h>
 # include <signal.h>
 # include <fcntl.h>
+# include <sys/types.h>
+# include <sys/wait.h>
 
 # define HISTORY_FILE "/.minishell_history"
 
@@ -64,12 +66,16 @@ void	ft_exit(t_exec *exec);
 void	ft_env(void);
 void	ft_export(char **args);
 void	ft_unset(char **arg);
+void	ft_cd(char **path);
+void	ft_exec_bin(char *cmd, char **args, int shoulfork);
 
 // UTILS
 char	*ft_get_env(char *env);
 t_env	*ft_new_node(char *key, char *value, int visible);
 void	ft_env_add_front(t_env **envs, t_env *new);
 t_mini	*mini_s(void);
+void	ft_free_array(char **array);
+char	**ft_join_envs(void);
 
 //PARSERS
 void	ft_parser(char *line, t_exec *exec_info);
