@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exec_bin.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 20:15:34 by elima-me          #+#    #+#             */
-/*   Updated: 2021/12/21 19:24:05 by elima-me         ###   ########.fr       */
+/*   Updated: 2021/12/23 22:18:45 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	ft_exec_bin(char *cmd, char **args, int shouldfork)
 	int		pid;
 
 	pid = 0;
-	if (!shouldfork)
+	if (shouldfork)
 		pid = fork();
 	if (pid == 0)
 	{

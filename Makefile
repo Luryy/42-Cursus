@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/01 22:24:23 by lyuri-go          #+#    #+#              #
-#    Updated: 2021/12/21 19:18:20 by elima-me         ###   ########.fr        #
+#    Updated: 2021/12/23 22:10:28 by lyuri-go         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,12 +40,13 @@ SOURCE_FILES =	main.c \
 				utils/ft_free_aray.c utils/ft_join_envs.c\
 				parsers/ft_parser.c parsers/ft_special.c parsers/ft_substr_clean.c \
 				parsers/ft_parser_envs.c \
+				redirects/ft_pipe.c
 
 # SOURCE_B_FILES =
 
 SOURCES = $(addprefix $(SOURCES_PATH)/,$(SOURCE_FILES))
 
-SOURCE_DIRS = cmd controllers utils parsers
+SOURCE_DIRS = cmd controllers utils parsers redirects
 
 # SOURCES_B = $(addprefix $(SOURCES_PATH)/,$(SOURCE_B_FILES))
 

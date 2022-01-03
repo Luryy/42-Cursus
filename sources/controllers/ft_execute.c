@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_execute.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 19:41:12 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/12/20 18:19:39 by elima-me         ###   ########.fr       */
+/*   Updated: 2021/12/23 22:41:15 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-static void	ft_execute_cmd(t_exec *exec)
+void	ft_execute_cmd(t_exec *exec, int shouldfork)
 {
 	if (!ft_strncmp(exec->cmd, "echo", 4))
 		ft_echo(exec->args);
@@ -29,7 +29,9 @@ static void	ft_execute_cmd(t_exec *exec)
 	else if (!ft_strncmp(exec->cmd, "exit", 4))
 		ft_exit(exec);
 	else
-		ft_exec_bin(exec->cmd, exec->args, exec->next_type);
+		ft_exec_bin(exec->cmd, exec->args, shouldfork);
+	if (!shouldfork)
+		exit(EXIT_SUCCESS);
 }
 
 void	ft_execute(char *line)
@@ -43,6 +45,9 @@ void	ft_execute(char *line)
 	}
 	exec_info = malloc(sizeof(t_exec) * 40);
 	ft_parser(line, exec_info);
-	ft_execute_cmd(&exec_info[0]);
+	if (exec_info->next_type == LAST)
+		ft_execute_cmd(&exec_info[0], 1);
+	else
+		ft_pipe(exec_info, 0, -1);
 	ft_free_parser(exec_info);
 }
