@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_execute.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 19:41:12 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/12/23 22:41:15 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/01/06 18:24:45 by elima-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,6 @@ void	ft_execute(char *line)
 	if (exec_info->next_type == LAST)
 		ft_execute_cmd(&exec_info[0], 1);
 	else
-		ft_pipe(exec_info, 0, -1);
+		ft_redirects(exec_info);
 	ft_free_parser(exec_info);
 }

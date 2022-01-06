@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/01 22:24:23 by lyuri-go          #+#    #+#              #
-#    Updated: 2021/12/23 22:10:28 by lyuri-go         ###   ########.fr        #
+#    Updated: 2022/01/06 18:21:06 by elima-me         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,7 @@ SOURCE_FILES =	main.c \
 				utils/ft_free_aray.c utils/ft_join_envs.c\
 				parsers/ft_parser.c parsers/ft_special.c parsers/ft_substr_clean.c \
 				parsers/ft_parser_envs.c \
-				redirects/ft_pipe.c
+				redirects/ft_redirects.c redirects/ft_pipe.c \
 
 # SOURCE_B_FILES =
 
