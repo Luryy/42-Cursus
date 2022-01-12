@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 22:30:36 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/01/11 21:14:55 by elima-me         ###   ########.fr       */
+/*   Updated: 2022/01/12 22:10:27 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,6 @@ int		split_key(char *env);
 void	ft_redirects(t_exec *exec_info);
 void	ft_pipe(t_exec	*exec_info, int i, int fd_in);
 void	ft_execute_cmd(t_exec *exec, int shouldfork);
-void	ft_redirect_to_double(t_exec *exec_info);
-void	ft_redirect_to_single(t_exec *exec_info);
+void	ft_redirect_to(t_exec *exec_info);
 
 #endif
