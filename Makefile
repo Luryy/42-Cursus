@@ -6,7 +6,7 @@
 #    By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/01 22:24:23 by lyuri-go          #+#    #+#              #
-#    Updated: 2022/01/06 18:21:06 by elima-me         ###   ########.fr        #
+#    Updated: 2022/01/11 21:15:43 by elima-me         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,6 +41,7 @@ SOURCE_FILES =	main.c \
 				parsers/ft_parser.c parsers/ft_special.c parsers/ft_substr_clean.c \
 				parsers/ft_parser_envs.c \
 				redirects/ft_redirects.c redirects/ft_pipe.c \
+				redirects/ft_redirect_to_double.c redirects/ft_redirect_to_single.c \
 
 # SOURCE_B_FILES =
 
