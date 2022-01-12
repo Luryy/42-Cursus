@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 23:58:26 by elima-me          #+#    #+#             */
-/*   Updated: 2022/01/12 23:29:41 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/01/12 23:39:58 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ static int	ft_open(t_exec *exec_info, int i)
 {
 	int	file;
 
-	if (exec_info->next_type == REDIRECT_TO_DOUBLE)
+	if (exec_info[i - 1].next_type == REDIRECT_TO_DOUBLE)
 		file = open(exec_info[i].cmd, O_CREAT | O_APPEND | O_RDWR, 0644);
-	else if (exec_info->next_type == REDIRECT_TO_SINGLE)
+	else if (exec_info[i - 1].next_type == REDIRECT_TO_SINGLE)
 		file = open(exec_info[i].cmd, O_CREAT | O_TRUNC | O_WRONLY, 0644);
 	return (file);
 }
@@ -44,12 +44,16 @@ static void	ft_redirect_to_last(t_exec *exec_info, int fd[2], int i)
 	char	line;
 	int		file;
 
-	close(fd[1]);
 	file = ft_open(exec_info, i);
-	while (read(fd[0], &line, 1))
-		write(file, &line, 1);
-	close(file);
-	close(fd[0]);
+	if (!(exec_info[i].next_type == REDIRECT_TO_SINGLE
+			|| exec_info[i].next_type == REDIRECT_TO_DOUBLE))
+	{
+		close(fd[1]);
+		while (read(fd[0], &line, 1))
+			write(file, &line, 1);
+		close(file);
+		close(fd[0]);
+	}
 }
 
 void	ft_redirect_to(t_exec *exec_info, int i)
