@@ -4,10 +4,7 @@ on:
   pull_request:
     branches:
       - main
-<<<<<<< HEAD
 			- master
-=======
->>>>>>> 9d51ec24074aec00329100b7bf788cca89ab26e1
     paths:
       - '**.c'
       - '**.h'
