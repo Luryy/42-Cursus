@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/01 22:24:23 by lyuri-go          #+#    #+#              #
-#    Updated: 2022/01/17 19:11:34 by elima-me         ###   ########.fr        #
+#    Updated: 2022/01/18 23:03:34 by lyuri-go         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,6 +42,8 @@ SOURCE_FILES =	main.c \
 				parsers/ft_parser_envs.c \
 				redirects/ft_redirects.c redirects/ft_pipe.c \
 				redirects/ft_redirect_to.c redirects/ft_redirect_from_single.c \
+				redirects/ft_redirect_from_double.c \
+
 
 # SOURCE_B_FILES =
 
