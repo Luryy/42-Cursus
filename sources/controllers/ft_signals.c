@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 18:19:57 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/11/23 20:30:00 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/01/19 00:34:41 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,18 @@ void	ft_signals(void)
 {
 	signal(SIGINT, handle);
 	signal(SIGQUIT, handle);
+}
+
+void	handle_nothing(int sig)
+{
+	(void)sig;
+}
+
+void	handle_standard(int sig)
+{
+	if (sig == SIGINT)
+	{
+		printf("\n");
+		exit(EXIT_SUCCESS);
+	}
 }
