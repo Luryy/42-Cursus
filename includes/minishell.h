@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 22:30:36 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/01/19 00:04:26 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/01/19 00:35:11 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ void	ft_signals(void);
 void	ft_load_history(void);
 void	ft_add_history(char *in);
 void	ft_free(t_exec *exec);
+void	handle_nothing(int sig);
+void	handle_standard(int sig);
 
 // CMDS
 void	ft_echo(char **argv);
