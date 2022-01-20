@@ -6,11 +6,25 @@
 /*   By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 19:07:38 by elima-me          #+#    #+#             */
-/*   Updated: 2022/01/17 20:47:28 by elima-me         ###   ########.fr       */
+/*   Updated: 2022/01/20 18:54:04 by elima-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
+
+static int	check_path(t_exec *exec_info)
+{
+	int	fd;
+
+	fd = open(exec_info->cmd, O_RDONLY);
+	close(fd);
+	if (fd < 0)
+	{
+		printf("%s: No such file or directory\n", exec_info->cmd);
+		return (0);
+	}
+	return (1);
+}
 
 static void	ft_redirect_from_single_init(t_exec *exec_info, int fd[2])
 {
@@ -57,7 +71,11 @@ void	ft_redirect_from_single(t_exec *exec_info)
 
 	comands = 0;
 	while (exec_info[comands].next_type == REDIRECT_FROM_SINGLE)
+	{
+		if (!check_path(&exec_info[comands + 1]))
+			return ;
 		comands++;
+	}
 	pipe(fd);
 	ft_redirect_from_single_init(&exec_info[comands], fd);
 	ft_redirect_from_single_last(exec_info, fd);
