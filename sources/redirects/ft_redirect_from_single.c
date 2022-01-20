@@ -6,7 +6,7 @@
 /*   By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 19:07:38 by elima-me          #+#    #+#             */
-/*   Updated: 2022/01/19 19:58:00 by elima-me         ###   ########.fr       */
+/*   Updated: 2022/01/20 18:33:57 by elima-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,11 @@
 
 static int	check_path(t_exec *exec_info)
 {
-	if (open(exec_info->cmd, O_RDONLY) < 0)
+	int	fd;
+	
+	fd = open(exec_info->cmd, O_RDONLY);
+	close(fd);
+	if (fd < 0)
 	{
 		printf("%s: No such file or directory\n", exec_info->cmd);
 		return (0);
