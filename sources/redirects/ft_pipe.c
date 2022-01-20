@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 22:29:14 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/12/23 22:19:06 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/01/20 20:17:56 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ static int	ft_parse_pipe(int i, t_exec *exec_info, int fd_in)
 		close(fd[1]);
 		ft_pipe(exec_info, i + 1, fd[0]);
 	}
+	waitpid(pid, NULL, 0);
 	return (pid);
 }
 
@@ -55,16 +56,18 @@ static int	ft_parse_last(int i, t_exec *exec_info, int fd_in)
 	}
 	else if (fd_in > 0)
 		close(fd_in);
+	waitpid(pid, NULL, 0);
 	return (pid);
 }
 
 void	ft_pipe(t_exec *exec_info, int i, int fd_in)
 {
-	int	pid;
-
+	printf("pp %d\n", i);
 	if (exec_info[i].next_type == PIPE)
-		pid = ft_parse_pipe(i, exec_info, fd_in);
+		ft_parse_pipe(i, exec_info, fd_in);
 	else if (exec_info[i].next_type == LAST)
-		pid = ft_parse_last(i, exec_info, fd_in);
-	waitpid(pid, NULL, 0);
+		ft_parse_last(i, exec_info, fd_in);
+	else
+		ft_redirects(exec_info, i, fd_in, -1);
+	printf("ppfinal %d\n", i);
 }
