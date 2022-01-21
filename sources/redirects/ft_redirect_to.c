@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 23:58:26 by elima-me          #+#    #+#             */
-/*   Updated: 2022/01/20 21:00:35 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/01/20 21:26:27 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	ft_redirect_to(t_exec *exec_info, int i, int fdi)
 	static int		fd[2];
 	int				pid;
 
-	if (fdi >= 0 || i == 0)
+	if (fdi >= 0 || i == 0 || fdi == -2)
 		pid = ft_redirect_to_init(exec_info, fd, fdi, i);
 	else
 		ft_redirect_to_last(exec_info, fd, i);
@@ -74,7 +74,7 @@ void	ft_redirect_to(t_exec *exec_info, int i, int fdi)
 		|| exec_info[i].next_type == REDIRECT_TO_DOUBLE)
 		ft_redirect_to(exec_info, i + 1, -1);
 	else if (exec_info[i].next_type != LAST)
-		ft_redirects(exec_info, i + 1, -1, -1);
+		ft_redirects(exec_info, i + 1, -2, -1);
 	if (fdi >= 0 || i == 0)
 		waitpid(pid, NULL, 0);
 }
