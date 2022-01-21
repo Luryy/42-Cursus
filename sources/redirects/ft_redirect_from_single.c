@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_redirect_from_single.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 19:07:38 by elima-me          #+#    #+#             */
-/*   Updated: 2022/01/20 18:54:04 by elima-me         ###   ########.fr       */
+/*   Updated: 2022/01/21 21:58:25 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,12 @@ static void	ft_redirect_from_single_last(t_exec *exec_info, int fd[2])
 	waitpid(pid2, NULL, 0);
 }
 
-void	ft_redirect_from_single(t_exec *exec_info)
+void	ft_redirect_from_single(t_exec *exec_info, int i)
 {
 	int		fd[2];
 	int		comands;
 
-	comands = 0;
+	comands = i;
 	while (exec_info[comands].next_type == REDIRECT_FROM_SINGLE)
 	{
 		if (!check_path(&exec_info[comands + 1]))
@@ -78,5 +78,5 @@ void	ft_redirect_from_single(t_exec *exec_info)
 	}
 	pipe(fd);
 	ft_redirect_from_single_init(&exec_info[comands], fd);
-	ft_redirect_from_single_last(exec_info, fd);
+	ft_redirect_from_single_last(&exec_info[i], fd);
 }
