@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 22:29:14 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/01/20 20:17:56 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/01/20 21:00:49 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,12 +62,10 @@ static int	ft_parse_last(int i, t_exec *exec_info, int fd_in)
 
 void	ft_pipe(t_exec *exec_info, int i, int fd_in)
 {
-	printf("pp %d\n", i);
 	if (exec_info[i].next_type == PIPE)
 		ft_parse_pipe(i, exec_info, fd_in);
 	else if (exec_info[i].next_type == LAST)
 		ft_parse_last(i, exec_info, fd_in);
 	else
 		ft_redirects(exec_info, i, fd_in, -1);
-	printf("ppfinal %d\n", i);
 }
