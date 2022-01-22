@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 19:07:38 by elima-me          #+#    #+#             */
-/*   Updated: 2022/01/21 23:38:27 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/01/22 16:47:26 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,17 @@ static int	ft_redirect_from_single_last(t_exec *exec_info, int fd[2], int last)
 		return (-1);
 	close(fd_to[1]);
 	return (fd_to[0]);
+}
+
+static int	ft_verify_last_redirect(t_exec *exec_info)
+{
+	if (i > 1 && (exec_info[i - 2].next_type == REDIRECT_TO_SINGLE
+			|| exec_info[i - 2].next_type == REDIRECT_TO_DOUBLE))
+	{
+		check_path(&exec_info[i]);
+		return (1);
+	}
+	return (0);
 }
 
 void	ft_redirect_from_single(t_exec *exec_info, int i)
