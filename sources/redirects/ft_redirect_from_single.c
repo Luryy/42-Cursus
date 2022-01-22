@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 19:07:38 by elima-me          #+#    #+#             */
-/*   Updated: 2022/01/22 16:47:26 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/01/22 13:26:17 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,14 +76,24 @@ static int	ft_redirect_from_single_last(t_exec *exec_info, int fd[2], int last)
 	return (fd_to[0]);
 }
 
-static int	ft_verify_last_redirect(t_exec *exec_info)
+static int	ft_verify_redirect(t_exec *exec_info, int i, int *comands)
 {
+	*comands = i;
 	if (i > 1 && (exec_info[i - 2].next_type == REDIRECT_TO_SINGLE
 			|| exec_info[i - 2].next_type == REDIRECT_TO_DOUBLE))
 	{
-		check_path(&exec_info[i]);
+		while (exec_info[i].next_type == REDIRECT_FROM_SINGLE
+				|| exec_info[i].next_type == LAST)
+		{
+			if (!check_path(&exec_info[i]))
+				return (1);
+			i++;
+		}
 		return (1);
 	}
+	while (exec_info[*comands].next_type == REDIRECT_FROM_SINGLE)
+		if (!check_path(&exec_info[++(*comands )]))
+			return (1);
 	return (0);
 }
 
@@ -93,12 +103,13 @@ void	ft_redirect_from_single(t_exec *exec_info, int i)
 	int		comands;
 	int		fdi;
 
-	comands = i;
-	while (exec_info[comands].next_type == REDIRECT_FROM_SINGLE)
+	if (ft_verify_redirect(exec_info, i, &comands))
 	{
-		if (!check_path(&exec_info[comands + 1]))
-			return ;
-		comands++;
+		while (exec_info[comands].next_type == REDIRECT_FROM_SINGLE)
+			comands++;
+		if (exec_info[comands].next_type != LAST)
+			ft_redirects(exec_info, comands, -1, -1);
+		return;
 	}
 	pipe(fd);
 	ft_redirect_from_single_init(&exec_info[comands], fd);
