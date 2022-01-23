@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 23:58:26 by elima-me          #+#    #+#             */
-/*   Updated: 2022/01/20 21:26:27 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/01/23 12:33:55 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ static int	ft_redirect_to_init(t_exec *exec_info, int fd[2], int fdi, int i)
 		close(fd[1]);
 		ft_execute_cmd(&(exec_info[i]), 0);
 	}
+	close(fd[1]);
 	return (pid);
 }
 
@@ -53,7 +54,6 @@ static void	ft_redirect_to_last(t_exec *exec_info, int fd[2], int i)
 	if (!(exec_info[i].next_type == REDIRECT_TO_SINGLE
 			|| exec_info[i].next_type == REDIRECT_TO_DOUBLE))
 	{
-		close(fd[1]);
 		while (read(fd[0], &line, 1))
 			write(file, &line, 1);
 		close(file);
@@ -66,15 +66,19 @@ void	ft_redirect_to(t_exec *exec_info, int i, int fdi)
 	static int		fd[2];
 	int				pid;
 
-	if (fdi >= 0 || i == 0 || fdi == -2)
+	if (i == 0 || fdi == -2 || (fdi >= 0 && exec_info[i - 2].next_type == PIPE))
 		pid = ft_redirect_to_init(exec_info, fd, fdi, i);
 	else
+	{
+		if (fdi >= 0)
+			fd[0] = fdi;
 		ft_redirect_to_last(exec_info, fd, i);
+	}
 	if (exec_info[i].next_type == REDIRECT_TO_SINGLE
 		|| exec_info[i].next_type == REDIRECT_TO_DOUBLE)
 		ft_redirect_to(exec_info, i + 1, -1);
 	else if (exec_info[i].next_type != LAST)
 		ft_redirects(exec_info, i + 1, -2, -1);
-	if (fdi >= 0 || i == 0)
+	if (i == 0 || fdi == -2 || (fdi >= 0 && exec_info[i - 2].next_type == PIPE))
 		waitpid(pid, NULL, 0);
 }
