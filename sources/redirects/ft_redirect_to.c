@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 23:58:26 by elima-me          #+#    #+#             */
-/*   Updated: 2022/01/23 12:33:55 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/01/24 19:51:03 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,40 +45,56 @@ static int	ft_redirect_to_init(t_exec *exec_info, int fd[2], int fdi, int i)
 	return (pid);
 }
 
-static void	ft_redirect_to_last(t_exec *exec_info, int fd[2], int i)
+static int	ft_redirect_to_last(t_exec *exec_info, int fd[2], int i)
 {
 	char	line;
 	int		file;
+	int		fdi_to_return;
+	int		fd_pipe[2];
 
+	fdi_to_return = -2;
 	file = ft_open(exec_info, i);
 	if (!(exec_info[i].next_type == REDIRECT_TO_SINGLE
 			|| exec_info[i].next_type == REDIRECT_TO_DOUBLE))
 	{
+		if (exec_info[i].next_type != LAST)
+			pipe(fd_pipe);
 		while (read(fd[0], &line, 1))
+		{
 			write(file, &line, 1);
+			if (exec_info[i].next_type != LAST)
+				write(fd_pipe[1], &line, 1);
+		}
+		if (exec_info[i].next_type != LAST)
+		{
+			fdi_to_return = fd_pipe[0];
+			close(fd_pipe[1]);
+		}
 		close(file);
 		close(fd[0]);
 	}
+	return (fdi_to_return);
 }
 
 void	ft_redirect_to(t_exec *exec_info, int i, int fdi)
 {
 	static int		fd[2];
 	int				pid;
+	int				fdi_to_send;
 
-	if (i == 0 || fdi == -2 || (fdi >= 0 && exec_info[i - 2].next_type == PIPE))
+	if (i == 0 || fdi == -2 || (fdi >= 0 && exec_info[i - 1].next_type == PIPE))
 		pid = ft_redirect_to_init(exec_info, fd, fdi, i);
 	else
 	{
 		if (fdi >= 0)
 			fd[0] = fdi;
-		ft_redirect_to_last(exec_info, fd, i);
+		fdi_to_send = ft_redirect_to_last(exec_info, fd, i);
 	}
 	if (exec_info[i].next_type == REDIRECT_TO_SINGLE
 		|| exec_info[i].next_type == REDIRECT_TO_DOUBLE)
 		ft_redirect_to(exec_info, i + 1, -1);
 	else if (exec_info[i].next_type != LAST)
-		ft_redirects(exec_info, i + 1, -2, -1);
-	if (i == 0 || fdi == -2 || (fdi >= 0 && exec_info[i - 2].next_type == PIPE))
+		ft_redirects(exec_info, i + 1, fdi_to_send, -1);
+	if (i == 0 || fdi == -2 || (fdi >= 0 && exec_info[i - 1].next_type == PIPE))
 		waitpid(pid, NULL, 0);
 }
