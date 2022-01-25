@@ -6,7 +6,7 @@
 #    By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/01 22:24:23 by lyuri-go          #+#    #+#              #
-#    Updated: 2022/01/24 21:23:27 by lyuri-go         ###   ########.fr        #
+#    Updated: 2022/01/25 15:20:01 by lyuri-go         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,8 +42,7 @@ SOURCE_FILES =	main.c \
 				parsers/ft_parser_envs.c \
 				redirects/ft_redirects.c redirects/ft_pipe.c \
 				redirects/ft_redirect_to.c redirects/ft_redirect_from_single.c \
-				redirects/ft_redirect_from_double.c \
-
+				redirects/ft_redirect_from_double.c redirects/ft_redirect_from.c
 
 # SOURCE_B_FILES =
 
