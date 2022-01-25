@@ -6,7 +6,7 @@
 /*   By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 22:30:36 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/01/25 20:00:39 by elima-me         ###   ########.fr       */
+/*   Updated: 2022/01/25 20:39:52 by elima-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ typedef struct s_mini {
 
 // CONTROLLERS
 void	ft_execute(char *line);
-void	ft_signals(void);
+int		ft_signals(void);
 void	ft_load_history(void);
 void	ft_add_history(char *in);
 void	ft_free(t_exec *exec);
@@ -97,10 +97,10 @@ void	ft_pipe(t_exec	*exec_info, int i, int fd_in);
 void	ft_execute_cmd(t_exec *exec, int shouldfork);
 void	ft_redirect_to(t_exec *exec_info, int i, int fdi);
 void	ft_redirect_from_single(t_exec *exec_info, int i);
-void	ft_redirect_from_double(t_exec *exec_info, int i);
+void	ft_redirect_from_double(t_exec *exec_info, int i,
+			int pid, int commands);
 void	ft_redirect_from(t_exec *exec_info, int i);
-void	ft_redi_from_doub_last(t_exec *ex_inf, int fd[2], int pid, int fdt);
-
+int		ft_redi_from_doub_last(t_exec *ex_inf, int fd[2], int pid, int fdt);
 int		check_path(t_exec *exec_info);
 void	ft_redirect_from_single_init(t_exec *exec_info, int fd[2]);
 

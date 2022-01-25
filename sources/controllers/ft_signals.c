@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_signals.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 18:19:57 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/01/19 00:34:41 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/01/25 20:03:57 by elima-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,11 @@ static void	handle(int sig)
 		printf("\b\b  \b\b");
 }
 
-void	ft_signals(void)
+int	ft_signals(void)
 {
 	signal(SIGINT, handle);
 	signal(SIGQUIT, handle);
+	return (0);
 }
 
 void	handle_nothing(int sig)
