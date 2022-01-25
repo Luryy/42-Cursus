@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 23:03:18 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/01/25 16:31:01 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/01/25 22:28:41 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	ft_redire_from_doub_init(int fd[2], t_exec *exc_inf, int pid, int i)
 			if (check_path(&exc_inf[i]))
 				ft_redirect_from_single_init(&exc_inf[i], fd);
 			close(fd[1]);
-			return;
+			return ;
 		}
 		signal(SIGINT, handle_standard);
 		while (1)
@@ -107,7 +107,7 @@ void	ft_redirect_from_double(t_exec *exec_info, int i)
 	if (!(i == 0 || exec_info[i - 1].next_type == PIPE))
 		commands--;
 	while (exec_info[++commands].next_type == REDIRECT_FROM_DOUBLE
-			|| exec_info[commands].next_type == REDIRECT_FROM_SINGLE)
+		|| exec_info[commands].next_type == REDIRECT_FROM_SINGLE)
 		ft_redirect_from_double_middle(exec_info, pid, commands);
 	ft_redire_from_doub_init(fd, exec_info, pid, commands);
 	if (i == 0 || exec_info[i - 1].next_type == PIPE)
