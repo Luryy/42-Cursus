@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 23:03:18 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/01/25 14:45:44 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/01/25 16:19:10 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,16 @@ void	ft_redirect_from_double(t_exec *exec_info, int i)
 	{
 		if (pid == 0)
 			exit(EXIT_SUCCESS);
-		waitpid(pid, NULL, 0);
-		ft_signals();
+		if (exec_info[commands].next_type != LAST)
+		{
+			ft_redi_from_doub_last(&(exec_info[i]), fd, pid, fd_to[1]);
+			ft_signals();
+			ft_redirects(exec_info, commands + 1, fd_to[0], -1);
+		}
+		else
+		{
+			waitpid(pid, NULL, 0);
+			ft_signals();
+		}
 	}
 }
