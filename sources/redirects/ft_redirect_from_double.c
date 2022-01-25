@@ -6,29 +6,36 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 23:03:18 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/01/25 11:56:07 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/01/25 14:45:44 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-static void	ft_redirect_from_double_init(int fd[2], char *eof, int pid)
+static void	ft_redire_from_doub_init(int fd[2], t_exec *exc_inf, int pid, int i)
 {
 	char	*line;
 
 	if (pid == 0)
 	{
+		if (exc_inf[i - 1].next_type == REDIRECT_FROM_SINGLE)
+		{
+			if (check_path(&exc_inf[i]))
+				ft_redirect_from_single_init(&exc_inf[i], fd);
+			close(fd[1]);
+			return;
+		}
 		signal(SIGINT, handle_standard);
 		while (1)
 		{
 			line = readline("> ");
 			if (!line)
 			{
-				printf("warning: wanted %s\n", eof);
+				printf("warning: wanted %s\n", exc_inf[i].cmd);
 				break ;
 			}
-			if (!ft_strncmp(eof, line, ft_strlen(eof))
-				&& ft_strlen(eof) == ft_strlen(line))
+			if (!ft_strncmp(exc_inf[i].cmd, line, ft_strlen(exc_inf[i].cmd))
+				&& ft_strlen(exc_inf[i].cmd) == ft_strlen(line))
 				break ;
 			write(fd[1], line, ft_strlen(line));
 			write(fd[1], "\n", 1);
@@ -37,23 +44,28 @@ static void	ft_redirect_from_double_init(int fd[2], char *eof, int pid)
 	}
 }
 
-static void	ft_redirect_from_double_middle(char *eof, int pid)
+static void	ft_redirect_from_double_middle(t_exec *exec_info, int pid, int i)
 {
 	char	*line;
 
 	if (pid == 0)
 	{
+		if (exec_info[i - 1].next_type == REDIRECT_FROM_SINGLE)
+		{
+			check_path(&exec_info[i]);
+			return ;
+		}
 		signal(SIGINT, handle_standard);
 		while (1)
 		{
 			line = readline("> ");
 			if (!line)
 			{
-				printf("warning: wanted %s\n", eof);
+				printf("warning: wanted %s\n", exec_info[i].cmd);
 				break ;
 			}
-			if (!ft_strncmp(eof, line, ft_strlen(eof))
-				&& ft_strlen(eof) == ft_strlen(line))
+			if (!ft_strncmp(exec_info[i].cmd, line, ft_strlen(exec_info[i].cmd))
+				&& ft_strlen(exec_info[i].cmd) == ft_strlen(line))
 				break ;
 		}
 	}
@@ -94,9 +106,10 @@ void	ft_redirect_from_double(t_exec *exec_info, int i)
 	pid = fork();
 	if (!(i == 0 || exec_info[i - 1].next_type == PIPE))
 		commands--;
-	while (exec_info[++commands].next_type == REDIRECT_FROM_DOUBLE)
-		ft_redirect_from_double_middle(exec_info[commands].cmd, pid);
-	ft_redirect_from_double_init(fd, exec_info[commands].cmd, pid);
+	while (exec_info[++commands].next_type == REDIRECT_FROM_DOUBLE
+			|| exec_info[commands].next_type == REDIRECT_FROM_SINGLE)
+		ft_redirect_from_double_middle(exec_info, pid, commands);
+	ft_redire_from_doub_init(fd, exec_info, pid, commands);
 	if (i == 0 || exec_info[i - 1].next_type == PIPE)
 	{
 		if (exec_info[commands].next_type != LAST)

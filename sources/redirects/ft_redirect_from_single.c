@@ -6,13 +6,13 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 19:07:38 by elima-me          #+#    #+#             */
-/*   Updated: 2022/01/22 13:26:17 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/01/25 14:40:21 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-static int	check_path(t_exec *exec_info)
+int	check_path(t_exec *exec_info)
 {
 	int	fd;
 
@@ -26,7 +26,7 @@ static int	check_path(t_exec *exec_info)
 	return (1);
 }
 
-static void	ft_redirect_from_single_init(t_exec *exec_info, int fd[2])
+void	ft_redirect_from_single_init(t_exec *exec_info, int fd[2])
 {
 	int		pid;
 	int		file_fd;
