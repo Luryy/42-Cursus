@@ -6,7 +6,7 @@
 /*   By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 22:30:36 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/01/25 19:31:23 by elima-me         ###   ########.fr       */
+/*   Updated: 2022/01/25 20:00:39 by elima-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ t_mini	*mini_s(void);
 void	ft_free_array(char **array);
 char	**ft_join_envs(void);
 int		not_have_line(t_exec *exec_info, char *line);
-void	check_pipe_and_last(t_exec *exec_info, int fd, int pid, int fdi_to);
+void	check_pipe_and_last(t_exec *exec_info, int fd[2], int pid, int fdi_to);
 void	wait_and_handle_sig(int pid);
 
 //PARSERS
@@ -99,6 +99,7 @@ void	ft_redirect_to(t_exec *exec_info, int i, int fdi);
 void	ft_redirect_from_single(t_exec *exec_info, int i);
 void	ft_redirect_from_double(t_exec *exec_info, int i);
 void	ft_redirect_from(t_exec *exec_info, int i);
+void	ft_redi_from_doub_last(t_exec *ex_inf, int fd[2], int pid, int fdt);
 
 int		check_path(t_exec *exec_info);
 void	ft_redirect_from_single_init(t_exec *exec_info, int fd[2]);

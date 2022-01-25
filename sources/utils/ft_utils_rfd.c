@@ -6,7 +6,7 @@
 /*   By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/25 19:01:08 by elima-me          #+#    #+#             */
-/*   Updated: 2022/01/25 19:30:52 by elima-me         ###   ########.fr       */
+/*   Updated: 2022/01/25 19:58:59 by elima-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,14 @@ int	not_have_line(t_exec *exec_info, char *line)
 	return (0);
 }
 
-void	check_pipe_and_last(t_exec *exec_info, int fd, int pid, int fdi_to)
+void	check_pipe_and_last(t_exec *exec_info, int fd[2], int pid, int fdi_to)
 {
-	ft_redi_from_doub_last(&(exec_info[i]), fd, pid, -1);
+	ft_redi_from_doub_last(exec_info, fd, pid, -1);
 	ft_signals();
 	close(fdi_to);
 }
 
-void	wait_and_handle_sig()
-{
+void	wait_and_handle_sig(int pid)
 {
 	waitpid(pid, NULL, 0);
 	ft_signals();

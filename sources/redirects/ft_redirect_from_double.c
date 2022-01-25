@@ -68,7 +68,7 @@ static void	ft_redirect_from_double_middle(t_exec *exec_info, int pid, int i)
 	}
 }
 
-static void	ft_redi_from_doub_last(t_exec *ex_inf, int fd[2], int pid, int fdt)
+void	ft_redi_from_doub_last(t_exec *ex_inf, int fd[2], int pid, int fdt)
 {
 	if (pid == 0)
 	{
