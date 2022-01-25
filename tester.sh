@@ -170,3 +170,29 @@ fi
 rm file file2 
 sleep 0.1
 echo
+
+echo
+printf $WHITE"------Testing RT RFD------\n"
+exec_test 'echo zooi > file << file2'
+if grep -q zooi file ; then
+	printf " $BOLDGREEN%s$RESET" "✓ "
+else
+	printf " $BOLDRED%s$RESET" "✗ "
+fi
+rm file
+sleep 0.1
+echo
+
+
+echo
+printf $WHITE"------Testing RF RT------\n"
+echo teste > file
+exec_test 'grep t < file > file2'
+if grep -q teste file2; then
+	printf " $BOLDGREEN%s$RESET" "✓ "
+else
+	printf " $BOLDRED%s$RESET" "✗ "
+fi
+rm file file2
+sleep 0.1
+echo
