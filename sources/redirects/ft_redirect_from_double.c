@@ -29,11 +29,8 @@ static void	ft_redire_from_doub_init(int fd[2], t_exec *exc_inf, int pid, int i)
 		while (1)
 		{
 			line = readline("> ");
-			if (!line)
-			{
-				printf("warning: wanted %s\n", exc_inf[i].cmd);
+			if (not_have_line(&exc_inf[i], line))
 				break ;
-			}
 			if (!ft_strncmp(exc_inf[i].cmd, line, ft_strlen(exc_inf[i].cmd))
 				&& ft_strlen(exc_inf[i].cmd) == ft_strlen(line))
 				break ;

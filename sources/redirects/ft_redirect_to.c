@@ -3,14 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   ft_redirect_to.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 23:58:26 by elima-me          #+#    #+#             */
-/*   Updated: 2022/01/25 16:31:27 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/01/25 18:57:20 by elima-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
+
+static int	verify_last_pipe(t_exec *exec_info, int fd_pipe[2])
+{
+	int	fdi_to_return;
+
+	fdi_to_return = -2;
+	if (exec_info->next_type != LAST)
+	{
+		fdi_to_return = fd_pipe[0];
+		close(fd_pipe[1]);
+		return (fdi_to_return);
+	}
+	return (fdi_to_return);
+}
 
 static int	ft_open(t_exec *exec_info, int i)
 {
@@ -52,7 +66,6 @@ static int	ft_redirect_to_last(t_exec *exec_info, int fd[2], int i)
 	int		fdi_to_return;
 	int		fd_pipe[2];
 
-	fdi_to_return = -2;
 	file = ft_open(exec_info, i);
 	if (!(exec_info[i].next_type == REDIRECT_TO_SINGLE
 			|| exec_info[i].next_type == REDIRECT_TO_DOUBLE))
@@ -65,11 +78,7 @@ static int	ft_redirect_to_last(t_exec *exec_info, int fd[2], int i)
 			if (exec_info[i].next_type != LAST)
 				write(fd_pipe[1], &line, 1);
 		}
-		if (exec_info[i].next_type != LAST)
-		{
-			fdi_to_return = fd_pipe[0];
-			close(fd_pipe[1]);
-		}
+		fdi_to_return = verify_last_pipe(&exec_info[i], fd_pipe);
 		close(file);
 		close(fd[0]);
 	}

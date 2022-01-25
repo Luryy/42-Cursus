@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 22:30:36 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/01/25 16:48:00 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/01/25 19:31:23 by elima-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,9 @@ void	ft_env_add_front(t_env **envs, t_env *new);
 t_mini	*mini_s(void);
 void	ft_free_array(char **array);
 char	**ft_join_envs(void);
+int		not_have_line(t_exec *exec_info, char *line);
+void	check_pipe_and_last(t_exec *exec_info, int fd, int pid, int fdi_to);
+void	wait_and_handle_sig(int pid);
 
 //PARSERS
 void	ft_parser(char *line, t_exec *exec_info);
