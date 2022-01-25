@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 23:03:18 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/01/24 21:21:51 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/01/25 10:21:21 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,25 +59,15 @@ static void	ft_redirect_from_double_middle(char *eof, int pid)
 	}
 }
 
-static int	ft_redi_from_doub_last(t_exec *ex_inf, int fd[2], int pid, int cmd)
+static void	ft_redi_from_doub_last(t_exec *ex_inf, int fd[2], int pid, int fdt)
 {
-	int	fd_to_return[2];
-	int	fdi_to_return;
-
-	fdi_to_return = -1;
-	if (ex_inf[cmd].next_type != LAST && pid != 0)
-	{
-		pipe(fd_to_return);
-		fdi_to_return = fd_to_return[0];
-	}
 	if (pid == 0)
 	{
 		signal(SIGINT, handle_standard);
-		if (ex_inf[cmd].next_type != LAST)
+		if (fdt >= 0)
 		{
-			dup2(fd_to_return[1], STDOUT_FILENO);
-			close(fd_to_return[1]);
-			close(fd_to_return[0]);
+			dup2(fdt, STDOUT_FILENO);
+			close(fdt);
 		}
 		dup2(fd[0], STDIN_FILENO);
 		close(fd[0]);
@@ -85,10 +75,9 @@ static int	ft_redi_from_doub_last(t_exec *ex_inf, int fd[2], int pid, int cmd)
 	}
 	close(fd[0]);
 	close(fd[1]);
-	if (ex_inf[cmd].next_type != LAST)
-		close(fd_to_return[1]);
+	if (fdt >= 0)
+		close(fdt);
 	waitpid(pid, NULL, 0);
-	return (fdi_to_return);
 }
 
 void	ft_redirect_from_double(t_exec *exec_info, int i)
@@ -96,19 +85,26 @@ void	ft_redirect_from_double(t_exec *exec_info, int i)
 	int	fd[2];
 	int	pid;
 	int	commands;
-	int	fdi_to;
+	int	fd_to[2];
 
 	commands = i;
 	signal(SIGINT, handle_nothing);
 	pipe(fd);
+	pipe(fd_to);
 	pid = fork();
 	while (exec_info[++commands].next_type == REDIRECT_FROM_DOUBLE)
 		ft_redirect_from_double_middle(exec_info[commands].cmd, pid);
 	ft_redirect_from_double_init(fd, exec_info[commands].cmd, pid);
-	fdi_to = ft_redi_from_doub_last(&(exec_info[i]), fd, pid, commands - i);
-	ft_signals();
 	if (exec_info[commands].next_type != LAST)
 	{
-		ft_redirects(exec_info, commands + 1, fdi_to, -1);
+		ft_redi_from_doub_last(&(exec_info[i]), fd, pid, fd_to[1]);
+		ft_signals();
+		ft_redirects(exec_info, commands + 1, fd_to[0], -1);
+	}
+	else
+	{
+		ft_redi_from_doub_last(&(exec_info[i]), fd, pid, -1);
+		ft_signals();
+		close(fd_to[0]);
 	}
 }
