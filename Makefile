@@ -6,7 +6,7 @@
 #    By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/01 22:24:23 by lyuri-go          #+#    #+#              #
-#    Updated: 2022/01/18 23:03:34 by lyuri-go         ###   ########.fr        #
+#    Updated: 2022/01/24 21:23:27 by lyuri-go         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -100,6 +100,9 @@ clean: libft_clean
 
 fclean: clean libft_fclean
 	$(REMOVE) $(NAME) $(CHECKER_NAME)
+
+test: re
+	./tester.sh
 
 
 re: fclean all

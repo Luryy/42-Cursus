@@ -32,3 +32,5 @@ jobs:
     - name: Linter with Norminette
       run: |
         norminette
+    - name: Run tests
+      run: make test
