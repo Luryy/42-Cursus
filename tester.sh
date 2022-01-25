@@ -200,7 +200,7 @@ echo
 printf $WHITE"------Testing RF RT------\n"
 echo teste > file
 exec_test 'grep t < file > file2'
-if grep -q teste file2; then
+if grep -q testxe file2; then
 	printf " $BOLDGREEN%s$RESET" "✓ "
 else
 	EXIT=1
