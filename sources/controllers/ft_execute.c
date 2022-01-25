@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 19:41:12 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/01/25 16:30:21 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/01/25 16:57:14 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	ft_execute(char *line)
 		printf("exit\n");
 		exit(EXIT_SUCCESS);
 	}
-	exec_info = malloc(sizeof(t_exec) * 40);
+	exec_info = malloc(sizeof(t_exec) * 4000);
 	ft_parser(line, exec_info);
 	if (exec_info->next_type == LAST)
 		ft_execute_cmd(&exec_info[0], 1);
