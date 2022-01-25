@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 22:29:14 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/01/25 16:23:36 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/01/25 16:30:29 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,5 @@ void	ft_pipe(t_exec *exec_info, int i, int fd_in)
 	else if (exec_info[i].next_type == LAST)
 		ft_parse_last(i, exec_info, fd_in);
 	else
-		ft_redirects(exec_info, i, fd_in);
+		ft_redirects(exec_info, i, fd_in, 0);
 }

@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 22:30:36 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/01/25 16:23:27 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/01/25 16:48:00 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void	ft_free_env(void);
 int		split_key(char *env);
 
 //REDIRECTS
-void	ft_redirects(t_exec *exec_info, int i, int fdi);
+void	ft_redirects(t_exec *exec_info, int i, int fdi, int is_redirect);
 void	ft_pipe(t_exec	*exec_info, int i, int fd_in);
 void	ft_execute_cmd(t_exec *exec, int shouldfork);
 void	ft_redirect_to(t_exec *exec_info, int i, int fdi);
