@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 19:41:12 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/01/20 19:21:13 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/01/25 16:23:32 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,6 @@ void	ft_execute(char *line)
 	if (exec_info->next_type == LAST)
 		ft_execute_cmd(&exec_info[0], 1);
 	else
-		ft_redirects(exec_info, 0, -1, -1);
+		ft_redirects(exec_info, 0, -1);
 	ft_free_parser(exec_info);
 }

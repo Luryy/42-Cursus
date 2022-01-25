@@ -6,15 +6,14 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 18:13:05 by elima-me          #+#    #+#             */
-/*   Updated: 2022/01/25 15:21:00 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/01/25 16:23:17 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-void	ft_redirects(t_exec *exec_info, int i, int fdi, int fdo)
+void	ft_redirects(t_exec *exec_info, int i, int fdi)
 {
-	(void)fdo;
 	if (exec_info[i].next_type == PIPE || (exec_info[i].next_type == LAST
 			&& exec_info[i - 1].next_type == PIPE))
 		ft_pipe(exec_info, i, fdi);

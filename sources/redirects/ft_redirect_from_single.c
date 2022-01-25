@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 19:07:38 by elima-me          #+#    #+#             */
-/*   Updated: 2022/01/25 14:40:21 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/01/25 16:23:54 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ void	ft_redirect_from_single(t_exec *exec_info, int i)
 		while (exec_info[comands].next_type == REDIRECT_FROM_SINGLE)
 			comands++;
 		if (exec_info[comands].next_type != LAST)
-			ft_redirects(exec_info, comands, -1, -1);
+			ft_redirects(exec_info, comands, -1);
 		return;
 	}
 	pipe(fd);
@@ -118,6 +118,6 @@ void	ft_redirect_from_single(t_exec *exec_info, int i)
 	else
 	{
 		fdi = ft_redirect_from_single_last(&exec_info[i], fd, 0);
-		ft_redirects(exec_info, comands + 1, fdi, -1);
+		ft_redirects(exec_info, comands + 1, fdi);
 	}
 }
