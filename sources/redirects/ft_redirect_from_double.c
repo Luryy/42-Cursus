@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 23:03:18 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/01/25 10:21:21 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/01/25 11:56:07 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,19 +92,31 @@ void	ft_redirect_from_double(t_exec *exec_info, int i)
 	pipe(fd);
 	pipe(fd_to);
 	pid = fork();
+	if (!(i == 0 || exec_info[i - 1].next_type == PIPE))
+		commands--;
 	while (exec_info[++commands].next_type == REDIRECT_FROM_DOUBLE)
 		ft_redirect_from_double_middle(exec_info[commands].cmd, pid);
 	ft_redirect_from_double_init(fd, exec_info[commands].cmd, pid);
-	if (exec_info[commands].next_type != LAST)
+	if (i == 0 || exec_info[i - 1].next_type == PIPE)
 	{
-		ft_redi_from_doub_last(&(exec_info[i]), fd, pid, fd_to[1]);
-		ft_signals();
-		ft_redirects(exec_info, commands + 1, fd_to[0], -1);
+		if (exec_info[commands].next_type != LAST)
+		{
+			ft_redi_from_doub_last(&(exec_info[i]), fd, pid, fd_to[1]);
+			ft_signals();
+			ft_redirects(exec_info, commands + 1, fd_to[0], -1);
+		}
+		else
+		{
+			ft_redi_from_doub_last(&(exec_info[i]), fd, pid, -1);
+			ft_signals();
+			close(fd_to[0]);
+		}
 	}
 	else
 	{
-		ft_redi_from_doub_last(&(exec_info[i]), fd, pid, -1);
+		if (pid == 0)
+			exit(EXIT_SUCCESS);
+		waitpid(pid, NULL, 0);
 		ft_signals();
-		close(fd_to[0]);
 	}
 }
