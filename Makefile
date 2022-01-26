@@ -6,7 +6,7 @@
 #    By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/01 22:24:23 by lyuri-go          #+#    #+#              #
-#    Updated: 2022/01/26 01:13:04 by lyuri-go         ###   ########.fr        #
+#    Updated: 2022/01/26 19:57:06 by lyuri-go         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,7 +66,7 @@ all:	$(LIBFT) $(NAME)
 
 # bonus:	$(LIBFT) $(CHECKER_NAME)
 valgrind: all
-	valgrind --tool=memcheck --leak-check=full --track-origins=yes -s ./minishell
+	valgrind --tool=memcheck --leak-check=full --track-origins=yes --suppressions=readline.supp -s ./minishell
 
 
 debug: set_debug_flag re
