@@ -1,47 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_signals.c                                       :+:      :+:    :+:   */
+/*   ft_utils_rfd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/23 18:19:57 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/01/25 20:03:57 by elima-me         ###   ########.fr       */
+/*   Created: 2022/01/25 19:01:08 by elima-me          #+#    #+#             */
+/*   Updated: 2022/01/25 20:12:11 by elima-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-static void	handle(int sig)
+int	not_have_line(t_exec *exec_info, char *line)
 {
-	if (sig == SIGINT)
+	if (!line)
 	{
-		printf("\n");
-		rl_on_new_line();
-		rl_replace_line("", 0);
-		rl_redisplay();
+		printf("warning: wanted %s\n", exec_info->cmd);
+		return (1);
 	}
-	else if (sig == SIGQUIT)
-		printf("\b\b  \b\b");
-}
-
-int	ft_signals(void)
-{
-	signal(SIGINT, handle);
-	signal(SIGQUIT, handle);
 	return (0);
 }
 
-void	handle_nothing(int sig)
+void	check_pipe_and_last(t_exec *exec_info, int fd[2], int pid, int fdi_to)
 {
-	(void)sig;
+	ft_redi_from_doub_last(exec_info, fd, pid, -1);
+	ft_signals();
+	close(fdi_to);
 }
 
-void	handle_standard(int sig)
+void	wait_and_handle_sig(int pid)
 {
-	if (sig == SIGINT)
-	{
-		printf("\n");
-		exit(EXIT_SUCCESS);
-	}
+	waitpid(pid, NULL, 0);
+	ft_signals();
 }

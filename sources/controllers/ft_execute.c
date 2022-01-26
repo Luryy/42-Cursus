@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_execute.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 19:41:12 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/01/06 18:24:45 by elima-me         ###   ########.fr       */
+/*   Updated: 2022/01/25 16:57:14 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,11 @@ void	ft_execute(char *line)
 		printf("exit\n");
 		exit(EXIT_SUCCESS);
 	}
-	exec_info = malloc(sizeof(t_exec) * 40);
+	exec_info = malloc(sizeof(t_exec) * 4000);
 	ft_parser(line, exec_info);
 	if (exec_info->next_type == LAST)
 		ft_execute_cmd(&exec_info[0], 1);
 	else
-		ft_redirects(exec_info);
+		ft_redirects(exec_info, 0, -1, 0);
 	ft_free_parser(exec_info);
 }

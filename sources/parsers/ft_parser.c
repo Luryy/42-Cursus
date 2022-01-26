@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 19:12:12 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/12/08 21:58:57 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/01/25 17:07:13 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	ft_parser_exec(char *line, t_exec *exec, int *str_init)
 	int	args_counter;
 
 	exec->next_type = LAST;
-	exec->args = malloc(40 * sizeof(char *));
+	exec->args = malloc(400 * sizeof(char *));
 	while (line[*str_init] == ' ' || line[*str_init] == '\t')
 		(*str_init)++;
 	str_end = *str_init;

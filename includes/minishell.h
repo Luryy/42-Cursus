@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 22:30:36 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/01/19 00:35:11 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/01/25 20:39:52 by elima-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ typedef struct s_mini {
 
 // CONTROLLERS
 void	ft_execute(char *line);
-void	ft_signals(void);
+int		ft_signals(void);
 void	ft_load_history(void);
 void	ft_add_history(char *in);
 void	ft_free(t_exec *exec);
@@ -78,6 +78,9 @@ void	ft_env_add_front(t_env **envs, t_env *new);
 t_mini	*mini_s(void);
 void	ft_free_array(char **array);
 char	**ft_join_envs(void);
+int		not_have_line(t_exec *exec_info, char *line);
+void	check_pipe_and_last(t_exec *exec_info, int fd[2], int pid, int fdi_to);
+void	wait_and_handle_sig(int pid);
 
 //PARSERS
 void	ft_parser(char *line, t_exec *exec_info);
@@ -89,11 +92,16 @@ void	ft_free_env(void);
 int		split_key(char *env);
 
 //REDIRECTS
-void	ft_redirects(t_exec *exec_info);
+void	ft_redirects(t_exec *exec_info, int i, int fdi, int is_redirect);
 void	ft_pipe(t_exec	*exec_info, int i, int fd_in);
 void	ft_execute_cmd(t_exec *exec, int shouldfork);
-void	ft_redirect_to(t_exec *exec_info, int i);
-void	ft_redirect_from_single(t_exec *exec_info);
-void	ft_redirect_from_double(t_exec *exec_info, int i);
+void	ft_redirect_to(t_exec *exec_info, int i, int fdi);
+void	ft_redirect_from_single(t_exec *exec_info, int i);
+void	ft_redirect_from_double(t_exec *exec_info, int i,
+			int pid, int commands);
+void	ft_redirect_from(t_exec *exec_info, int i);
+int		ft_redi_from_doub_last(t_exec *ex_inf, int fd[2], int pid, int fdt);
+int		check_path(t_exec *exec_info);
+void	ft_redirect_from_single_init(t_exec *exec_info, int fd[2]);
 
 #endif

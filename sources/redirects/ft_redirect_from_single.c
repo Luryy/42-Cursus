@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_redirect_from_single.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 19:07:38 by elima-me          #+#    #+#             */
-/*   Updated: 2022/01/20 18:54:04 by elima-me         ###   ########.fr       */
+/*   Updated: 2022/01/25 22:28:18 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-static int	check_path(t_exec *exec_info)
+int	check_path(t_exec *exec_info)
 {
 	int	fd;
 
@@ -26,7 +26,7 @@ static int	check_path(t_exec *exec_info)
 	return (1);
 }
 
-static void	ft_redirect_from_single_init(t_exec *exec_info, int fd[2])
+void	ft_redirect_from_single_init(t_exec *exec_info, int fd[2])
 {
 	int		pid;
 	int		file_fd;
@@ -47,36 +47,77 @@ static void	ft_redirect_from_single_init(t_exec *exec_info, int fd[2])
 	waitpid(pid, NULL, 0);
 }
 
-static void	ft_redirect_from_single_last(t_exec *exec_info, int fd[2])
+static int	ft_redirect_from_single_last(t_exec *exec_info, int fd[2], int last)
 {
 	int	pid2;
+	int	fd_to[2];
 
+	close(fd[1]);
+	if (!last)
+		pipe(fd_to);
 	pid2 = fork();
 	if (pid2 == 0)
 	{
+		if (!last)
+		{
+			dup2(fd_to[1], STDOUT_FILENO);
+			close(fd_to[0]);
+			close(fd_to[1]);
+		}
 		dup2(fd[0], STDIN_FILENO);
 		close(fd[0]);
-		close(fd[1]);
 		ft_execute_cmd(exec_info, 0);
 	}
 	close(fd[0]);
-	close(fd[1]);
 	waitpid(pid2, NULL, 0);
+	if (last)
+		return (-1);
+	close(fd_to[1]);
+	return (fd_to[0]);
 }
 
-void	ft_redirect_from_single(t_exec *exec_info)
+static int	ft_verify_redirect(t_exec *exec_info, int i, int *comands)
+{
+	*comands = i;
+	if (i > 1 && (exec_info[i - 2].next_type == REDIRECT_TO_SINGLE
+			|| exec_info[i - 2].next_type == REDIRECT_TO_DOUBLE))
+	{
+		while (exec_info[i].next_type == REDIRECT_FROM_SINGLE
+			|| exec_info[i].next_type == LAST)
+		{
+			if (!check_path(&exec_info[i]))
+				return (1);
+			i++;
+		}
+		return (1);
+	}
+	while (exec_info[*comands].next_type == REDIRECT_FROM_SINGLE)
+		if (!check_path(&exec_info[++(*comands)]))
+			return (1);
+	return (0);
+}
+
+void	ft_redirect_from_single(t_exec *exec_info, int i)
 {
 	int		fd[2];
 	int		comands;
+	int		fdi;
 
-	comands = 0;
-	while (exec_info[comands].next_type == REDIRECT_FROM_SINGLE)
+	if (ft_verify_redirect(exec_info, i, &comands))
 	{
-		if (!check_path(&exec_info[comands + 1]))
-			return ;
-		comands++;
+		while (exec_info[comands].next_type == REDIRECT_FROM_SINGLE)
+			comands++;
+		if (exec_info[comands].next_type != LAST)
+			ft_redirects(exec_info, comands, -1, 1);
+		return ;
 	}
 	pipe(fd);
 	ft_redirect_from_single_init(&exec_info[comands], fd);
-	ft_redirect_from_single_last(exec_info, fd);
+	if (exec_info[comands].next_type == LAST)
+		ft_redirect_from_single_last(&exec_info[i], fd, 1);
+	else
+	{
+		fdi = ft_redirect_from_single_last(&exec_info[i], fd, 0);
+		ft_redirects(exec_info, comands + 1, fdi, -1);
+	}
 }

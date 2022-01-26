@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/01 22:24:23 by lyuri-go          #+#    #+#              #
-#    Updated: 2022/01/18 23:03:34 by lyuri-go         ###   ########.fr        #
+#    Updated: 2022/01/25 19:56:25 by elima-me         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,13 +37,12 @@ SOURCE_FILES =	main.c \
 				cmd/ft_pwd.c cmd/ft_echo.c cmd/ft_exit.c cmd/ft_env.c\
 				cmd/ft_export.c cmd/ft_unset.c cmd/ft_cd.c cmd/ft_exec_bin.c\
 				utils/ft_get_env.c utils/ft_mini_singleton.c utils/ft_node.c\
-				utils/ft_free_aray.c utils/ft_join_envs.c\
+				utils/ft_free_aray.c utils/ft_join_envs.c utils/ft_utils_rfd.c \
 				parsers/ft_parser.c parsers/ft_special.c parsers/ft_substr_clean.c \
 				parsers/ft_parser_envs.c \
 				redirects/ft_redirects.c redirects/ft_pipe.c \
 				redirects/ft_redirect_to.c redirects/ft_redirect_from_single.c \
-				redirects/ft_redirect_from_double.c \
-
+				redirects/ft_redirect_from_double.c redirects/ft_redirect_from.c
 
 # SOURCE_B_FILES =
 
@@ -100,6 +99,9 @@ clean: libft_clean
 
 fclean: clean libft_fclean
 	$(REMOVE) $(NAME) $(CHECKER_NAME)
+
+test: re
+	./tester.sh
 
 
 re: fclean all
