@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/01 22:24:23 by lyuri-go          #+#    #+#              #
-#    Updated: 2022/01/25 19:56:25 by elima-me         ###   ########.fr        #
+#    Updated: 2022/01/26 01:13:04 by lyuri-go         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,7 @@ SOURCE_FILES =	main.c \
 				cmd/ft_export.c cmd/ft_unset.c cmd/ft_cd.c cmd/ft_exec_bin.c\
 				utils/ft_get_env.c utils/ft_mini_singleton.c utils/ft_node.c\
 				utils/ft_free_aray.c utils/ft_join_envs.c utils/ft_utils_rfd.c \
+				utils/ft_wait_get_status.c \
 				parsers/ft_parser.c parsers/ft_special.c parsers/ft_substr_clean.c \
 				parsers/ft_parser_envs.c \
 				redirects/ft_redirects.c redirects/ft_pipe.c \

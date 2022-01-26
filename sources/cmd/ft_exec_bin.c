@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 20:15:34 by elima-me          #+#    #+#             */
-/*   Updated: 2021/12/23 22:18:45 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/01/26 09:40:27 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ static void	ft_exec(char *cmd, char **arguments, char **envp)
 			if (!access(paths[i], X_OK))
 				break ;
 		if (execve(paths[i], arguments, envp))
-			ft_putstr_fd("somenthing was wrong!\n", 1);
+			ft_putstr_fd("somenthing was wrong!\n", 2);
 		ft_free_array(arguments);
 		ft_free_array(paths);
 	}
@@ -93,5 +93,5 @@ void	ft_exec_bin(char *cmd, char **args, int shouldfork)
 		exit(127);
 	}
 	else
-		waitpid(pid, NULL, 0);
+		ft_wait_get_status(pid, 1);
 }

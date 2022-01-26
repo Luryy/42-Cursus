@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 22:30:36 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/01/25 20:39:52 by elima-me         ###   ########.fr       */
+/*   Updated: 2022/01/26 09:56:12 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void	ft_add_history(char *in);
 void	ft_free(t_exec *exec);
 void	handle_nothing(int sig);
 void	handle_standard(int sig);
+void	ft_signals_standard_exec(int sig);
 
 // CMDS
 void	ft_echo(char **argv);
@@ -81,6 +82,7 @@ char	**ft_join_envs(void);
 int		not_have_line(t_exec *exec_info, char *line);
 void	check_pipe_and_last(t_exec *exec_info, int fd[2], int pid, int fdi_to);
 void	wait_and_handle_sig(int pid);
+void	ft_wait_get_status(int pid, int env);
 
 //PARSERS
 void	ft_parser(char *line, t_exec *exec_info);
