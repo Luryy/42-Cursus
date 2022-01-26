@@ -1,36 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_utils_rfd.c                                     :+:      :+:    :+:   */
+/*   ft_wait_get_status.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/25 19:01:08 by elima-me          #+#    #+#             */
-/*   Updated: 2022/01/26 10:18:59 by lyuri-go         ###   ########.fr       */
+/*   Created: 2022/01/26 01:11:25 by lyuri-go          #+#    #+#             */
+/*   Updated: 2022/01/26 10:59:53 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-int	not_have_line(t_exec *exec_info, char *line)
+void	ft_wait_get_status(int pid, int env)
 {
-	if (!line)
+	int	status_code;
+
+	if (env == 1)
 	{
-		printf("warning: wanted %s\n", exec_info->cmd);
-		return (1);
+		signal(SIGINT, ft_signals_standard_exec);
+		signal(SIGQUIT, ft_signals_standard_exec);
+		waitpid(pid, &status_code, 0);
+		ft_signals();
 	}
-	return (0);
-}
-
-void	check_pipe_and_last(t_exec *exec_info, int fd[2], int pid, int fdi_to)
-{
-	ft_redi_from_doub_last(exec_info, fd, pid, -1);
-	ft_signals();
-	close(fdi_to);
-}
-
-void	wait_and_handle_sig(int pid)
-{
-	ft_wait_get_status(pid, 0);
-	ft_signals();
+	else
+		waitpid(pid, &status_code, 0);
+	if (WIFEXITED(status_code))
+		mini_s()->last_exec_code = WEXITSTATUS(status_code);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_redirect_from_double.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 23:03:18 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/01/25 20:34:58 by elima-me         ###   ########.fr       */
+/*   Updated: 2022/01/26 10:09:54 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ int	ft_redi_from_doub_last(t_exec *ex_inf, int fd[2], int pid, int fdt)
 	close(fd[1]);
 	if (fdt >= 0)
 		close(fdt);
-	waitpid(pid, NULL, 0);
+	ft_wait_get_status(pid, 0);
 	return (0);
 }
 

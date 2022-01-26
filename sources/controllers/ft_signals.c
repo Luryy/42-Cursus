@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_signals.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 18:19:57 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/01/25 20:03:57 by elima-me         ###   ########.fr       */
+/*   Updated: 2022/01/26 10:04:06 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,20 @@ void	handle_standard(int sig)
 	if (sig == SIGINT)
 	{
 		printf("\n");
-		exit(EXIT_SUCCESS);
+		exit(130);
+	}
+}
+
+void	ft_signals_standard_exec(int sig)
+{
+	if (sig == SIGINT)
+	{
+		ft_putchar_fd('\n', 1);
+		mini_s()->last_exec_code = 130;
+	}
+	if (sig == SIGQUIT)
+	{
+		ft_putendl_fd("Quit", 2);
+		mini_s()->last_exec_code = 131;
 	}
 }
