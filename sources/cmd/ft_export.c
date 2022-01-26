@@ -6,7 +6,7 @@
 /*   By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 20:16:46 by elima-me          #+#    #+#             */
-/*   Updated: 2021/12/12 15:09:57 by elima-me         ###   ########.fr       */
+/*   Updated: 2022/01/25 21:41:42 by elima-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,13 @@ void	ft_export(char **args)
 	{
 		split = split_key(args[count_args]);
 		key = ft_substr(args[count_args], 0, split);
+		if (key[0] == '?')
+		{
+			ft_putstr_fd("export: `?': not a valid identifier\n", 2);
+			mini_s()->last_exec_code = 1;
+			count_args++;
+			continue ;
+		}
 		value = ft_substr(args[count_args], split + 1,
 				ft_strlen(args[count_args]));
 		if (find_and_change_var(key, value))
