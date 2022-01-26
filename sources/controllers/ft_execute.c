@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 19:41:12 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/01/25 16:57:14 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/01/26 10:22:21 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	ft_execute_cmd(t_exec *exec, int shouldfork)
 		ft_exec_bin(exec->cmd, exec->args, shouldfork);
 	if (!shouldfork)
 		exit(EXIT_SUCCESS);
+	mini_s()->last_exec_code = 0;
 }
 
 void	ft_execute(char *line)

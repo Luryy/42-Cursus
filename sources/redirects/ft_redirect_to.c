@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_redirect_to.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 23:58:26 by elima-me          #+#    #+#             */
-/*   Updated: 2022/01/25 18:57:20 by elima-me         ###   ########.fr       */
+/*   Updated: 2022/01/26 10:18:50 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,5 +105,5 @@ void	ft_redirect_to(t_exec *exec_info, int i, int fdi)
 	else if (exec_info[i].next_type != LAST)
 		ft_redirects(exec_info, i + 1, fdi_to_send, -1);
 	if (i == 0 || fdi == -2 || (fdi >= 0 && exec_info[i - 1].next_type == PIPE))
-		waitpid(pid, NULL, 0);
+		ft_wait_get_status(pid, 0);
 }

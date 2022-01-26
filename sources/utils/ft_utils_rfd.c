@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_utils_rfd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/25 19:01:08 by elima-me          #+#    #+#             */
-/*   Updated: 2022/01/25 20:12:11 by elima-me         ###   ########.fr       */
+/*   Updated: 2022/01/26 10:18:59 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,6 @@ void	check_pipe_and_last(t_exec *exec_info, int fd[2], int pid, int fdi_to)
 
 void	wait_and_handle_sig(int pid)
 {
-	waitpid(pid, NULL, 0);
+	ft_wait_get_status(pid, 0);
 	ft_signals();
 }

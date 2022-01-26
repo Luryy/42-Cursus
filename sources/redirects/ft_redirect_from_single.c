@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 19:07:38 by elima-me          #+#    #+#             */
-/*   Updated: 2022/01/25 22:28:18 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/01/26 10:49:58 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int	check_path(t_exec *exec_info)
 	if (fd < 0)
 	{
 		printf("%s: No such file or directory\n", exec_info->cmd);
+		mini_s()->last_exec_code = 1;
 		return (0);
 	}
 	return (1);
@@ -44,7 +45,7 @@ void	ft_redirect_from_single_init(t_exec *exec_info, int fd[2])
 		close(fd[1]);
 		exit(EXIT_SUCCESS);
 	}
-	waitpid(pid, NULL, 0);
+	ft_wait_get_status(pid, 0);
 }
 
 static int	ft_redirect_from_single_last(t_exec *exec_info, int fd[2], int last)
@@ -69,7 +70,7 @@ static int	ft_redirect_from_single_last(t_exec *exec_info, int fd[2], int last)
 		ft_execute_cmd(exec_info, 0);
 	}
 	close(fd[0]);
-	waitpid(pid2, NULL, 0);
+	ft_wait_get_status(pid2, 0);
 	if (last)
 		return (-1);
 	close(fd_to[1]);

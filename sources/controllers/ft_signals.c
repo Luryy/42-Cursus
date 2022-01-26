@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 18:19:57 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/01/26 09:55:58 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/01/26 10:04:06 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	handle_standard(int sig)
 	if (sig == SIGINT)
 	{
 		printf("\n");
-		exit(EXIT_SUCCESS);
+		exit(130);
 	}
 }
 
