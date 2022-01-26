@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 20:15:34 by elima-me          #+#    #+#             */
-/*   Updated: 2022/01/26 09:40:27 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/01/26 18:28:20 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,17 @@ static char	**ft_join_cmd(char *cmd)
 
 	i = -1;
 	temp = ft_strjoin("/", cmd);
-	paths = ft_split(getenv("PATH"), ':');
+	paths = ft_split(ft_get_env("PATH"), ':');
+	if (!paths)
+	{
+		free(temp);
+		return (NULL);
+	}
 	n_paths = 0;
-	while (paths[n_paths])
+	while (paths && paths[n_paths])
 		n_paths++;
 	new_paths = (char **)ft_calloc(sizeof(char *), n_paths + 1);
-	while (paths[++i])
+	while (paths && paths[++i])
 		new_paths[i] = ft_strjoin(paths[i], temp);
 	free(temp);
 	ft_free_array(paths);
@@ -64,14 +69,19 @@ static void	ft_exec(char *cmd, char **arguments, char **envp)
 	if (execve(cmd, arguments, envp))
 	{
 		paths = ft_join_cmd(cmd);
-		i = -1;
-		while (paths[++i])
-			if (!access(paths[i], X_OK))
-				break ;
-		if (execve(paths[i], arguments, envp))
+		if (paths)
+		{
+			i = -1;
+			while (paths[++i])
+				if (!access(paths[i], X_OK))
+					break ;
+			if (execve(paths[i], arguments, envp))
+				ft_putstr_fd("somenthing was wrong!\n", 2);
+			ft_free_array(paths);
+		}
+		else
 			ft_putstr_fd("somenthing was wrong!\n", 2);
 		ft_free_array(arguments);
-		ft_free_array(paths);
 	}
 }
 
