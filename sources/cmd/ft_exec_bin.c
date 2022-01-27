@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 20:15:34 by elima-me          #+#    #+#             */
-/*   Updated: 2022/01/26 18:28:20 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/01/27 10:18:17 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ static void	ft_exec(char *cmd, char **arguments, char **envp)
 	char	**paths;
 	int		i;
 
-	if (execve(cmd, arguments, envp))
+	if (access(cmd, X_OK) || execve(cmd, arguments, envp))
 	{
 		paths = ft_join_cmd(cmd);
 		if (paths)
@@ -76,11 +76,11 @@ static void	ft_exec(char *cmd, char **arguments, char **envp)
 				if (!access(paths[i], X_OK))
 					break ;
 			if (execve(paths[i], arguments, envp))
-				ft_putstr_fd("somenthing was wrong!\n", 2);
+				ft_putstr_fd("command not found\n", 2);
 			ft_free_array(paths);
 		}
 		else
-			ft_putstr_fd("somenthing was wrong!\n", 2);
+			ft_putstr_fd("No such file or directory\n", 2);
 		ft_free_array(arguments);
 	}
 }
