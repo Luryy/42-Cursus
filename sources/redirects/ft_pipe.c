@@ -6,11 +6,17 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 22:29:14 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/01/26 10:18:21 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/01/27 10:55:10 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
+
+static void	ft_close_fdi(int fdi)
+{
+	if (fdi > 0)
+		close(fdi);
+}
 
 static int	ft_parse_pipe(int i, t_exec *exec_info, int fd_in)
 {
@@ -33,6 +39,7 @@ static int	ft_parse_pipe(int i, t_exec *exec_info, int fd_in)
 	}
 	else
 	{
+		ft_close_fdi(fd_in);
 		close(fd[1]);
 		ft_pipe(exec_info, i + 1, fd[0]);
 	}
