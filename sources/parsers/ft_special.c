@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 22:28:52 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/12/03 17:37:57 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/01/27 11:12:51 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,13 @@ static void	ft_parse_redirect(char *line, int *init_arg, t_exec *exec)
 		else
 			exec->next_type = REDIRECT_FROM_SINGLE;
 	}
+}
+
+int	ft_is_special(char character)
+{
+	if (character == '|' || character == '<' || character == '>')
+		return (1);
+	return (0);
 }
 
 void	ft_parse_special(char *line, int *init_arg, t_exec *exec)

@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 22:30:36 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/01/27 09:19:25 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/01/27 11:12:59 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ char	*ft_substr_clean(char *line, int init_arg, int len);
 void	ft_parser_envs(char **envp);
 void	ft_free_env(void);
 int		split_key(char *env);
+int		ft_is_special(char character);
 
 //REDIRECTS
 void	ft_redirects(t_exec *exec_info, int i, int fdi, int is_redirect);
