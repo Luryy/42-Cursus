@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_history.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 19:10:29 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/11/24 19:07:05 by elima-me         ###   ########.fr       */
+/*   Updated: 2022/01/27 09:40:06 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static char	*ft_get_history_file_path(void)
 	char	*home_path;
 	char	*history_path;
 
-	home_path = ft_strdup(ft_get_env("HOME"));
+	home_path = ft_strdup(getenv("HOME"));
 	history_path = ft_strjoin(home_path, HISTORY_FILE);
 	free(home_path);
 	return (history_path);

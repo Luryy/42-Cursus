@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 21:30:05 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/01/26 18:53:09 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/01/27 10:21:13 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,16 +51,24 @@ static int	ft_includ_env(int *line_ref, char *line, int *arg_ref, char *arg)
 	return (env_len - line_len);
 }
 
+static int	is_spc(char *ln, int ln_ref)
+{
+	if (ln[ln_ref] == '$' && ln[ln_ref + 1]
+		&& (ft_isalnum(ln[ln_ref + 1]) || ln[ln_ref + 1] == '?'))
+		return (1);
+	return (0);
+}
+
 static char	*ft_parse_str_env(char *ln, int init_arg, int len, int *parsed_le)
 {
 	char	*arg_line;
 	int		ln_ref;
 	int		arg_rf;
-	int		should_parse;
+	int		should_pars;
 
 	ln_ref = -1;
 	arg_rf = 0;
-	should_parse = 1;
+	should_pars = 1;
 	arg_line = ft_calloc(sizeof(char), 50000);
 	*parsed_le = len;
 	while (ln[++ln_ref])
@@ -68,8 +76,8 @@ static char	*ft_parse_str_env(char *ln, int init_arg, int len, int *parsed_le)
 		if (ln_ref >= init_arg && ln_ref < init_arg + len)
 		{
 			if (ln[ln_ref] == '\'')
-				should_parse *= -1;
-			if (ln[ln_ref] == '$' && (should_parse > 0 || ln[init_arg] == '\"'))
+				should_pars *= -1;
+			if (is_spc(ln, ln_ref) && (should_pars > 0 || ln[init_arg] == '\"'))
 				*parsed_le += ft_includ_env(&ln_ref, ln, &arg_rf, arg_line);
 			else
 				arg_line[arg_rf++] = ln[ln_ref];

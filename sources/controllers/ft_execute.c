@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 19:41:12 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/01/26 17:26:21 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/01/27 19:17:59 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_execute_cmd(t_exec *exec, int shouldfork)
 	if (!ft_strncmp(exec->cmd, "echo", 4) && ft_strlen(exec->cmd) == 4)
 		ft_echo(exec->args);
 	else if (!ft_strncmp(exec->cmd, "cd", 2) && ft_strlen(exec->cmd) == 2)
-		ft_cd(exec->args);
+		return (ft_cd(exec->args, shouldfork));
 	else if (!ft_strncmp(exec->cmd, "pwd", 3) && ft_strlen(exec->cmd) == 3)
 		ft_pwd();
 	else if (!ft_strncmp(exec->cmd, "export", 6) && ft_strlen(exec->cmd) == 6)
@@ -50,7 +50,14 @@ void	ft_execute(char *line)
 		exit(EXIT_SUCCESS);
 	}
 	exec_info = malloc(sizeof(t_exec) * 4000);
+	if (ft_validate_quotes(line))
+		return ;
 	ft_parser(line, exec_info);
+	if (ft_validate_redirects(exec_info))
+	{
+		ft_free_parser(exec_info);
+		return ;
+	}
 	if (exec_info->next_type == LAST)
 		ft_execute_cmd(&exec_info[0], 1);
 	else
