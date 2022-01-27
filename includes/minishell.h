@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 22:30:36 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/01/27 19:14:05 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/01/27 19:37:35 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ void	ft_export(char **args);
 void	ft_unset(char **arg);
 void	ft_cd(char **path, int should_fork);
 void	ft_exec_bin(char *cmd, char **args, int shoulfork);
+void	ft_parse_home(int should_fork);
 
 // UTILS
 char	*ft_get_env(char *env);
