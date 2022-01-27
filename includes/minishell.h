@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 22:30:36 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/01/26 09:56:12 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/01/27 19:00:09 by elima-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,11 @@ enum e_cmd_next_type {
 	REDIRECT_TO_DOUBLE,
 	REDIRECT_FROM_SINGLE,
 	REDIRECT_FROM_DOUBLE,
+};
+
+enum e_errors {
+	ERR_NO_NUMERIC_ARGS,
+	ERR_TOO_MANY_ARGS,	
 };
 
 typedef struct s_exec {

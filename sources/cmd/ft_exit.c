@@ -6,7 +6,7 @@
 /*   By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 18:26:18 by elima-me          #+#    #+#             */
-/*   Updated: 2022/01/26 23:20:45 by elima-me         ###   ########.fr       */
+/*   Updated: 2022/01/27 19:09:28 by elima-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,17 +35,9 @@ static int	too_many_args(char **args)
 	return (0);
 }
 
-void	ft_exit(t_exec *exec)
+static void	print_exit_error(int err, t_exec *exec)
 {
-	int	exit_code;
-
-	if (too_many_args(exec->args))
-	{
-		ft_free(exec);
-		ft_putstr_fd("exit: too many arguments\n", 2);
-		exit(1);
-	}
-	else if (exec->args[0] && (!ft_is_number(exec->args[0])))
+	if (err == ERR_NO_NUMERIC_ARGS)
 	{
 		ft_putstr_fd("exit: ", 2);
 		ft_putstr_fd(exec->args[0], 2);
@@ -53,17 +45,34 @@ void	ft_exit(t_exec *exec)
 		ft_free(exec);
 		exit(2);
 	}
+	else if (err == 1)
+	{
+		ft_free(exec);
+		ft_putstr_fd("exit\n", 2);
+		ft_putstr_fd("exit: too many arguments\n", 2);
+		exit(1);
+	}
+}
+
+void	ft_exit(t_exec *exec)
+{
+	int	exit_code;
+
+	if (exec->args[0] && (!ft_is_number(exec->args[0])))
+		print_exit_error(ERR_NO_NUMERIC_ARGS, exec);
+	else if (too_many_args(exec->args))
+		print_exit_error(ERR_TOO_MANY_ARGS, exec);
 	else if (exec->args[0])
 	{
 		exit_code = ft_atoi(exec->args[0]);
-		ft_putstr_fd("exit\n", 1);
+		ft_putstr_fd("exit\n", 2);
 		ft_free(exec);
 		exit(exit_code);
 	}
 	else
 	{
 		ft_free(exec);
-		ft_putstr_fd("exit\n", 1);
+		ft_putstr_fd("exit\n", 2);
 		exit (EXIT_SUCCESS);
 	}
 }
