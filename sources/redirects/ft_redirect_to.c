@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 23:58:26 by elima-me          #+#    #+#             */
-/*   Updated: 2022/01/26 10:18:50 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/01/27 10:02:40 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,9 +79,9 @@ static int	ft_redirect_to_last(t_exec *exec_info, int fd[2], int i)
 				write(fd_pipe[1], &line, 1);
 		}
 		fdi_to_return = verify_last_pipe(&exec_info[i], fd_pipe);
-		close(file);
 		close(fd[0]);
 	}
+	close(file);
 	return (fdi_to_return);
 }
 
