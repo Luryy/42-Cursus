@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 21:30:05 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/01/27 09:54:14 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/01/27 10:21:13 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,8 @@ static int	ft_includ_env(int *line_ref, char *line, int *arg_ref, char *arg)
 
 static int	is_spc(char *ln, int ln_ref)
 {
-	if (ln[ln_ref] == '$' && ln[ln_ref + 1] && ft_isalnum(ln[ln_ref + 1]))
+	if (ln[ln_ref] == '$' && ln[ln_ref + 1]
+		&& (ft_isalnum(ln[ln_ref + 1]) || ln[ln_ref + 1] == '?'))
 		return (1);
 	return (0);
 }
