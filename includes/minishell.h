@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 22:30:36 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/01/27 18:33:20 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/01/27 19:14:05 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ void	ft_free_env(void);
 int		split_key(char *env);
 int		ft_is_special(char character);
 int		ft_validate_quotes(char *line);
+int		ft_validate_redirects(t_exec *exec_info);
 
 //REDIRECTS
 void	ft_redirects(t_exec *exec_info, int i, int fdi, int is_redirect);
