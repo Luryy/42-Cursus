@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 20:16:46 by elima-me          #+#    #+#             */
-/*   Updated: 2022/01/27 17:06:13 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/01/27 17:43:59 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	find_and_change_var(char *key, char *value)
 
 	temp = mini_s()->envs;
 	key_n = ft_strlen(key);
-	while (temp->next != NULL)
+	while (temp)
 	{
 		if (!ft_strncmp(key, temp->key, key_n) && key_n == ft_strlen(temp->key))
 		{
