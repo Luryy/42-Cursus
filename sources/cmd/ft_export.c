@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_export.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 20:16:46 by elima-me          #+#    #+#             */
-/*   Updated: 2022/01/25 21:41:42 by elima-me         ###   ########.fr       */
+/*   Updated: 2022/01/27 10:37:24 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,21 @@ static int	find_and_change_var(char *key, char *value)
 	return (0);
 }
 
+static int	ft_validate_key(char *key)
+{
+	int	i;
+
+	i = 0;
+	if (!ft_isalpha(key[i]))
+		return (1);
+	while (key[++i])
+	{
+		if (!ft_isalnum(key[i]) && key[i] != '_')
+			return (1);
+	}
+	return (0);
+}
+
 void	ft_export(char **args)
 {
 	int		count_args;
@@ -46,9 +61,9 @@ void	ft_export(char **args)
 	{
 		split = split_key(args[count_args]);
 		key = ft_substr(args[count_args], 0, split);
-		if (key[0] == '?')
+		if (ft_validate_key(key))
 		{
-			ft_putstr_fd("export: `?': not a valid identifier\n", 2);
+			ft_putstr_fd("export: not a valid identifier\n", 2);
 			mini_s()->last_exec_code = 1;
 			count_args++;
 			continue ;
