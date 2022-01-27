@@ -6,7 +6,7 @@
 #    By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/01 22:24:23 by lyuri-go          #+#    #+#              #
-#    Updated: 2022/01/27 09:57:51 by lyuri-go         ###   ########.fr        #
+#    Updated: 2022/01/27 18:35:28 by lyuri-go         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,7 @@ SOURCE_FILES =	main.c \
 				utils/ft_free_aray.c utils/ft_join_envs.c utils/ft_utils_rfd.c \
 				utils/ft_wait_get_status.c \
 				parsers/ft_parser.c parsers/ft_special.c parsers/ft_substr_clean.c \
-				parsers/ft_parser_envs.c \
+				parsers/ft_parser_envs.c parsers/ft_validations.c \
 				redirects/ft_redirects.c redirects/ft_pipe.c \
 				redirects/ft_redirect_to.c redirects/ft_redirect_from_single.c \
 				redirects/ft_redirect_from_double.c redirects/ft_redirect_from.c
