@@ -6,14 +6,19 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 19:50:11 by elima-me          #+#    #+#             */
-/*   Updated: 2022/01/27 09:36:55 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/01/27 19:39:42 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-void	chdir_safe(char *path, int should_fork)
+static void	chdir_safe(char *path, int should_fork)
 {
+	if (path[0] == '~' && !path[1])
+	{
+		ft_parse_home(should_fork);
+		return ;
+	}
 	if (chdir(path) == -1)
 	{
 		ft_putstr_fd("No such file or directory\n", 1);
