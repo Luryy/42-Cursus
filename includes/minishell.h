@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 22:30:36 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/01/26 09:56:12 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/01/27 19:14:05 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	ft_exit(t_exec *exec);
 void	ft_env(void);
 void	ft_export(char **args);
 void	ft_unset(char **arg);
-void	ft_cd(char **path);
+void	ft_cd(char **path, int should_fork);
 void	ft_exec_bin(char *cmd, char **args, int shoulfork);
 
 // UTILS
@@ -92,6 +92,9 @@ char	*ft_substr_clean(char *line, int init_arg, int len);
 void	ft_parser_envs(char **envp);
 void	ft_free_env(void);
 int		split_key(char *env);
+int		ft_is_special(char character);
+int		ft_validate_quotes(char *line);
+int		ft_validate_redirects(t_exec *exec_info);
 
 //REDIRECTS
 void	ft_redirects(t_exec *exec_info, int i, int fdi, int is_redirect);

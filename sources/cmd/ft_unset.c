@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_unset.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 21:01:55 by elima-me          #+#    #+#             */
-/*   Updated: 2021/12/12 15:14:39 by elima-me         ###   ########.fr       */
+/*   Updated: 2022/01/27 17:43:54 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,11 @@ void	ft_unset(char **args)
 	while (args[count_args])
 	{
 		temp = mini_s()->envs;
-		while (temp->next != NULL)
+		while (temp)
 		{
 			if (!ft_strncmp(args[count_args], temp->key,
-					ft_strlen(args[count_args])))
+					ft_strlen(args[count_args]))
+				&& ft_strlen(args[count_args]) == ft_strlen(temp->key))
 				temp->visible = 0;
 			temp = temp->next;
 		}

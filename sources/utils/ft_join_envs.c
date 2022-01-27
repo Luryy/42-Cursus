@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_join_envs.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 13:38:40 by elima-me          #+#    #+#             */
-/*   Updated: 2021/12/21 19:19:30 by elima-me         ###   ########.fr       */
+/*   Updated: 2022/01/27 17:43:45 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	count_list(void)
 
 	envs = mini_s()->envs;
 	size = 0;
-	while (envs->next != NULL)
+	while (envs)
 	{
 		size++;
 		envs = envs->next;
@@ -61,7 +61,7 @@ char	**ft_join_envs(void)
 	i = 0;
 	size = count_list();
 	envs_arr = (char **)ft_calloc(sizeof(char *), size + 1);
-	while (i < size && (envs->next != NULL))
+	while (i < size && (envs))
 	{
 		envs_arr[i] = ft_join(envs->key, '=', envs->value);
 		envs = envs->next;

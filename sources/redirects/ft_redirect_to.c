@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 23:58:26 by elima-me          #+#    #+#             */
-/*   Updated: 2022/01/26 10:18:50 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/01/27 15:52:51 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,16 +72,17 @@ static int	ft_redirect_to_last(t_exec *exec_info, int fd[2], int i)
 	{
 		if (exec_info[i].next_type != LAST)
 			pipe(fd_pipe);
-		while (read(fd[0], &line, 1))
+		while (fd[0] != 0 && read(fd[0], &line, 1))
 		{
 			write(file, &line, 1);
 			if (exec_info[i].next_type != LAST)
 				write(fd_pipe[1], &line, 1);
 		}
 		fdi_to_return = verify_last_pipe(&exec_info[i], fd_pipe);
-		close(file);
-		close(fd[0]);
+		if (fd[0] > 0)
+			close(fd[0]);
 	}
+	close(file);
 	return (fdi_to_return);
 }
 

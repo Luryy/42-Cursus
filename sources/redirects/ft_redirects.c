@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 18:13:05 by elima-me          #+#    #+#             */
-/*   Updated: 2022/01/25 16:52:47 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/01/27 15:52:15 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 void	ft_redirects(t_exec *exec_info, int i, int fdi, int is_redirect)
 {
-	if (exec_info[i].next_type == REDIRECT_TO_SINGLE
+	if (i == 0 && !(exec_info->cmd[0]) && exec_info->next_type > 1)
+		ft_redirects(exec_info, i + 1, 0, 0);
+	else if (exec_info[i].next_type == REDIRECT_TO_SINGLE
 		|| exec_info[i].next_type == REDIRECT_TO_DOUBLE
 		|| ((exec_info[i].next_type == LAST || is_redirect)
 			&& exec_info[i - 1].next_type == REDIRECT_TO_SINGLE)
