@@ -39,13 +39,14 @@ static void	print_exit_error(int err, t_exec *exec)
 {
 	if (err == ERR_NO_NUMERIC_ARGS)
 	{
+		ft_putstr_fd("exit\n", 2);
 		ft_putstr_fd("exit: ", 2);
 		ft_putstr_fd(exec->args[0], 2);
 		ft_putstr_fd(": numeric argument required\n", 2);
 		ft_free(exec);
 		exit(2);
 	}
-	else if (err == 1)
+	else if (err == ERR_TOO_MANY_ARGS)
 	{
 		ft_free(exec);
 		ft_putstr_fd("exit\n", 2);
