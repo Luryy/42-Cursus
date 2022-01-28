@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 19:12:12 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/01/27 12:22:50 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/01/28 16:34:29 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	ft_parser_args(char *line, int init_arg, t_exec *exec, int arg_nb)
 	end_arg = init_arg;
 	while (line[end_arg] && line[end_arg] != ' ' && line[end_arg] != '\t'
 		&& exec->next_type == LAST)
-		ft_parse_special(line, &end_arg, exec);
+		ft_parse_special(line, &end_arg, exec, 1);
 	if (end_arg != init_arg)
 		exec->args[arg_nb] = \
 		ft_substr_clean(line, init_arg, end_arg - init_arg);
@@ -42,8 +42,11 @@ int	ft_parser_exec(char *line, t_exec *exec, int *str_init)
 	str_end = *str_init;
 	while (line[str_end] && line[str_end] != ' ' && line[str_end] != '\t'
 		&& !ft_is_special(line[str_end]))
-		str_end++;
-	exec->cmd = ft_substr(line, *str_init, str_end - *str_init);
+		ft_parse_special(line, &str_end, exec, 0);
+	if (str_end - *str_init)
+		exec->cmd = ft_substr_clean(line, *str_init, str_end - *str_init);
+	else
+		exec->cmd = ft_substr(line, *str_init, str_end - *str_init);
 	args_counter = 0;
 	while (line[str_end] && exec->next_type == LAST)
 	{

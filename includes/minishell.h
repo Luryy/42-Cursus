@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 22:30:36 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/01/27 19:37:35 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/01/28 09:41:19 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ enum e_cmd_next_type {
 
 enum e_errors {
 	ERR_NO_NUMERIC_ARGS,
-	ERR_TOO_MANY_ARGS,	
+	ERR_TOO_MANY_ARGS,
 };
 
 typedef struct s_exec {
@@ -93,7 +93,7 @@ void	ft_wait_get_status(int pid, int env);
 //PARSERS
 void	ft_parser(char *line, t_exec *exec_info);
 void	ft_free_parser(t_exec *exec);
-void	ft_parse_special(char *line, int *init_arg, t_exec *exec);
+void	ft_parse_special(char *line, int *init_arg, t_exec *exec, int redirect);
 char	*ft_substr_clean(char *line, int init_arg, int len);
 void	ft_parser_envs(char **envp);
 void	ft_free_env(void);

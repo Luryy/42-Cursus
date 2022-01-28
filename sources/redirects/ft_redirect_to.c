@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 23:58:26 by elima-me          #+#    #+#             */
-/*   Updated: 2022/01/27 15:52:51 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/01/28 17:12:58 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ static int	ft_redirect_to_init(t_exec *exec_info, int fd[2], int fdi, int i)
 	int	pid;
 
 	pipe(fd);
+	signal(SIGINT, ft_signals_standard_exec);
 	pid = fork();
 	if (pid == 0)
 	{
@@ -106,5 +107,8 @@ void	ft_redirect_to(t_exec *exec_info, int i, int fdi)
 	else if (exec_info[i].next_type != LAST)
 		ft_redirects(exec_info, i + 1, fdi_to_send, -1);
 	if (i == 0 || fdi == -2 || (fdi >= 0 && exec_info[i - 1].next_type == PIPE))
+	{
+		ft_signals();
 		ft_wait_get_status(pid, 0);
+	}
 }

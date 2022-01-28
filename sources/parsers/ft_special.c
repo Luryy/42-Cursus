@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 22:28:52 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/01/27 19:04:15 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/01/28 09:41:42 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	ft_is_special(char character)
 	return (0);
 }
 
-void	ft_parse_special(char *line, int *init_arg, t_exec *exec)
+void	ft_parse_special(char *line, int *init_arg, t_exec *exec, int redirects)
 {
 	int	comparer;
 
@@ -71,7 +71,7 @@ void	ft_parse_special(char *line, int *init_arg, t_exec *exec)
 	ft_parse_double_quotes(line, init_arg);
 	if (comparer == *init_arg)
 		ft_parse_single_quotes(line, init_arg);
-	if (comparer == *init_arg)
+	if (comparer == *init_arg && redirects)
 		ft_parse_redirect(line, init_arg, exec);
 	(*init_arg)++;
 }
