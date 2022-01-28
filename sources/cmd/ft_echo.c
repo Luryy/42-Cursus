@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_echo.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 19:10:40 by elima-me          #+#    #+#             */
-/*   Updated: 2021/12/02 18:42:42 by elima-me         ###   ########.fr       */
+/*   Updated: 2022/01/28 16:16:35 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,7 @@ void	ft_echo(char **argv)
 	if (!flag)
 		i++;
 	while (argv[++i])
-	{
 		ft_putstr_fd(argv[i], 1);
-		write(1, " ", 1);
-	}
 	if (flag)
 		write(1, "\n", 1);
 }
