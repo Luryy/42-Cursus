@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 19:10:40 by elima-me          #+#    #+#             */
-/*   Updated: 2022/01/28 16:16:35 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/01/30 15:14:23 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,11 @@ void	ft_echo(char **argv)
 	if (!flag)
 		i++;
 	while (argv[++i])
+	{
 		ft_putstr_fd(argv[i], 1);
+		if (argv[i + 1])
+			write(1, " ", 1);
+	}
 	if (flag)
 		write(1, "\n", 1);
 }
