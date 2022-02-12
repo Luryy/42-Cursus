@@ -6,7 +6,7 @@
 #    By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/03 14:43:01 by lyuri-go          #+#    #+#              #
-#    Updated: 2021/11/09 00:34:34 by lyuri-go         ###   ########.fr        #
+#    Updated: 2022/02/12 12:41:48 by lyuri-go         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,7 @@ debug: set_debug_flag re
 	echo "\033[0;31mdebbuger active"
 
 set_debug_flag:
-	$(eval CC = gcc -g)
+	$(eval CC = gcc -g -fsanitize=thread)
 
 $(NAME):	$(OBJECTS)
 	$(CC) $(FLAGS) $(OBJECTS) $(INCLUDES) -o $(NAME)
