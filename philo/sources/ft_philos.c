@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 15:55:59 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/11/08 13:21:10 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/02/12 12:29:53 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ static void	ft_eat(t_philosophers *philo)
 {
 	if (philo->shared_data->philosophers == 1)
 	{
-		usleep(1);
-		ft_eat(philo);
+		ft_log(philo, 4);
+		ft_delay(philo->shared_data->time_die + 100, philo->shared_data);
 		return ;
 	}
 	ft_get_forks(philo);
