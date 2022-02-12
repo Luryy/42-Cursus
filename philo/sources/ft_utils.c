@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 14:40:37 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/11/08 13:09:21 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/02/12 12:08:17 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	ft_log(t_philosophers *philo, int status)
 	t_uint64	now;
 	char		*status_str[5];
 
-	status_str[0] = "\e[31mis DEAD\e[0m";
+	status_str[0] = "\e[31mdied\e[0m";
 	status_str[1] = "\e[32mis eating\e[0m";
 	status_str[2] = "\e[35mis sleeping\e[0m";
 	status_str[3] = "\e[34mis thinking\e[0m";
