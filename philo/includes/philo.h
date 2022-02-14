@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 14:48:34 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/11/08 13:09:33 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/02/14 20:17:56 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ void			ft_delay(t_uint64 time, t_shared_data *data);
 
 int				ft_philos(t_philosophers *philos);
 
+int				ft_get_status(t_shared_data *data);
 void			*ft_philo_death(void *params);
 
 #endif

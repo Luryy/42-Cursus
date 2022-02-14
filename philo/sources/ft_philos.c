@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 15:55:59 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/02/12 12:29:53 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/02/14 20:56:52 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,21 @@
 
 static void	ft_full_eat(t_philosophers *philo)
 {
-	if (philo->shared_data->app_status == LIVE)
+	if (ft_get_status(philo->shared_data) == LIVE)
 	{
 		pthread_mutex_lock(&philo->shared_data->m_food);
 		philo->num_meals++;
 		if (philo->num_meals == philo->shared_data->meals_to_full)
 			philo->shared_data->philos_full++;
-		pthread_mutex_unlock(&philo->shared_data->m_food);
 		if (philo->shared_data->philos_full == philo->shared_data->philosophers)
 		{
+			pthread_mutex_unlock(&philo->shared_data->m_food);
 			pthread_mutex_lock(&philo->shared_data->m_status);
 			philo->shared_data->app_status = FULL;
+			pthread_mutex_unlock(&philo->shared_data->m_status);
 			return ;
 		}
+		pthread_mutex_unlock(&philo->shared_data->m_food);
 	}
 }
 
@@ -83,7 +85,7 @@ void	*ft_runner(void *params)
 		printf("Error: Thread detach failed\n");
 		return (0);
 	}
-	while (philo->shared_data->app_status == LIVE)
+	while (ft_get_status(philo->shared_data) == LIVE)
 	{
 		ft_eat(philo);
 		ft_log(philo, 2);
