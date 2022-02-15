@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 00:28:09 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/11/10 00:06:44 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/02/15 18:52:27 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ typedef struct s_data
 }	t_data;
 
 int				ft_init_args(int argc, char **argv, t_data *data);
+int				ft_get_status(t_data *data);
 
 int				ft_atoi_positive(const char *nptr);
 int				ft_isdigit(int c);

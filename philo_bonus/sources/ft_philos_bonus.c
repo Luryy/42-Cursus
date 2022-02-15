@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 00:32:05 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/02/12 12:49:42 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/02/15 19:19:38 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	ft_full_eat(t_data *data)
 {
-	if (data->app_status == LIVE)
+	if (ft_get_status(data) == LIVE)
 	{
 		sem_wait(data->m_food);
 		data->num_meals++;
@@ -58,17 +58,20 @@ static void	*ft_philo_death(void *params)
 	t_uint64	last_meat_time;
 
 	data = (t_data *)params;
-	while (data->app_status == LIVE)
+	while (ft_get_status(data) == LIVE)
 	{
 		sem_wait(data->m_death);
 		time = ft_gettime();
+		sem_wait(data->m_food);
 		last_meat_time = time - data->last_meal;
+		sem_post(data->m_food);
 		sem_post(data->m_death);
 		if (last_meat_time > (t_uint64)data->time_die)
 		{
-			sem_wait(data->m_status);
 			ft_log(data, 0);
+			sem_wait(data->m_status);
 			data->app_status = DEAD;
+			sem_post(data->m_status);
 			exit(EXIT_SUCCESS);
 		}
 		ft_delay(5, data);
@@ -90,7 +93,7 @@ int	ft_philos(t_data *data)
 		printf("Error: Thread detach failed\n");
 		return (0);
 	}
-	while (data->app_status == LIVE)
+	while (ft_get_status(data) == LIVE)
 	{
 		ft_eat(data);
 		ft_log(data, 2);

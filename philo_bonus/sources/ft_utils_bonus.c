@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 00:33:05 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/02/12 12:08:31 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/02/15 18:55:29 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,14 @@ void	ft_log(t_data *data, int status)
 	status_str[2] = "\e[35mis sleeping\e[0m";
 	status_str[3] = "\e[34mis thinking\e[0m";
 	status_str[4] = "has taken a fork";
-	sem_wait(data->m_print);
 	now = ((ft_gettime() - data->start_timestamp));
-	if (data->app_status == LIVE)
+	if (ft_get_status(data) == LIVE)
+	{
+		sem_wait(data->m_print);
 		printf("[\e[33m%lu\e[0m] %d %s\n", now, data->id, status_str[status]);
-	if (status)
-		sem_post(data->m_print);
+		if (status)
+			sem_post(data->m_print);
+	}
 }
 
 void	ft_delay(t_uint64 time, t_data *data)
@@ -74,6 +76,6 @@ void	ft_delay(t_uint64 time, t_data *data)
 	t_uint64	timer;
 
 	timer = ft_gettime();
-	while ((ft_gettime() - timer) < time && data->app_status == LIVE)
+	while ((ft_gettime() - timer) < time && ft_get_status(data) == LIVE)
 		usleep(1);
 }
