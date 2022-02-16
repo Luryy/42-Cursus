@@ -20,7 +20,7 @@ static int	ft_validate(int argc, char **argv)
 	i = 0;
 	while (++i < argc)
 	{
-		if (ft_atoi_positive(argv[i]) < 0)
+		if (ft_atoi_positive(argv[i]) <= 0)
 			return (1);
 		j = -1;
 		while (argv[i][++j])
