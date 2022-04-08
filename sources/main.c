@@ -3,21 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rarodrig < rarodrig@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 20:11:59 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/04/05 21:38:45 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/04/07 23:13:06 by rarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
-int	main(void)
+int	main(int argc, char **argv)
 {
-	void	*init;
+	t_all all;
+	check_map(&all, argc, argv);
 
-	init = mlx_init();
-	mlx_new_window(init, 1000, 1000, "FDF");
-	mlx_loop(init);
 	return (1);
 }

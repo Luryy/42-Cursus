@@ -21,7 +21,7 @@ MLX = minilibx
 MLX_PATH = ./$(LIBS_PATH)/$(MLX)
 MLX_INCLUDE_PATH = ./$(LIBS_PATH)/$(MLX)/mlx
 
-SOURCE_FILES =	main.c
+SOURCE_FILES =	main.c check_map.c
 
 SOURCES = $(addprefix $(SOURCES_PATH)/,$(SOURCE_FILES))
 

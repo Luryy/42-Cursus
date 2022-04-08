@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rarodrig < rarodrig@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 20:13:46 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/04/05 21:31:51 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/04/07 22:54:30 by rarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,4 +17,10 @@
 # include "../libs/libft/libft.h"
 # include "../libs/minilibx/mlx.h"
 
+typedef struct	s_all
+{
+	int	whatever;
+}				t_all;
+
+int check_map(t_all *all, int argc, char **argv);
 #endif
