@@ -21,11 +21,11 @@ MLX = minilibx
 MLX_PATH = ./$(LIBS_PATH)/$(MLX)
 MLX_INCLUDE_PATH = ./$(LIBS_PATH)/$(MLX)/mlx
 
-SOURCE_FILES =	main.c check_map.c map_struct.c
+SOURCE_FILES =	main.c map/check_map.c map/map_struct.c
 
 SOURCES = $(addprefix $(SOURCES_PATH)/,$(SOURCE_FILES))
 
-SOURCE_DIRS = controllers
+SOURCE_DIRS = controllers map
 
 OBJECTS = $(addprefix $(OBJECTS_PATH)/,$(subst .c,.o,$(SOURCE_FILES)))
 
