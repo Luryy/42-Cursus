@@ -6,7 +6,7 @@
 /*   By: rarodrig < rarodrig@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 20:11:59 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/04/11 21:05:20 by rarodrig         ###   ########.fr       */
+/*   Updated: 2022/04/12 22:48:13 by rarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,13 @@ int	main(int argc, char **argv)
 {
 	t_all	all;
 	t_map	map;
+	int		fd1;
 
 	start_struct(&all, &map);
-	check_map(&all, argc, argv);
+	fd1 = find_map(&map, argc, argv[1]);
+	if (fd1 == 0)
+		return (0);
+	if (!map_struct(all.map, fd1))
+		return (0);
 	return (1);
 }
