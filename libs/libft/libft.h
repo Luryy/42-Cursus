@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 18:45:00 by lyuri-go          #+#    #+#             */
-/*   Updated: 2021/11/23 19:34:29 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/04/13 20:30:39 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <stdio.h>
 
 # define MAX_FILE_DESCRIPTOR FOPEN_MAX
-# define BUFFER_SIZE 10
+# define BUFFER_SIZE 300
 
 typedef struct s_list
 {

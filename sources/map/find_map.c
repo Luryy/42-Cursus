@@ -6,13 +6,13 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 22:43:14 by rarodrig          #+#    #+#             */
-/*   Updated: 2022/04/13 20:17:01 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/04/13 22:43:22 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
-int	check_extension(char *str, char *extension)
+static int	check_extension(char *str, char *extension)
 {
 	int	len_str;
 	int	len_ext;
@@ -27,7 +27,7 @@ int	check_extension(char *str, char *extension)
 			i++;
 		else
 		{
-			printf("Extensão do mapa inválido\n");
+			printf("Invalid map extension\n");
 			return (0);
 		}
 	}
@@ -38,16 +38,15 @@ int	find_map(t_all *all, int argc, char *argv)
 {
 	int	fd1;
 
-	all->map->path_map = argv;
 	if (argc == 1)
 	{
 		printf("ERROR!! Input need some map .cub\n");
-		return (0);
+		exiter(all, EXIT_FAILURE);
 	}
 	if (argc > 2)
 		printf("Will be utilized the first file\n");
 	if (!check_extension(argv, ".cub"))
-		return (0);
+		exiter(all, EXIT_FAILURE);
 	fd1 = open(argv, O_RDONLY);
 	if (fd1 < 0)
 	{

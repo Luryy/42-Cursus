@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 20:13:46 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/04/13 20:15:37 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/04/13 22:49:45 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,27 +24,45 @@
 
 typedef struct s_map
 {
-	int		qt_line;
-	int		qt_col;
-	int		qt_arq;
+	int		user_x;
+	int		user_y;
+	int		user_view;
 	char	**all_map;
-	char	*path_map;
 }				t_map;
+
+typedef struct s_texture
+{
+	char	*n;
+	char	*w;
+	char	*e;
+	char	*s;
+	char	*f;
+	char	*c;
+}				t_texture;
 
 typedef struct s_all
 {
-	int		whatever;
-	t_map	*map;
+	int			whatever;
+	t_map		*map;
+	t_texture	*texture;
 }				t_all;
+
+enum	e_directions {
+	N = 1,
+	W,
+	E,
+	S,
+};
 
 // MAP
 int		find_map(t_all *all, int argc, char *argv);
 
 // PARSER
-int		map_struct(t_map *map, int fd1);
+int		parse_map(t_all *all, int fd1);
 int		populate_map_var(t_map *map, int fd1);
 
 // UTILS
 void	exiter(t_all *all, int exit_number);
+void	ft_free(t_all *all);
 
 #endif
