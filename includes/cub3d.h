@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rarodrig < rarodrig@student.42sp.org.br    +#+  +:+       +#+        */
+/*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 20:13:46 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/04/25 21:27:03 by rarodrig         ###   ########.fr       */
+/*   Updated: 2022/04/26 20:20:14 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ enum	e_directions {
 int		find_map(t_all *all, int argc, char *argv);
 
 // PARSER
-int		parse_map(t_all *all, int fd1);
+void	parse_map(t_all *all, int fd1);
 int		populate_map_var(t_map *map, int fd1);
 int		validate_map_struct(t_map *map);
 

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   create_map_struct.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rarodrig < rarodrig@student.42sp.org.br    +#+  +:+       +#+        */
+/*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 21:14:03 by rarodrig          #+#    #+#             */
-/*   Updated: 2022/04/25 22:39:43 by rarodrig         ###   ########.fr       */
+/*   Updated: 2022/04/26 20:25:10 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
-int	valid_textures(t_all *all)
+static void	valid_textures(t_all *all)
 {
 	if (!ft_strncmp("NO", all->map->all_map[0], 2)
 		&& open(&all->map->all_map[0][3], O_RDONLY) >= 0)
@@ -30,10 +30,9 @@ int	valid_textures(t_all *all)
 		all->texture->f = &all->map->all_map[5][2];
 	if (!ft_strncmp("C", all->map->all_map[6], 1))
 		all->texture->c = &all->map->all_map[6][2];
-	return (0);
 }
 
-int	valid_user_position(t_map *map, int counter_line, int counter_col)
+static int	valid_user_position(t_map *map, int counter_line, int counter_col)
 {
 	if (map->user_x != -1)
 	{
@@ -66,7 +65,7 @@ int	is_valid_char(char character, t_map *map, int counter_line, int counter_col)
 	return (1);
 }
 
-int	validate_map_char(t_map *map)
+static int	validate_map_char(t_map *map)
 {
 	int	counter_line;
 	int	counter_col;
@@ -92,7 +91,7 @@ int	validate_map_char(t_map *map)
 	return (0);
 }
 
-int	parse_map(t_all *all, int fd1)
+void	parse_map(t_all *all, int fd1)
 {
 	int	i;
 
@@ -100,15 +99,14 @@ int	parse_map(t_all *all, int fd1)
 	while (get_next_line(fd1, &all->map->all_map[i]))
 		i++;
 	if (validate_map_char(all->map))
-		return (1); //Ajustar Exiter
+		exiter(all, EXIT_FAILURE);
 	if (validate_map_struct(all->map))
 		exiter(all, EXIT_FAILURE);
 	valid_textures(all);
-	printf("%s\n %s\n %s\n %s\n %s\n %s\n", all->texture->n, all->texture->w, all->texture->e, all->texture->s, all->texture->f, all->texture->c);
-	if (all->texture->n == NULL)
+	if (!all->texture->n || !all->texture->e || !all->texture->w
+		|| !all->texture->s || !all->texture->f || !all->texture->c)
 	{
-		printf("invalido\n");
-		return (1);
+		printf("Texture error, Invalid map\n");
+		exiter(all, EXIT_FAILURE);
 	}
-	return (0);
 }
