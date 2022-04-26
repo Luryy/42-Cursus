@@ -6,7 +6,7 @@
 /*   By: rarodrig < rarodrig@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 20:11:59 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/04/19 21:18:26 by rarodrig         ###   ########.fr       */
+/*   Updated: 2022/04/25 22:40:20 by rarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,13 @@ static void	start_struct(t_all *all, t_map *map, t_texture *texture)
 	all->texture = texture;
 	all->whatever = 0;
 	map->all_map = malloc(300 * sizeof(char *));
+	all->map->user_x = -1;
+	all->texture->n = NULL;
+	all->texture->w = NULL;
+	all->texture->e = NULL;
+	all->texture->s = NULL;
+	all->texture->f = NULL;
+	all->texture->c = NULL;
 }
 
 int	main(int argc, char **argv)
