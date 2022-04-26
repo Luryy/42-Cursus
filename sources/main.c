@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rarodrig < rarodrig@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 20:11:59 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/04/13 22:52:28 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/04/19 21:18:26 by rarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@ int	main(int argc, char **argv)
 
 	start_struct(&all, &map, &texture);
 	fd1 = find_map(&all, argc, argv[1]);
-	if (!parse_map(&all, fd1))
-		return (0);
+	if (parse_map(&all, fd1))
+		return (1);
 	// int i = -1;
 	// while (map.all_map[++i])
 	// 	printf("%s\n", map.all_map[i]);
 	ft_free(&all);
-	return (1);
+	return (0);
 }

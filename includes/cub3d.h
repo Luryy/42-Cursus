@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rarodrig < rarodrig@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 20:13:46 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/04/13 22:49:45 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/04/20 20:00:50 by rarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct s_map
 	int		user_x;
 	int		user_y;
 	int		user_view;
+	int		quant_line;
 	char	**all_map;
 }				t_map;
 
@@ -60,6 +61,7 @@ int		find_map(t_all *all, int argc, char *argv);
 // PARSER
 int		parse_map(t_all *all, int fd1);
 int		populate_map_var(t_map *map, int fd1);
+int		validate_map_struct(t_map *map);
 
 // UTILS
 void	exiter(t_all *all, int exit_number);

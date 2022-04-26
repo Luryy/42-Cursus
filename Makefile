@@ -21,7 +21,8 @@ MLX = minilibx
 MLX_PATH = ./$(LIBS_PATH)/$(MLX)
 MLX_INCLUDE_PATH = ./$(LIBS_PATH)/$(MLX)/mlx
 
-SOURCE_FILES =	main.c map/find_map.c parser/create_map_struct.c utils/exiter.c
+SOURCE_FILES =	main.c map/find_map.c parser/create_map_struct.c utils/exiter.c \
+				parser/validate_map_struct.c \
 
 SOURCES = $(addprefix $(SOURCES_PATH)/,$(SOURCE_FILES))
 
@@ -37,7 +38,7 @@ HEADERS = $(addprefix $(INCLUDES_PATH)/,$(HEADERS_FILES))
 all:	$(LIBFT) $(MLX) $(NAME)
 
 valgrind: all
-	valgrind --tool=memcheck --leak-check=full --track-origins=yes ./cub3d
+	valgrind --tool=memcheck --leak-check=full --track-origins=yes ./cub3d ./maps/ex.cub
 
 
 debug: set_debug_flag re
@@ -47,7 +48,7 @@ set_debug_flag:
 	$(eval CC = gcc -g -fsanitize=address)
 
 $(NAME):	$(OBJECTS)
-	$(CC) $(FLAGS) $(OBJECTS) $(INCLUDES) -o $(NAME) $(LIBRARIES)
+	$(CC) $(FLAGS) $(OBJECTS) $(INCLUDES) -o $(NAME) $(LIBRARIES) 
 
 $(LIBFT):
 	$(MAKE_EXTERNAL) $(LIBFT_PATH)
