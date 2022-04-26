@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_map_struct.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rarodrig < rarodrig@student.42sp.org.br    +#+  +:+       +#+        */
+/*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 20:49:27 by rarodrig          #+#    #+#             */
-/*   Updated: 2022/04/25 21:09:27 by rarodrig         ###   ########.fr       */
+/*   Updated: 2022/04/26 20:40:58 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ int	validate_map_struct(t_map *map)
 	int	count_col;
 
 	count_line = 8;
-	count_col = 0;
-	while (map->all_map[count_line][count_col] != '\0')
+	while (*map->all_map[count_line] != '\0')
 	{
+		count_col = 0;
 		while (map->all_map[count_line][count_col] != '\0')
 		{
 			if (map->all_map[count_line][count_col] != '1' &&
@@ -49,7 +49,8 @@ int	validate_map_struct(t_map *map)
 			}
 			count_col++;
 		}
-		count_col = 0;
+		if (count_col > map->quant_max_col)
+			map->quant_max_col = count_col;
 		count_line++;
 	}
 	return (0);

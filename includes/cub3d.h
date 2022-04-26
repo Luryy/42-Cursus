@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 20:13:46 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/04/26 20:20:14 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/04/26 20:37:01 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct s_map
 	int		user_y;
 	int		user_view;
 	int		quant_line;
+	int		quant_max_col;
 	char	**all_map;
 }				t_map;
 
