@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 20:13:46 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/04/26 20:37:01 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/04/27 21:54:27 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,26 @@ typedef struct s_texture
 	char	*c;
 }				t_texture;
 
+typedef struct s_img {
+	void		*img;
+	char		*addr;
+	int			bits_per_pixel;
+	int			line_length;
+	int			endian;
+}				t_img;
+
+typedef struct s_mlx {
+	int			win_x;
+	int			win_y;
+	void		*mlx_ptr;
+	void		*win_ptr;
+	t_img		view;
+	t_img		map;
+}				t_mlx;
+
 typedef struct s_all
 {
-	int			whatever;
+	t_mlx		*mlx_info;
 	t_map		*map;
 	t_texture	*texture;
 }				t_all;
@@ -67,5 +84,12 @@ int		validate_map_struct(t_map *map);
 // UTILS
 void	exiter(t_all *all, int exit_number);
 void	ft_free(t_all *all);
+
+// DRAW
+void	border(t_img *img, int x, int y, int color);
+void	render(t_mlx *mlx, t_all *all);
+void	init_view(t_mlx *mlx, t_img *img);
+void	init_map(t_mlx *mlx, t_img *img, t_all *all);
+void	square(t_img *img, int x, int y, int color, int i, int j);
 
 #endif

@@ -1,7 +1,7 @@
 NAME	=	cub3d
 
 CC	=	gcc
-FLAGS	=	-Wall -Wextra -Werror -O3
+FLAGS	=	-Wall -Wextra -O3
 LIBRARIES = -L$(LIBFT_PATH) -lft -L$(MLX_PATH) -lmlx -lXext -lX11 -lm
 INCLUDES = -I$(INCLUDES_PATH) -I$(LIBFT_PATH) -I$(MLX_INCLUDE_PATH)
 
@@ -22,11 +22,12 @@ MLX_PATH = ./$(LIBS_PATH)/$(MLX)
 MLX_INCLUDE_PATH = ./$(LIBS_PATH)/$(MLX)/mlx
 
 SOURCE_FILES =	main.c map/find_map.c parser/create_map_struct.c utils/exiter.c \
-				parser/validate_map_struct.c \
+				parser/validate_map_struct.c render/draw.c render/render.c render/draw_view.c \
+				render/draw_map.c
 
 SOURCES = $(addprefix $(SOURCES_PATH)/,$(SOURCE_FILES))
 
-SOURCE_DIRS = map parser utils
+SOURCE_DIRS = map parser utils render
 
 OBJECTS = $(addprefix $(OBJECTS_PATH)/,$(subst .c,.o,$(SOURCE_FILES)))
 
@@ -48,7 +49,7 @@ set_debug_flag:
 	$(eval CC = gcc -g -fsanitize=address)
 
 $(NAME):	$(OBJECTS)
-	$(CC) $(FLAGS) $(OBJECTS) $(INCLUDES) -o $(NAME) $(LIBRARIES) 
+	$(CC) $(FLAGS) $(OBJECTS) $(INCLUDES) -o $(NAME) $(LIBRARIES)
 
 $(LIBFT):
 	$(MAKE_EXTERNAL) $(LIBFT_PATH)

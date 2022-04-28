@@ -6,17 +6,19 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 20:11:59 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/04/26 20:20:34 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/04/27 21:47:11 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
-static void	start_struct(t_all *all, t_map *map, t_texture *texture)
+static void	start_struct(t_all *all, t_map *map, t_texture *texture, t_mlx *mlx)
 {
 	all->map = map;
 	all->texture = texture;
-	all->whatever = 0;
+	all->mlx_info = mlx;
+	mlx->win_x = 900;
+	mlx->win_y = 600;
 	map->all_map = malloc(300 * sizeof(char *));
 	all->map->user_x = -1;
 	all->texture->n = NULL;
@@ -32,14 +34,13 @@ int	main(int argc, char **argv)
 	t_all			all;
 	t_map			map;
 	t_texture		texture;
+	t_mlx			mlx_info;
 	int				fd1;
 
-	start_struct(&all, &map, &texture);
+	start_struct(&all, &map, &texture, &mlx_info);
 	fd1 = find_map(&all, argc, argv[1]);
 	parse_map(&all, fd1);
-	// int i = -1;
-	// while (map.all_map[++i])
-	// 	printf("%s\n", map.all_map[i]);
+	render(&mlx_info, &all);
 	ft_free(&all);
 	return (0);
 }
