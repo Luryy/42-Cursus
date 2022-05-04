@@ -6,7 +6,7 @@
 /*   By: rarodrig < rarodrig@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 20:23:26 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/05/03 22:19:06 by rarodrig         ###   ########.fr       */
+/*   Updated: 2022/05/03 22:24:13 by rarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ static void	print_user2d(t_all *all, t_img *img, int map_win_x, int map_win_y)
 
 	map_width = map_win_x / all->map->quant_max_col;
 	map_hight = map_win_y / (all->map->quant_line - 7);
-	printf("user = %f\n", all->map->user_y);
 	printf("teste 1 = %f\n teste 2 = %f\n", all->map->user_x * map_width, (all->map->user_y - 8) * map_hight);
 	square_user(img, map_width / 3, map_hight / 3, 0xFFFF00, all->map->user_x * map_width, (all->map->user_y - 8) * map_hight);
 }
