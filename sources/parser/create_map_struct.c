@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_map_struct.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rarodrig < rarodrig@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 21:14:03 by rarodrig          #+#    #+#             */
-/*   Updated: 2022/04/26 20:25:10 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/05/03 22:17:24 by rarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,11 @@ static int	valid_user_position(t_map *map, int counter_line, int counter_col)
 		map->user_view = W;
 	if (map->all_map[counter_line][counter_col] == 'E')
 		map->user_view = E;
-	if (map->all_map[counter_line][counter_col] == 'W')
+	if (map->all_map[counter_line][counter_col] == 'S')
 		map->user_view = S;
-	map->user_x = counter_line;
-	map->user_y = counter_col;
+	map->user_x = counter_col + 0.5;
+	map->user_y = counter_line + 0.5;
+	printf("%f %f\n", map->user_x, map->user_y);
 	return (0);
 }
 
