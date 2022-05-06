@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rarodrig < rarodrig@student.42sp.org.br    +#+  +:+       +#+        */
+/*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 20:13:46 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/05/03 22:17:04 by rarodrig         ###   ########.fr       */
+/*   Updated: 2022/05/05 22:59:51 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,14 +67,31 @@ typedef struct s_all
 }				t_all;
 
 enum	e_directions {
-	N = 1,
-	W,
-	E,
-	S,
+	N = 0,
+	W = 270,
+	E = 90,
+	S = 180,
 };
+
+# define KSPACE 32
+# define KLESS 45
+# define KMORE 61
+# define KESC 65307
+# define KLEFT 97
+# define KARROWLEFT 65361
+# define KUP 119
+# define KARROWUP 65362
+# define KRIGHT 100
+# define KARROWRIGHT 65363
+# define KDOWN 115
+# define KARROWDOWN 65364
 
 // MAP
 int		find_map(t_all *all, int argc, char *argv);
+void	move_up(t_all *all);
+void	move_down(t_all *all);
+void	move_left(t_all *all);
+void	move_right(t_all *all);
 
 // PARSER
 void	parse_map(t_all *all, int fd1);
@@ -91,5 +108,9 @@ void	render(t_mlx *mlx, t_all *all);
 void	init_view(t_mlx *mlx, t_img *img);
 void	init_map(t_mlx *mlx, t_img *img, t_all *all);
 void	square(t_img *img, int x, int y, int color, int i, int j);
+int		deal_key(int key, t_all *all);
+void	draw_user(t_mlx *mlx, t_img *img, t_all *all);
+void	draw_line(t_img *img, int x, int y, int color);
+void	rotate(t_all *all, int signal);
 
 #endif

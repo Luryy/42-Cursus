@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rarodrig < rarodrig@student.42sp.org.br    +#+  +:+       +#+        */
+/*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 21:25:55 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/05/03 21:21:06 by rarodrig         ###   ########.fr       */
+/*   Updated: 2022/05/05 22:32:29 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,15 @@ static void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
 
 	dst = img->addr + (y * img->line_length + x * (img->bits_per_pixel / 8));
 	*(unsigned int *) dst = color;
+}
+
+void	draw_line(t_img *img, int x, int y, int color)
+{
+	int	i;
+
+	i = -1;
+	while (++i <= 20)
+		my_mlx_pixel_put(img, x, y + i, color);
 }
 
 void	border(t_img *img, int x, int y, int color)

@@ -23,7 +23,7 @@ MLX_INCLUDE_PATH = ./$(LIBS_PATH)/$(MLX)/mlx
 
 SOURCE_FILES =	main.c map/find_map.c parser/create_map_struct.c utils/exiter.c \
 				parser/validate_map_struct.c render/draw.c render/render.c render/draw_view.c \
-				render/draw_map.c
+				render/draw_map.c render/deal_key.c map/move_user.c
 
 SOURCES = $(addprefix $(SOURCES_PATH)/,$(SOURCE_FILES))
 

@@ -3,49 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   draw_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rarodrig < rarodrig@student.42sp.org.br    +#+  +:+       +#+        */
+/*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 20:23:26 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/05/03 22:24:13 by rarodrig         ###   ########.fr       */
+/*   Updated: 2022/05/05 22:38:39 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
-static void	my_mlx_pixel_put_2(t_img *img, int x, int y, int color)
-{
-	char	*dst;
-
-	dst = img->addr + (y * img->line_length + x * (img->bits_per_pixel / 8));
-	*(unsigned int *) dst = color;
-}
-
-void	square_user(t_img *img, int x, int y, int color, int line, int col)/* trocar numero de funções */
-{
-	int		i;
-	int		j;
-
-	i = line - 1;
-	while (++i <= x + line)
-	{
-		j = col - 1;
-		while (++j <= y + col)
-		{
-			printf("here\n");
-			my_mlx_pixel_put_2(img, i, j, color);
-		}
-	}
-}
-
 static void	print_user2d(t_all *all, t_img *img, int map_win_x, int map_win_y)
 {
 	int	map_width;
 	int	map_hight;
+	int	user_x;
+	int	user_y;
 
 	map_width = map_win_x / all->map->quant_max_col;
 	map_hight = map_win_y / (all->map->quant_line - 7);
-	printf("teste 1 = %f\n teste 2 = %f\n", all->map->user_x * map_width, (all->map->user_y - 8) * map_hight);
-	square_user(img, map_width / 3, map_hight / 3, 0xFFFF00, all->map->user_x * map_width, (all->map->user_y - 8) * map_hight);
+	user_x = all->map->user_x * map_width;
+	user_y = (all->map->user_y - 8) * map_hight;
+	square(img, map_width / 3, map_hight / 3, 0xFFFF00, user_x - map_width / 6, user_y - map_hight / 6);
+	draw_line(img, user_x, user_y, 0xFFFF00);
 }
 
 static void	print_map2d(t_all *all, t_img *img, int map_win_x, int map_win_y)
