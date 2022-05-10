@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 21:25:55 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/05/05 22:32:29 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/05/09 22:15:58 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,26 @@ static void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
 	*(unsigned int *) dst = color;
 }
 
-void	draw_line(t_img *img, int x, int y, int color)
+void	draw_lines(t_all *all, int x, int y, int color)
 {
 	int	i;
+	int	angle;
 
-	i = -1;
-	while (++i <= 20)
-		my_mlx_pixel_put(img, x, y + i, color);
+	angle = -15;
+	while (angle <= 15)
+	{
+		i = 0;
+		while (convert_pixel_to_position(all,
+				x + i * sin((all->map->user_view + angle) * PI / 180),
+				y + i * cos((all->map->user_view + angle) * PI / 180)) != '1')
+		{
+			my_mlx_pixel_put(&all->mlx_info->map,
+				x + i * sin((all->map->user_view + angle) * PI / 180),
+				y + i * cos((all->map->user_view + angle) * PI / 180), color);
+				i++;
+		}
+		angle++;
+	}
 }
 
 void	border(t_img *img, int x, int y, int color)

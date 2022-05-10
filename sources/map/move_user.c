@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 21:51:30 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/05/05 22:58:48 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/05/09 20:41:44 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,13 +65,14 @@ void	rotate(t_all *all, int signal)
 	int	i;
 
 	i = 1;
-	while (i <= 30)
+	while (i <= 15)
 	{
 		if (all->map->user_view <= 0 && signal < 0)
 			all->map->user_view = 360;
 		else if (all->map->user_view >= 360 && signal > 0)
 			all->map->user_view = 0;
 		all->map->user_view += 2 * signal;
-		i += 2;
+		init_map(all->mlx_info, &all->mlx_info->map, all);
+		i += 1;
 	}
 }

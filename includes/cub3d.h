@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 20:13:46 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/05/05 22:59:51 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/05/09 22:15:53 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <stdlib.h>
 # include <stdbool.h>
 # include <fcntl.h>
+# include <math.h>
 
 typedef struct s_map
 {
@@ -67,10 +68,10 @@ typedef struct s_all
 }				t_all;
 
 enum	e_directions {
-	N = 0,
+	N = 180,
 	W = 270,
 	E = 90,
-	S = 180,
+	S = 0,
 };
 
 # define KSPACE 32
@@ -85,6 +86,7 @@ enum	e_directions {
 # define KARROWRIGHT 65363
 # define KDOWN 115
 # define KARROWDOWN 65364
+# define PI 3.141592
 
 // MAP
 int		find_map(t_all *all, int argc, char *argv);
@@ -101,6 +103,7 @@ int		validate_map_struct(t_map *map);
 // UTILS
 void	exiter(t_all *all, int exit_number);
 void	ft_free(t_all *all);
+char	convert_pixel_to_position(t_all *all, int pixel_x, int pixel_y);
 
 // DRAW
 void	border(t_img *img, int x, int y, int color);
@@ -110,7 +113,7 @@ void	init_map(t_mlx *mlx, t_img *img, t_all *all);
 void	square(t_img *img, int x, int y, int color, int i, int j);
 int		deal_key(int key, t_all *all);
 void	draw_user(t_mlx *mlx, t_img *img, t_all *all);
-void	draw_line(t_img *img, int x, int y, int color);
+void	draw_lines(t_all *all, int x, int y, int color);
 void	rotate(t_all *all, int signal);
 
 #endif
