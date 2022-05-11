@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exiter.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rarodrig < rarodrig@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 20:11:39 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/04/13 22:36:56 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/05/10 20:46:10 by rarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,9 @@ void	ft_free(t_all *all)
 	}
 }
 
-void	exiter(t_all *all, int exit_number)
+int	exiter(t_all *all, int exit_number)
 {
 	ft_free(all);
 	exit(exit_number);
+	return (0);
 }

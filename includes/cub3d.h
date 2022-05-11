@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rarodrig < rarodrig@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 20:13:46 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/05/09 22:15:53 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/05/10 20:46:58 by rarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ int		populate_map_var(t_map *map, int fd1);
 int		validate_map_struct(t_map *map);
 
 // UTILS
-void	exiter(t_all *all, int exit_number);
+int		exiter(t_all *all, int exit_number);
 void	ft_free(t_all *all);
 char	convert_pixel_to_position(t_all *all, int pixel_x, int pixel_y);
 

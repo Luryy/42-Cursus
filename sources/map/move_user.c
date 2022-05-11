@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move_user.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rarodrig < rarodrig@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 21:51:30 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/05/09 20:41:44 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/05/10 21:21:26 by rarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,12 @@ void	move_up(t_all *all)
 	int	y;
 	int	x;
 
-	y = all->map->user_y - 0.2;
-	x = all->map->user_x;
+	y = all->map->user_y + 0.2 * cos((all->map->user_view) * PI / 180);
+	x = all->map->user_x + 0.2 * sin((all->map->user_view) * PI / 180);
 	if (all->map->all_map[y][x] == '1')
 		return ;
-	all->map->user_y -= 0.2;
+	all->map->user_y += 0.2 * cos((all->map->user_view) * PI / 180);
+	all->map->user_x += 0.2 * sin((all->map->user_view) * PI / 180);
 }
 
 void	move_down(t_all *all)
@@ -29,11 +30,12 @@ void	move_down(t_all *all)
 	int	y;
 	int	x;
 
-	y = all->map->user_y + 0.3;
-	x = all->map->user_x;
+	y = all->map->user_y - 0.3 * cos((all->map->user_view) * PI / 180);
+	x = all->map->user_x - 0.3 * sin((all->map->user_view) * PI / 180);
 	if (all->map->all_map[y][x] == '1')
 		return ;
-	all->map->user_y += 0.2;
+	all->map->user_y -= 0.2 * cos((all->map->user_view) * PI / 180);
+	all->map->user_x -= 0.2 * sin((all->map->user_view) * PI / 180);
 }
 
 void	move_left(t_all *all)
@@ -41,11 +43,12 @@ void	move_left(t_all *all)
 	int	y;
 	int	x;
 
-	y = all->map->user_y;
-	x = all->map->user_x - 0.3;
+	y = all->map->user_y - 0.3 * sin((all->map->user_view) * PI / 180);
+	x = all->map->user_x + 0.3 * cos((all->map->user_view) * PI / 180);
 	if (all->map->all_map[y][x] == '1')
 		return ;
-	all->map->user_x -= 0.2;
+	all->map->user_x += 0.2 * cos((all->map->user_view) * PI / 180);
+	all->map->user_y -= 0.2 * sin((all->map->user_view) * PI / 180);
 }
 
 void	move_right(t_all *all)
@@ -53,11 +56,12 @@ void	move_right(t_all *all)
 	int	y;
 	int	x;
 
-	y = all->map->user_y;
-	x = all->map->user_x + 0.3;
+	y = all->map->user_y + 0.3 * sin((all->map->user_view) * PI / 180);
+	x = all->map->user_x - 0.3 * cos((all->map->user_view) * PI / 180);
 	if (all->map->all_map[y][x] == '1')
 		return ;
-	all->map->user_x += 0.2;
+	all->map->user_x -= 0.2 * cos((all->map->user_view) * PI / 180);
+	all->map->user_y += 0.2 * sin((all->map->user_view) * PI / 180);
 }
 
 void	rotate(t_all *all, int signal)
