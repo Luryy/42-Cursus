@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 20:11:59 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/04/27 21:47:11 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/05/11 20:58:21 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ static void	start_struct(t_all *all, t_map *map, t_texture *texture, t_mlx *mlx)
 	mlx->win_x = 900;
 	mlx->win_y = 600;
 	map->all_map = malloc(300 * sizeof(char *));
+	map->wall_distances = malloc(61 * sizeof(int));
 	all->map->user_x = -1;
 	all->texture->n = NULL;
 	all->texture->w = NULL;

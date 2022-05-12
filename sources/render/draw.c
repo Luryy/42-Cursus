@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rarodrig < rarodrig@student.42sp.org.br    +#+  +:+       +#+        */
+/*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 21:25:55 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/05/10 20:44:40 by rarodrig         ###   ########.fr       */
+/*   Updated: 2022/05/11 21:59:51 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
-static void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
+void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
 {
 	char	*dst;
 
@@ -26,7 +26,7 @@ void	draw_lines(t_all *all, int x, int y, int color)
 	int	angle;
 
 	angle = -30;
-	while (angle <= 30)
+	while (angle < 30)
 	{
 		i = 0;
 		while (convert_pixel_to_position(all,
@@ -38,6 +38,7 @@ void	draw_lines(t_all *all, int x, int y, int color)
 				y + i * cos((all->map->user_view + angle) * PI / 180), color);
 			i++;
 		}
+		all->map->wall_distances[angle + 30] = i;
 		angle++;
 	}
 }

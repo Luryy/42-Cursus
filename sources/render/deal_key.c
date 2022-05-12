@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   deal_key.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rarodrig < rarodrig@student.42sp.org.br    +#+  +:+       +#+        */
+/*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 21:08:26 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/05/10 20:48:58 by rarodrig         ###   ########.fr       */
+/*   Updated: 2022/05/11 21:34:04 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,6 @@ int	deal_key(int key, t_all *all)
 	else if (key == KARROWRIGHT)
 		rotate(all, -1);
 	init_map(all->mlx_info, &all->mlx_info->map, all);
+	init_view(all->mlx_info, &all->mlx_info->view, all);
 	return (0);
 }

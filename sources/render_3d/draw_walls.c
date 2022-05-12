@@ -1,25 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render.c                                           :+:      :+:    :+:   */
+/*   draw_walls.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/27 20:16:59 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/05/11 21:32:21 by lyuri-go         ###   ########.fr       */
+/*   Created: 2022/05/11 21:16:12 by lyuri-go          #+#    #+#             */
+/*   Updated: 2022/05/11 22:22:28 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
-void	render(t_mlx *mlx, t_all *all)
+void	draw_walls(t_all *all)
 {
-	mlx->mlx_ptr = mlx_init();
-	mlx->win_ptr = mlx_new_window(
-			mlx->mlx_ptr, mlx->win_x, mlx->win_y, "Cub3D");
-	init_view(mlx, &mlx->view, all);
-	init_map(mlx, &mlx->map, all);
-	mlx_hook(mlx->win_ptr, 2, 1L << 0, &deal_key, all);
-	mlx_hook(mlx->win_ptr, 33, 1L << 2, &exiter, all);
-	mlx_loop(mlx->mlx_ptr);
+	int	i;
+	int	j;
+	int	k;
+	int	wall_size;
+
+	i = -1;
+	wall_size = all->mlx_info->win_x / 60;
+	while (++i < 60)
+	{
+		k = -1;
+		while (++k < wall_size)
+		{
+			j = -1;
+			while (++j < all->map->wall_distances[60 - i])
+				my_mlx_pixel_put(&all->mlx_info->view,
+					i * wall_size + k, j, 0x00FFFF);
+		}
+	}
 }
