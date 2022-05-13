@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 20:13:46 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/05/11 21:31:20 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/05/12 23:11:43 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ typedef struct s_map
 	int		quant_line;
 	int		quant_max_col;
 	char	**all_map;
-	int		*wall_distances;
 }				t_map;
 
 typedef struct s_texture

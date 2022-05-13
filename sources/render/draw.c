@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 21:25:55 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/05/11 21:59:51 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/05/12 23:11:27 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ void	draw_lines(t_all *all, int x, int y, int color)
 				y + i * cos((all->map->user_view + angle) * PI / 180), color);
 			i++;
 		}
-		all->map->wall_distances[angle + 30] = i;
 		angle++;
 	}
 }
