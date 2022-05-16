@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_walls.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rarodrig < rarodrig@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 21:16:12 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/05/12 23:11:04 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/05/14 18:13:14 by rarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	draw_walls(t_all *all)
 		line_hight = 400 / wall_dist;
 		if (line_hight > 400)
 			line_hight = 400;
-		line_offset = 200 - line_hight / 2;
+		 line_offset = 200 - line_hight / 2;
 		while (++j < line_hight)
 			my_mlx_pixel_put(&all->mlx_info->view, i,
 				j + line_offset, 0x0000FF);

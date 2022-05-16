@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rarodrig < rarodrig@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 20:13:46 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/05/12 23:11:43 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/05/14 17:56:28 by rarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,7 @@ int		validate_map_struct(t_map *map);
 int		exiter(t_all *all, int exit_number);
 void	ft_free(t_all *all);
 char	convert_pixel_to_position(t_all *all, int pixel_x, int pixel_y);
+float	get_dist(t_all *all, int angle);
 
 // DRAW
 void	border(t_img *img, int x, int y, int color);
@@ -116,6 +117,7 @@ void	draw_user(t_mlx *mlx, t_img *img, t_all *all);
 void	draw_lines(t_all *all, int x, int y, int color);
 void	rotate(t_all *all, int signal);
 void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
+void	draw_heaven(t_all *all);
 
 // RENDER 3D
 void	draw_walls(t_all *all);
