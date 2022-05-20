@@ -6,7 +6,7 @@
 /*   By: rarodrig < rarodrig@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 21:16:12 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/05/17 20:44:20 by rarodrig         ###   ########.fr       */
+/*   Updated: 2022/05/18 21:11:05 by rarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@ void	draw_items(t_all *all, int i, int line_offset, int line_hight)
 	{
 		if (j <= line_offset)
 			my_mlx_pixel_put(&all->mlx_info->view, i,
-				j, all->texture->c);
+				j, all->texture->c_hexa);
 		else if (j > line_offset && j < line_hight + line_offset)
 			my_mlx_pixel_put(&all->mlx_info->view, i,
 				j, 255);
 		else
 			my_mlx_pixel_put(&all->mlx_info->view, i,
-				j, all->texture->f);
+				j, all->texture->f_hexa);
 	}
 }
 

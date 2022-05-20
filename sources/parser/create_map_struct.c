@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_map_struct.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rarodrig < rarodrig@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 21:14:03 by rarodrig          #+#    #+#             */
-/*   Updated: 2022/05/05 22:55:03 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/05/18 20:58:45 by rarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ static void	valid_textures(t_all *all)
 		all->texture->f = &all->map->all_map[5][2];
 	if (!ft_strncmp("C", all->map->all_map[6], 1))
 		all->texture->c = &all->map->all_map[6][2];
+	rgb_to_decimal(all);
 }
 
 static int	valid_user_position(t_map *map, int counter_line, int counter_col)
