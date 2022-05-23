@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 21:51:30 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/05/12 21:52:44 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/05/23 19:00:01 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,19 +66,12 @@ void	move_right(t_all *all)
 
 void	rotate(t_all *all, int signal)
 {
-	int	i;
-
-	i = 1;
-	while (i <= 15)
-	{
-		if (all->map->user_view <= 0 && signal < 0)
-			all->map->user_view = 360;
-		else if (all->map->user_view >= 360 && signal > 0)
-			all->map->user_view = 0;
-		all->map->user_view += 1 * signal;
-		init_map(all->mlx_info, &all->mlx_info->map, all);
-		init_map(all->mlx_info, &all->mlx_info->map, all);
-		init_view(all->mlx_info, &all->mlx_info->view, all);
-		i += 1;
-	}
+	if (all->map->user_view <= 0 && signal < 0)
+		all->map->user_view = 360;
+	else if (all->map->user_view >= 360 && signal > 0)
+		all->map->user_view = 0;
+	all->map->user_view += 10 * signal;
+	init_map(all->mlx_info, &all->mlx_info->map, all);
+	init_map(all->mlx_info, &all->mlx_info->map, all);
+	init_view(all->mlx_info, &all->mlx_info->view, all);
 }

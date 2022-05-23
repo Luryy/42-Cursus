@@ -6,11 +6,19 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 21:25:55 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/05/12 23:11:27 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/05/19 19:58:15 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
+
+unsigned int	get_color_pxl(t_img *img, int x, int y)
+{
+	char	*color;
+
+	color = img->addr + (y * img->line_length + x * (img->bits_per_pixel / 8));
+	return (*(unsigned int *)color);
+}
 
 void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
 {
