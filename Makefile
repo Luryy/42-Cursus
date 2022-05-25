@@ -41,7 +41,7 @@ HEADERS = $(addprefix $(INCLUDES_PATH)/,$(HEADERS_FILES))
 all:	$(LIBFT) $(MLX) $(NAME)
 
 valgrind: all
-	valgrind --tool=memcheck --leak-check=full --track-origins=yes ./cub3d ./maps/ex.cub
+	valgrind --tool=memcheck --leak-check=full --track-origins=yes --show-leak-kinds=all ./cub3d ./maps/ex.cub
 
 
 debug: set_debug_flag re

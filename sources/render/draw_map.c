@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rarodrig < rarodrig@student.42sp.org.br    +#+  +:+       +#+        */
+/*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 20:23:26 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/05/24 22:09:51 by rarodrig         ###   ########.fr       */
+/*   Updated: 2022/05/25 18:56:24 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,4 +94,5 @@ void	init_map(t_mlx *mlx, t_img *img, t_all *all)
 	print_user2d(all, img, map_win_x / 3, map_win_y);
 	mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr,
 		img->img, 0, mlx->win_y - map_win_y);
+	mlx_destroy_image(mlx->mlx_ptr, img->img);
 }

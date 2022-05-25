@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   convert_rgb_decimal.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rarodrig < rarodrig@student.42sp.org.br    +#+  +:+       +#+        */
+/*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 16:47:06 by rarodrig          #+#    #+#             */
-/*   Updated: 2022/05/18 21:10:13 by rarodrig         ###   ########.fr       */
+/*   Updated: 2022/05/25 18:52:15 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,9 @@ int	convert_rgb_decimal(char **colors)
 	r = ft_atoi(colors[0]);
 	g = ft_atoi(colors[1]);
 	b = ft_atoi(colors[2]);
+	free(colors[0]);
+	free(colors[1]);
+	free(colors[2]);
 	if ((r > 255 || r < 0) || (g > 255 || g < 0) || (b > 255 || b < 0))
 		return (-1);
 	return (r * 65536 + g * 256 + b);
@@ -73,6 +76,8 @@ void	rgb_to_decimal(t_all *all)
 	colorf = ft_split(all->texture->f, ',');
 	c = convert_rgb_decimal(colorc);
 	f = convert_rgb_decimal(colorf);
+	free(colorc);
+	free(colorf);
 	if (c == -1 || f == -1)
 	{
 		printf("Wrong Textures\n");

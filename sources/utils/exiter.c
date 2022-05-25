@@ -6,11 +6,23 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 20:11:39 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/05/12 23:11:54 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/05/25 19:20:55 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
+
+void	free_buffers(t_all *all)
+{
+	if (all->texture->n_buffer)
+		free(all->texture->n_buffer);
+	if (all->texture->s_buffer)
+		free(all->texture->s_buffer);
+	if (all->texture->w_buffer)
+		free(all->texture->w_buffer);
+	if (all->texture->e_buffer)
+		free(all->texture->e_buffer);
+}
 
 void	ft_free(t_all *all)
 {
@@ -23,6 +35,14 @@ void	ft_free(t_all *all)
 			free(all->map->all_map[i]);
 		free(all->map->all_map);
 	}
+	if (all->mlx_info->win_ptr)
+		mlx_destroy_window(all->mlx_info->mlx_ptr, all->mlx_info->win_ptr);
+	if (all->mlx_info->mlx_ptr)
+	{
+		mlx_destroy_display(all->mlx_info->mlx_ptr);
+		free(all->mlx_info->mlx_ptr);
+	}
+	free_buffers(all);
 }
 
 int	exiter(t_all *all, int exit_number)
