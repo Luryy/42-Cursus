@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rarodrig < rarodrig@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 21:25:55 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/05/19 19:58:15 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/05/24 21:25:49 by rarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,16 +68,16 @@ void	border(t_img *img, int x, int y, int color)
 		my_mlx_pixel_put(img, i, 0, color);
 }
 
-void	square(t_img *img, int x, int y, int color, int line, int col)/* trocar numero de funções */
+void	square(t_img *img, int x, int y, t_all *all)
 {
 	int	i;
 	int	j;
 
-	i = line - 1;
-	while (++i <= x + line)
+	i = all->square->line - 1;
+	while (++i <= x + all->square->line)
 	{
-		j = col - 1;
-		while (++j <= y + col)
-			my_mlx_pixel_put(img, i, j, color);
+		j = all->square->col - 1;
+		while (++j <= y + all->square->col)
+			my_mlx_pixel_put(img, i, j, all->square->color);
 	}
 }

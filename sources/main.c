@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rarodrig < rarodrig@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 20:11:59 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/05/12 23:11:21 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/05/24 21:08:05 by rarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 static void	start_struct(t_all *all, t_map *map, t_texture *texture, t_mlx *mlx)
 {
+	t_square	square;
+
+	all->square = &square;
 	all->map = map;
 	all->texture = texture;
 	all->mlx_info = mlx;
@@ -27,6 +30,9 @@ static void	start_struct(t_all *all, t_map *map, t_texture *texture, t_mlx *mlx)
 	all->texture->s = NULL;
 	all->texture->f = NULL;
 	all->texture->c = NULL;
+	all->square->col = 0;
+	all->square->line = 0;
+	all->square->color = 0;
 }
 
 int	main(int argc, char **argv)

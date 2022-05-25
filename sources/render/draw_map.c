@@ -3,14 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   draw_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rarodrig < rarodrig@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 20:23:26 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/05/09 22:16:02 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/05/24 22:09:51 by rarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
+
+void	print2d_wall(t_all *all, t_img *img, int map_width, int map_hight)
+{
+	all->square->color = 0xFFFFFF;
+	square(img, map_width, map_hight, all);
+}
+
+void	print2d_texture(t_all *all, t_img *img, int map_width, int map_hight)
+{
+	all->square->color = 0x000000;
+	square(img, map_width, map_hight, all);
+}
 
 static void	print_user2d(t_all *all, t_img *img, int map_win_x, int map_win_y)
 {
@@ -23,7 +35,10 @@ static void	print_user2d(t_all *all, t_img *img, int map_win_x, int map_win_y)
 	map_hight = map_win_y / (all->map->quant_line - 7);
 	user_x = all->map->user_x * map_width;
 	user_y = (all->map->user_y - 8) * map_hight;
-	square(img, map_width / 3, map_hight / 3, 0xFFFF00, user_x - map_width / 6, user_y - map_hight / 6);
+	all->square->color = 0xFFFF00;
+	all->square->line = user_x - map_width / 6;
+	all->square->col = user_y - map_hight / 6;
+	square(img, map_width / 3, map_hight / 3, all);
 	draw_lines(all, user_x, user_y, 0xFFFF00);
 }
 
@@ -42,33 +57,41 @@ static void	print_map2d(t_all *all, t_img *img, int map_win_x, int map_win_y)
 		j = -1;
 		while (all->map->all_map[i][++j] != '\0')
 		{
+			all->square->line = j * map_width;
+			all->square->col = (i - 8) * map_hight;
 			if (all->map->all_map[i][j] == '1')
-				square(img, map_width, map_hight, 0xFFFFFF,
-					j * map_width, (i - 8) * map_hight);
+				print2d_wall(all, img, map_width, map_hight);
 			else if (all->map->all_map[i][j] == '0'
 				|| all->map->all_map[i][j] == 'N'
 				|| all->map->all_map[i][j] == 'W'
 				|| all->map->all_map[i][j] == 'S'
 				|| all->map->all_map[i][j] == 'E')
-				square(img, map_width, map_hight, 0x000000,
-					j * map_width, (i - 8) * map_hight);
+				print2d_texture(all, img, map_width, map_hight);
 		}
 	}
+}
+
+void	print_info(t_img *img, t_all *all, int map_win_x, int map_win_y)
+{
+	border(img, map_win_x, map_win_y, 0x00FF0000);
 }
 
 void	init_map(t_mlx *mlx, t_img *img, t_all *all)
 {
 	int	map_win_x;
 	int	map_win_y;
+	int	win_x_mlx;
 
-	map_win_x = mlx->win_x / 3;
+	win_x_mlx = mlx->win_x;
+	map_win_x = mlx->win_x;
 	map_win_y = mlx->win_y / 3;
 	img->img = mlx_new_image(mlx->mlx_ptr, map_win_x, map_win_y);
 	img->addr = mlx_get_data_addr(img->img, &img->bits_per_pixel,
 			&img->line_length, &img->endian);
-	border(img, map_win_x, map_win_y, 0x00FF0000);
-	print_map2d(all, img, map_win_x, map_win_y);
-	print_user2d(all, img, map_win_x, map_win_y);
+	print_info(img, all, win_x_mlx, map_win_y);
+	border(img, map_win_x / 3, map_win_y, 0x00FF0000);
+	print_map2d(all, img, map_win_x / 3, map_win_y);
+	print_user2d(all, img, map_win_x / 3, map_win_y);
 	mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr,
 		img->img, 0, mlx->win_y - map_win_y);
 }

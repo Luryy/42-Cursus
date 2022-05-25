@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rarodrig < rarodrig@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 20:13:46 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/05/23 19:06:55 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/05/24 21:15:26 by rarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,11 +72,19 @@ typedef struct s_mlx {
 	t_img		map;
 }				t_mlx;
 
+typedef struct s_square
+{
+	int	color;
+	int	line;
+	int	col;
+}				t_square;
+
 typedef struct s_all
 {
 	t_mlx		*mlx_info;
 	t_map		*map;
 	t_texture	*texture;
+	t_square	*square;
 }				t_all;
 
 typedef struct s_dot
@@ -88,7 +96,8 @@ typedef struct s_dot
 	int		wall_hit;
 }				t_dot;
 
-enum	e_directions {
+enum	e_directions
+{
 	N = 180,
 	W = 270,
 	E = 90,
@@ -134,7 +143,7 @@ void					border(t_img *img, int x, int y, int color);
 void					render(t_mlx *mlx, t_all *all);
 void					init_view(t_mlx *mlx, t_img *img, t_all *all);
 void					init_map(t_mlx *mlx, t_img *img, t_all *all);
-void					square(t_img *img, int x, int y, int color, int i, int j);
+void					square(t_img *img, int x, int y, t_all *all);
 int						deal_key(int key, t_all *all);
 void					draw_user(t_mlx *mlx, t_img *img, t_all *all);
 void					draw_lines(t_all *all, int x, int y, int color);
