@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 21:14:03 by rarodrig          #+#    #+#             */
-/*   Updated: 2022/05/26 14:45:34 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/05/26 19:09:29 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,13 @@
 
 static void	valid_textures(t_all *all)
 {
-	if (!ft_strncmp("NO", all->map->all_map[0], 2)
-		&& open(&all->map->all_map[0][3], O_RDONLY) >= 0)
-		all->texture->n = &all->map->all_map[0][3];
-	if (!ft_strncmp("WE", all->map->all_map[1], 2)
-		&& open(&all->map->all_map[1][3], O_RDONLY) >= 0)
-		all->texture->w = &all->map->all_map[1][3];
-	if (!ft_strncmp("SO", all->map->all_map[2], 2)
-		&& open(&all->map->all_map[2][3], O_RDONLY) >= 0)
-		all->texture->s = &all->map->all_map[2][3];
-	if (!ft_strncmp("EA", all->map->all_map[3], 2)
-		&& open(&all->map->all_map[3][3], O_RDONLY) >= 0)
-		all->texture->e = &all->map->all_map[3][3];
-	if (!ft_strncmp("F", all->map->all_map[5], 1))
-		all->texture->f = &all->map->all_map[5][2];
-	if (!ft_strncmp("C", all->map->all_map[6], 1))
-		all->texture->c = &all->map->all_map[6][2];
+	int	i;
+
+	i = -1;
+	while (all->map->all_map[++i])
+	{
+		get_textures(all, all->map->all_map[i]);
+	}
 }
 
 static int	valid_user_position(t_map *map, int counter_line, int counter_col)
@@ -100,8 +91,6 @@ void	parse_map(t_all *all, int fd1)
 		i++;
 	if (validate_map_char(all->map))
 		exiter(all, EXIT_FAILURE);
-	if (validate_map_struct(all->map))
-		exiter(all, EXIT_FAILURE);
 	valid_textures(all);
 	if (!all->texture->n || !all->texture->e || !all->texture->w
 		|| !all->texture->s || !all->texture->f || !all->texture->c)
@@ -109,6 +98,8 @@ void	parse_map(t_all *all, int fd1)
 		printf("Error\nTexture error\n");
 		exiter(all, EXIT_FAILURE);
 	}
+	if (validate_map_struct(all->map))
+		exiter(all, EXIT_FAILURE);
 	rgb_to_decimal(all);
 	if (all->map->user_x == -1)
 	{

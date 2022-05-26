@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rarodrig < rarodrig@student.42sp.org.br    +#+  +:+       +#+        */
+/*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 20:13:46 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/05/25 22:20:35 by rarodrig         ###   ########.fr       */
+/*   Updated: 2022/05/26 19:10:08 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,6 +130,7 @@ void					parse_map(t_all *all, int fd1);
 int						populate_map_var(t_map *map, int fd1);
 int						validate_map_struct(t_map *map);
 int						create_textures_img(t_all *all);
+void					get_textures(t_all *all, char *line);
 
 // UTILS
 int						exiter(t_all *all, int exit_number);
