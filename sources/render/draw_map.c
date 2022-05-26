@@ -6,7 +6,7 @@
 /*   By: rarodrig < rarodrig@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 20:23:26 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/05/25 22:12:45 by rarodrig         ###   ########.fr       */
+/*   Updated: 2022/05/26 16:03:01 by rarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,6 @@ void	init_map(t_mlx *mlx, t_img *img, t_all *all)
 	img->img = mlx_new_image(mlx->mlx_ptr, map_win_x, map_win_y);
 	img->addr = mlx_get_data_addr(img->img, &img->bits_per_pixel,
 			&img->line_length, &img->endian);
-	border(img, map_win_x, map_win_y, 0x00FF0000);
 	print_map2d(all, img, map_win_x, map_win_y);
 	print_user2d(all, img, map_win_x, map_win_y);
 	mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr,
