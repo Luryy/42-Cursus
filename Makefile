@@ -1,7 +1,7 @@
 NAME	=	cub3d
 
 CC	=	gcc
-FLAGS	=	-Wall -Wextra -O3
+FLAGS	=	-Wall -Wextra -Werror -O3
 LIBRARIES = -L$(LIBFT_PATH) -lft -L$(MLX_PATH) -lmlx -lXext -lX11 -lm
 INCLUDES = -I$(INCLUDES_PATH) -I$(LIBFT_PATH) -I$(MLX_INCLUDE_PATH)
 
