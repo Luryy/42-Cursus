@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 20:13:46 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/05/26 19:10:08 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/05/26 20:25:43 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct s_map
 	int		quant_line;
 	int		quant_max_col;
 	char	**all_map;
+	int		map_init;
 }				t_map;
 
 typedef struct s_img {
@@ -131,6 +132,7 @@ int						populate_map_var(t_map *map, int fd1);
 int						validate_map_struct(t_map *map);
 int						create_textures_img(t_all *all);
 void					get_textures(t_all *all, char *line);
+int						is_map_line(char *line);
 
 // UTILS
 int						exiter(t_all *all, int exit_number);

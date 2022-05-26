@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 19:09:46 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/05/26 19:10:14 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/05/26 20:25:04 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,16 @@ static char	*get_arg_init(char *line)
 	while (line[i] == ' ')
 		i++;
 	return (&line[i]);
+}
+
+int	is_map_line(char *line)
+{
+	char	*line_init;
+
+	line_init = get_arg_init(line);
+	if (*line_init == '1' || *line_init == '0')
+		return (1);
+	return (0);
 }
 
 void	get_textures(t_all *all, char *line)

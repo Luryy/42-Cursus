@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 21:14:03 by rarodrig          #+#    #+#             */
-/*   Updated: 2022/05/26 19:09:29 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/05/26 20:30:36 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,13 @@ static void	valid_textures(t_all *all)
 	while (all->map->all_map[++i])
 	{
 		get_textures(all, all->map->all_map[i]);
+		if (!all->map->map_init && is_map_line(all->map->all_map[i]))
+			all->map->map_init = i;
+	}
+	if (!all->map->map_init)
+	{
+		printf("Error\nMissing map\n");
+		exiter(all, EXIT_FAILURE);
 	}
 }
 
@@ -27,7 +34,7 @@ static int	valid_user_position(t_map *map, int counter_line, int counter_col)
 {
 	if (map->user_x != -1)
 	{
-		printf("Error\nMap must have only one user");
+		printf("Error\nMap must have only one user\n");
 		return (1);
 	}
 	if (map->all_map[counter_line][counter_col] == 'N')
@@ -61,7 +68,7 @@ static int	validate_map_char(t_map *map)
 	int	counter_line;
 	int	counter_col;
 
-	counter_line = 8;
+	counter_line = map->map_init;
 	counter_col = 0;
 	while (map->all_map[counter_line] && map->all_map[counter_line][0] != '\0')
 	{
@@ -89,8 +96,6 @@ void	parse_map(t_all *all, int fd1)
 	i = 0;
 	while (get_next_line(fd1, &all->map->all_map[i]))
 		i++;
-	if (validate_map_char(all->map))
-		exiter(all, EXIT_FAILURE);
 	valid_textures(all);
 	if (!all->texture->n || !all->texture->e || !all->texture->w
 		|| !all->texture->s || !all->texture->f || !all->texture->c)
@@ -99,6 +104,8 @@ void	parse_map(t_all *all, int fd1)
 		exiter(all, EXIT_FAILURE);
 	}
 	if (validate_map_struct(all->map))
+		exiter(all, EXIT_FAILURE);
+	if (validate_map_char(all->map))
 		exiter(all, EXIT_FAILURE);
 	rgb_to_decimal(all);
 	if (all->map->user_x == -1)

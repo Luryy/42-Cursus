@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 20:49:27 by rarodrig          #+#    #+#             */
-/*   Updated: 2022/05/26 18:33:27 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/05/26 19:18:41 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 int	check_around(t_map *map, int count_line, int count_col)
 {
-	if (map->all_map[count_line - 1][count_col] == ' ' || count_line - 1 < 8
+	if (map->all_map[count_line - 1][count_col] == ' '
+		|| count_line - 1 < map->map_init
 		|| map->all_map[count_line - 1][count_col] == '\0')
 		return (1);
 	if (map->all_map[count_line + 1][count_col] == ' ' ||
@@ -35,7 +36,7 @@ int	validate_map_struct(t_map *map)
 	int	count_line;
 	int	count_col;
 
-	count_line = 8;
+	count_line = map->map_init;
 	while (map->all_map[count_line] && *map->all_map[count_line] != '\0')
 	{
 		count_col = 0;

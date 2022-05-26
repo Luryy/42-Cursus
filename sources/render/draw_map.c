@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rarodrig < rarodrig@student.42sp.org.br    +#+  +:+       +#+        */
+/*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 20:23:26 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/05/26 16:03:01 by rarodrig         ###   ########.fr       */
+/*   Updated: 2022/05/26 19:23:07 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ static void	print_user2d(t_all *all, t_img *img, int map_win_x, int map_win_y)
 	int	user_y;
 
 	map_width = map_win_x / all->map->quant_max_col;
-	map_hight = map_win_y / (all->map->quant_line - 7);
+	map_hight = map_win_y / (all->map->quant_line - all->map->map_init + 1);
 	user_x = all->map->user_x * map_width;
-	user_y = (all->map->user_y - 8) * map_hight;
+	user_y = (all->map->user_y - all->map->map_init) * map_hight;
 	all->square->color = 0xFFFF00;
 	all->square->line = user_x - map_width / 6;
 	all->square->col = user_y - map_hight / 6;
@@ -50,15 +50,15 @@ static void	print_map2d(t_all *all, t_img *img, int map_win_x, int map_win_y)
 	int	map_hight;
 
 	map_width = map_win_x / all->map->quant_max_col;
-	map_hight = map_win_y / (all->map->quant_line - 7);
-	i = 7;
+	map_hight = map_win_y / (all->map->quant_line - all->map->map_init + 1);
+	i = all->map->map_init - 1;
 	while (++i <= all->map->quant_line)
 	{
 		j = -1;
 		while (all->map->all_map[i][++j] != '\0')
 		{
 			all->square->line = j * map_width;
-			all->square->col = (i - 8) * map_hight;
+			all->square->col = (i - all->map->map_init) * map_hight;
 			if (all->map->all_map[i][j] == '1')
 				print2d_wall(all, img, map_width, map_hight);
 			else if (all->map->all_map[i][j] == '0'
