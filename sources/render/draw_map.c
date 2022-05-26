@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rarodrig < rarodrig@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 20:23:26 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/05/25 18:56:24 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/05/25 22:12:45 by rarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,27 +71,19 @@ static void	print_map2d(t_all *all, t_img *img, int map_win_x, int map_win_y)
 	}
 }
 
-void	print_info(t_img *img, t_all *all, int map_win_x, int map_win_y)
-{
-	border(img, map_win_x, map_win_y, 0x00FF0000);
-}
-
 void	init_map(t_mlx *mlx, t_img *img, t_all *all)
 {
 	int	map_win_x;
 	int	map_win_y;
-	int	win_x_mlx;
 
-	win_x_mlx = mlx->win_x;
-	map_win_x = mlx->win_x;
+	map_win_x = mlx->win_x / 3;
 	map_win_y = mlx->win_y / 3;
 	img->img = mlx_new_image(mlx->mlx_ptr, map_win_x, map_win_y);
 	img->addr = mlx_get_data_addr(img->img, &img->bits_per_pixel,
 			&img->line_length, &img->endian);
-	print_info(img, all, win_x_mlx, map_win_y);
-	border(img, map_win_x / 3, map_win_y, 0x00FF0000);
-	print_map2d(all, img, map_win_x / 3, map_win_y);
-	print_user2d(all, img, map_win_x / 3, map_win_y);
+	border(img, map_win_x, map_win_y, 0x00FF0000);
+	print_map2d(all, img, map_win_x, map_win_y);
+	print_user2d(all, img, map_win_x, map_win_y);
 	mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr,
 		img->img, 0, mlx->win_y - map_win_y);
 	mlx_destroy_image(mlx->mlx_ptr, img->img);

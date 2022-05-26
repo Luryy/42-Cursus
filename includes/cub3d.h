@@ -6,7 +6,7 @@
 /*   By: rarodrig < rarodrig@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 20:13:46 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/05/24 21:15:26 by rarodrig         ###   ########.fr       */
+/*   Updated: 2022/05/25 22:20:35 by rarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,6 +150,7 @@ void					draw_lines(t_all *all, int x, int y, int color);
 void					rotate(t_all *all, int signal);
 void					my_mlx_pixel_put(t_img *img, int x, int y, int color);
 unsigned int			get_color_pxl(t_img *img, int x, int y);
+void					draw_info(t_all *all);
 
 // RENDER 3D
 void					draw_walls(t_all *all);
