@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 22:43:14 by rarodrig          #+#    #+#             */
-/*   Updated: 2022/04/13 22:43:22 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/05/25 23:04:14 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static int	check_extension(char *str, char *extension)
 			i++;
 		else
 		{
-			printf("Invalid map extension\n");
+			printf("Error\nInvalid map extension\n");
 			return (0);
 		}
 	}
@@ -40,7 +40,7 @@ int	find_map(t_all *all, int argc, char *argv)
 
 	if (argc == 1)
 	{
-		printf("ERROR!! Input need some map .cub\n");
+		printf("Error\nInput need some map .cub\n");
 		exiter(all, EXIT_FAILURE);
 	}
 	if (argc > 2)
@@ -50,7 +50,7 @@ int	find_map(t_all *all, int argc, char *argv)
 	fd1 = open(argv, O_RDONLY);
 	if (fd1 < 0)
 	{
-		printf("ERROR!! File does not exists\n");
+		printf("Error\nFile does not exists\n");
 		exiter(all, EXIT_FAILURE);
 	}
 	return (fd1);

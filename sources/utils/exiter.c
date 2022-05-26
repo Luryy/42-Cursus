@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 20:11:39 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/05/25 19:20:55 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/05/26 15:15:29 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,9 @@ void	ft_free(t_all *all)
 	i = -1;
 	if (all->map->all_map)
 	{
-		while (all->map->all_map[++i + 1])
-			free(all->map->all_map[i]);
+		while (all->map->all_map[++i])
+			if (*all->map->all_map[i] || all->map->all_map[i + 1])
+				free(all->map->all_map[i]);
 		free(all->map->all_map);
 	}
 	if (all->mlx_info->win_ptr)

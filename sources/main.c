@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rarodrig < rarodrig@student.42sp.org.br    +#+  +:+       +#+        */
+/*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 20:11:59 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/05/24 21:08:05 by rarodrig         ###   ########.fr       */
+/*   Updated: 2022/05/25 22:41:58 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,9 @@ static void	start_struct(t_all *all, t_map *map, t_texture *texture, t_mlx *mlx)
 	mlx->win_y = 600;
 	map->all_map = malloc(300 * sizeof(char *));
 	all->map->user_x = -1;
-	all->texture->n = NULL;
-	all->texture->w = NULL;
-	all->texture->e = NULL;
-	all->texture->s = NULL;
-	all->texture->f = NULL;
-	all->texture->c = NULL;
+	ft_memset(all->texture, '\0', sizeof(t_texture));
+	all->mlx_info->mlx_ptr = NULL;
+	all->mlx_info->win_ptr = NULL;
 	all->square->col = 0;
 	all->square->line = 0;
 	all->square->color = 0;

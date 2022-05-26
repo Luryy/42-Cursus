@@ -6,7 +6,7 @@
 /*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 17:55:57 by lyuri-go          #+#    #+#             */
-/*   Updated: 2022/05/19 20:33:30 by lyuri-go         ###   ########.fr       */
+/*   Updated: 2022/05/25 23:03:14 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ int	create_textures_img(t_all *all)
 	if (load_imgs(all))
 	{
 		destroy_imgs(all);
-		printf("Error - textures\n");
+		printf("Error\n Textures Parse\n");
 		return (1);
 	}
 	load_img_add(all->texture);

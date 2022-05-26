@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_map_struct.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rarodrig < rarodrig@student.42sp.org.br    +#+  +:+       +#+        */
+/*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 21:14:03 by rarodrig          #+#    #+#             */
-/*   Updated: 2022/05/18 20:58:45 by rarodrig         ###   ########.fr       */
+/*   Updated: 2022/05/26 14:45:34 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,13 @@ static void	valid_textures(t_all *all)
 		all->texture->f = &all->map->all_map[5][2];
 	if (!ft_strncmp("C", all->map->all_map[6], 1))
 		all->texture->c = &all->map->all_map[6][2];
-	rgb_to_decimal(all);
 }
 
 static int	valid_user_position(t_map *map, int counter_line, int counter_col)
 {
 	if (map->user_x != -1)
 	{
-		printf("Error, the map must have only one user, ");
+		printf("Error\nMap must have only one user");
 		return (1);
 	}
 	if (map->all_map[counter_line][counter_col] == 'N')
@@ -73,14 +72,14 @@ static int	validate_map_char(t_map *map)
 
 	counter_line = 8;
 	counter_col = 0;
-	while (map->all_map[counter_line][0] != '\0')
+	while (map->all_map[counter_line] && map->all_map[counter_line][0] != '\0')
 	{
 		while (map->all_map[counter_line][counter_col] != '\0')
 		{
 			if (!is_valid_char(map->all_map[counter_line][counter_col], map,
 				counter_line, counter_col))
 			{
-				printf("Invalid map\n");
+				printf("Error\nInvalid map char\n");
 				return (1);
 			}
 			counter_col++;
@@ -107,7 +106,13 @@ void	parse_map(t_all *all, int fd1)
 	if (!all->texture->n || !all->texture->e || !all->texture->w
 		|| !all->texture->s || !all->texture->f || !all->texture->c)
 	{
-		printf("Texture error, Invalid map\n");
+		printf("Error\nTexture error\n");
+		exiter(all, EXIT_FAILURE);
+	}
+	rgb_to_decimal(all);
+	if (all->map->user_x == -1)
+	{
+		printf("Error\nMap must have a user\n");
 		exiter(all, EXIT_FAILURE);
 	}
 }

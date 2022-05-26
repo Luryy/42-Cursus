@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_info.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rarodrig < rarodrig@student.42sp.org.br    +#+  +:+       +#+        */
+/*   By: lyuri-go <lyuri-go@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 20:56:31 by rarodrig          #+#    #+#             */
-/*   Updated: 2022/05/26 15:39:41 by rarodrig         ###   ########.fr       */
+/*   Updated: 2022/05/26 18:08:23 by lyuri-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@ void	draw_info(t_all *all)
 	{
 		mlx_put_image_to_window(all->mlx_info->mlx_ptr, all->mlx_info->win_ptr,
 			image, 300, 400);
+		mlx_destroy_image(all->mlx_info->mlx_ptr, image);
 	}
 }
