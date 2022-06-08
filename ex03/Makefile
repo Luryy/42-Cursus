@@ -11,7 +11,7 @@ REMOVE = rm -rf
 all: $(NAME)
 
 %.o: %.cpp
-	$(CC) $(CFLAGS) -c -o $@ $< $(INCLUDES)
+	$(CC) $(FLAGS) -c -o $@ $< $(INCLUDES)
 
 $(NAME): $(OBJ)
 	$(CC) $(FLAGS) $(OBJ) -o $(NAME)

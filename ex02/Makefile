@@ -10,7 +10,7 @@ REMOVE = rm -rf
 all: $(NAME)
 
 %.o: %.cpp
-	$(CC) $(CFLAGS) -c -o $@ $<
+	$(CC) $(FLAGS) -c -o $@ $<
 
 $(NAME): $(OBJ)
 	$(CC) $(FLAGS) $(OBJ) -o $(NAME)
