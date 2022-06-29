@@ -72,8 +72,8 @@ int	main(void)
 		p = generate();
 		identify(p);
 		identify(*p);
+		delete p;
 	}
 
-	delete p;
 	return (0);
 }
