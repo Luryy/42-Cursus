@@ -10,6 +10,10 @@ This repository contains all of my projects developed at [42 São Paulo](https:/
 
 <br/>
 
+## Basecamp progress
+
+[![lyuri-go's 42 stats](https://badge42.vercel.app/api/v2/cl5785ik5006909me9fa0vqww/stats?cursusId=36&coalitionId=piscine)](https://github.com/JaeSeoKim/badge42)
+
 ## How to check this Repository
 
 Each folder of this repository has the resolution of a list of exercises proposed by 42 tech team (unfortunately I can't share the PDF with those exercises because it's [42 France](https://www.42.fr/en/) intellectual property).
