@@ -1,0 +1,13 @@
+ex00
+gcc -Wall -Wextra -Werror ex00/ft_print_program_name.c && ./a.out
+gcc -Wall -Wextra -Werror ex00/ft_print_program_name.c -o teste && ./teste
+
+ex01
+gcc -Wall -Wextra -Werror ex01/ft_print_params.c && ./a.out test1 test2 test3
+
+ex02
+gcc -Wall -Wextra -Werror ex02/ft_rev_params.c && ./a.out test1 test2 test3
+
+ex03
+gcc -Wall -Wextra -Werror ex03/ft_sort_params.c && ./a.out test2 test1 test3
+gcc -Wall -Wextra -Werror ex03/ft_sort_params.c && ./a.out abcd abc a abshkhaufe
