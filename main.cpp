@@ -11,7 +11,7 @@
 	// #include <set.hpp>
 	// #include <stack.hpp>
 	#include <map.hpp>
-	#include <stack>
+	#include <stack.hpp>
 	#include <vector.hpp>
 #endif
 
@@ -31,7 +31,7 @@ struct Buffer
 #define COUNT (MAX_RAM / (int)sizeof(Buffer))
 
 template<typename T>
-class MutantStack : public std::stack<T>
+class MutantStack : public ft::stack<T>
 {
 public:
 	MutantStack() {}
@@ -43,7 +43,7 @@ public:
 	}
 	~MutantStack() {}
 
-	typedef typename std::stack<T>::container_type::iterator iterator;
+	typedef typename ft::stack<T>::container_type::iterator iterator;
 
 	iterator begin() { return this->c.begin(); }
 	iterator end() { return this->c.end(); }
@@ -53,6 +53,7 @@ void line() { std::cout << "-----------------------------------------\n"; };
 void nline() { std::cout << "\n-----------------------------------------\n"; };
 static void testVector(void);
 static void testMap(void);
+static void testStack(void);
 static void testSubject(int argc, char** argv);
 
 int main(int argc, char** argv) {
@@ -63,9 +64,11 @@ int main(int argc, char** argv) {
 	if (TIME_TRACK) {
 		time_tracker("Vector", &testVector);
 		time_tracker("Map", &testMap);
+		time_tracker("Stack", &testStack);
 	} else {
 		testVector();
 		testMap();
+		testStack();
 	}
 
 	return (0);
@@ -89,9 +92,9 @@ static void testSubject(int argc, char** argv)
 
 	ft::vector<std::string> vector_str;
 	ft::vector<int> vector_int;
-	std::stack<int> stack_int;
+	ft::stack<int> stack_int;
 	ft::vector<Buffer> vector_buffer;
-	std::stack<Buffer, std::deque<Buffer> > stack_deq_buffer;
+	ft::stack<Buffer, std::deque<Buffer> > stack_deq_buffer;
 	ft::map<int, int> map_int;
 
 	for (int i = 0; i < COUNT; i++)
@@ -842,4 +845,112 @@ static void testMap(void)
 			std::cout << "m.size: " << m.size() << "\n";
 			m.clear();
 			line();
+			std::cout << std::endl;
+			std::cout << std::endl;
+}
+
+static void testStack(void)
+{
+	std::cout << "=========================================\n";
+	std::cout << "              STACK TESTS					\n";
+	std::cout << "=========================================\n";
+
+	nline(); std::cout << "\t1.0 Default constructor:\n";line();
+		ft::stack<int> stack_1;
+		std::cout << "Stack constructed with default constructor\n";
+		print_stack(stack_1);
+
+	nline(); std::cout << "\t2.0 Push:\n";line();
+		ft::stack<int> stack_2;
+		ft::stack<int> stack_3;
+		std::cout << "s2: " << std::endl; print_stack(stack_2);
+		std::cout << "s3: " << std::endl; print_stack(stack_3);
+		stack_2.push(1);
+		stack_3.push(343);
+		std::cout << "s2: " << std::endl; print_stack(stack_2);
+		std::cout << "s3: " << std::endl; print_stack(stack_3);
+		stack_2.push(41);
+		stack_3.push(33);
+		std::cout << "s2: " << std::endl; print_stack(stack_2);
+		std::cout << "s3: " << std::endl; print_stack(stack_3);
+		stack_2.push(41);
+		stack_3.push(33);
+		stack_2.push(4156);
+		stack_3.push(33345);
+		stack_2.push(4165);
+		stack_3.push(42);
+		std::cout << "s2: " << std::endl; print_stack(stack_2);
+		std::cout << "s3: " << std::endl; print_stack(stack_3);
+
+	nline(); std::cout << "\t3.0 Pop:\n";line();
+		stack_2.pop();
+		stack_3.pop();
+		std::cout << "s2: " << std::endl; print_stack(stack_2);
+		std::cout << "s3: " << std::endl; print_stack(stack_3);
+		stack_2.pop();
+		stack_3.pop();
+		std::cout << "s2: " << std::endl; print_stack(stack_2);
+		std::cout << "s3: " << std::endl; print_stack(stack_3);
+		stack_2.pop();
+		stack_3.pop();
+		stack_2.pop();
+		stack_3.pop();
+		stack_2.pop();
+		stack_3.pop();
+		std::cout << "s2: " << std::endl; print_stack(stack_2);
+		std::cout << "s3: " << std::endl; print_stack(stack_3);
+
+	nline(); std::cout << "\t4.0 Size, empty and top:\n";line();
+		ft::stack<int> stack_4;
+		std::cout << "s4 size: " << stack_4.size() << " | s4 empty: " << stack_4.size() << std::endl;
+		stack_4.push(1243);
+		std::cout << "s4 size: " << stack_4.size() << " | s4 empty: " << stack_4.size() << " | s4 top: " << stack_4.top() << std::endl;
+		stack_4.push(-989);
+		std::cout << "s4 size: " << stack_4.size() << " | s4 empty: " << stack_4.size() << " | s4 top: " << stack_4.top() << std::endl;
+		stack_4.push(453989);
+		stack_4.push(7656);
+		stack_4.push(453565989);
+		stack_4.push(489);
+		std::cout << "s4 size: " << stack_4.size() << " | s4 empty: " << stack_4.size() << " | s4 top: " << stack_4.top() << std::endl;
+		stack_4.pop();
+		std::cout << "s4 size: " << stack_4.size() << " | s4 empty: " << stack_4.size() << " | s4 top: " << stack_4.top() << std::endl;
+		stack_4.pop();
+		stack_4.pop();
+		stack_4.pop();
+		stack_4.pop();
+		std::cout << "s4 size: " << stack_4.size() << " | s4 empty: " << stack_4.size() << " | s4 top: " << stack_4.top() << std::endl;
+		stack_4.pop();
+		std::cout << "s4 size: " << stack_4.size() << " | s4 empty: " << stack_4.size() << std::endl;
+
+	line(); std::cout << "\t21.0 Non-Member Functions\n"; line();
+		ft::stack<int> s5;
+		ft::stack<int> s6;
+		std::cout << "s5 ==  s6 ? : " << (s5 == s6) << std::endl;
+		std::cout << "s5 !=  s6 ? : " << (s5 != s6) << std::endl;
+		std::cout << "s5 <  s6 ? : " << (s5 < s6) << std::endl;
+		std::cout << "s5 <= s6 ? : " << (s5 <= s6) << std::endl;
+		std::cout << "s5 >  s6 ? : " << (s5 > s6) << std::endl;
+		std::cout << "s5 >= s6 ? : " << (s5 >= s6) << std::endl;
+		std::cout << std::endl;
+
+		s5.push(12); std::cout << "push 12 in s5" << std::endl;
+		s6.push(12); std::cout << "push 12 in s6" << std::endl;
+		std::cout << "s5 ==  s6 ? : " << (s5 == s6) << std::endl;
+		std::cout << "s5 !=  s6 ? : " << (s5 != s6) << std::endl;
+		std::cout << "s5 <  s6 ? : " << (s5 < s6) << std::endl;
+		std::cout << "s5 <= s6 ? : " << (s5 <= s6) << std::endl;
+		std::cout << "s5 >  s6 ? : " << (s5 > s6) << std::endl;
+		std::cout << "s5 >= s6 ? : " << (s5 >= s6) << std::endl;
+		std::cout << std::endl;
+
+		s6.push(125); std::cout << "push 125 in s6" << std::endl;
+		std::cout << "s5 ==  s6 ? : " << (s5 == s6) << std::endl;
+		std::cout << "s5 !=  s6 ? : " << (s5 != s6) << std::endl;
+		std::cout << "s5 <  s6 ? : " << (s5 < s6) << std::endl;
+		std::cout << "s5 <= s6 ? : " << (s5 <= s6) << std::endl;
+		std::cout << "s5 >  s6 ? : " << (s5 > s6) << std::endl;
+		std::cout << "s5 >= s6 ? : " << (s5 >= s6) << std::endl;
+		std::cout << std::endl;
+
+		line();
 }

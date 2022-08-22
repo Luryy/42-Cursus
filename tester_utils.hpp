@@ -64,6 +64,22 @@ void print_map(ft::map<K,Val> &m)
 	std::cout << std::endl;
 };
 
+template <typename T>
+void	print_stack(T& stack_to_print)
+{
+	std::cout << "-----------------------------------------" << std::endl;
+	std::cout << "Stack:";
+	std::cout << "\t\t";
+	std::cout << "size: " << stack_to_print.size();
+	std::cout << "\t\t";
+	std::cout << "top: ";
+	if (stack_to_print.size() > 0)
+		std::cout << stack_to_print.top() << std::endl;
+	else
+		std::cout << "NULL" << std::endl;
+	std::cout << "-----------------------------------------" << std::endl;
+};
+
 std::ostream& bold_on(std::ostream& os)
 {
     return os << "\e[1m";
