@@ -80,6 +80,24 @@ void	print_stack(T& stack_to_print)
 	std::cout << "-----------------------------------------" << std::endl;
 };
 
+template<typename Val>
+void print_set(ft::set<Val> &s)
+{
+	if (s.empty())
+	{
+		std::cout << "(empy set)\n";
+		return;
+	};
+	typename ft::set<Val>::iterator i;
+	i = s.begin();
+	while (i != s.end())
+	{
+		std::cout << "[" << *i << "]\n";
+		i++;
+	};
+	std::cout << std::endl;
+};
+
 std::ostream& bold_on(std::ostream& os)
 {
     return os << "\e[1m";

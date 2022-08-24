@@ -8,8 +8,7 @@
 	#include <set>
 	namespace ft = std;
 #else
-	// #include <set.hpp>
-	// #include <stack.hpp>
+	#include <set.hpp>
 	#include <map.hpp>
 	#include <stack.hpp>
 	#include <vector.hpp>
@@ -54,6 +53,7 @@ void nline() { std::cout << "\n-----------------------------------------\n"; };
 static void testVector(void);
 static void testMap(void);
 static void testStack(void);
+static void testSet(void);
 static void testSubject(int argc, char** argv);
 
 int main(int argc, char** argv) {
@@ -65,10 +65,12 @@ int main(int argc, char** argv) {
 		time_tracker("Vector", &testVector);
 		time_tracker("Map", &testMap);
 		time_tracker("Stack", &testStack);
+		time_tracker("Set", &testSet);
 	} else {
 		testVector();
 		testMap();
 		testStack();
+		testSet();
 	}
 
 	return (0);
@@ -603,7 +605,7 @@ static void testMap(void)
 		print_map(mapa_2);
 		line();
 
-	line(); std::cout << "\t9.0 insert_single\n"; line();
+	line(); std::cout << "\t8.0 insert_single\n"; line();
 		ft::pair<int, int>	par_a;
 		ft::map<int, int>::iterator it;
 		par_a = ft::make_pair(15,150);
@@ -628,7 +630,7 @@ static void testMap(void)
 		std::cout << " Itens are always ordered by key\n";
 		line();
 
-	line(); std::cout << "\t10.0 insert hint\n"; line();
+	line(); std::cout << "\t9.0 insert hint\n"; line();
 		ft::map<int,int>::iterator i5;
 		i5 = mapa_2.begin();
 		i5++; i5++;
@@ -637,7 +639,7 @@ static void testMap(void)
 		print_map(mapa_2);
 		line();
 
-	line(); std::cout << "\t11.0 insert range\n"; line();
+	line(); std::cout << "\t10.0 insert range\n"; line();
 		ft::map<int, int>::iterator i6, i7;
 		i6 = mapa_2.begin();
 		i7 = mapa_2.end();
@@ -652,7 +654,7 @@ static void testMap(void)
 		print_map(mapa_3);
 		line();
 
-	line(); std::cout << "\t12.0 erase key\n"; line();
+	line(); std::cout << "\t11.0 erase key\n"; line();
 		std::cout << "Erasing key 35: \n";
 		size_t already_exists = mapa_2.erase(35);
 		std::cout << "Key 35 already exists:" << already_exists << "\n";
@@ -661,7 +663,7 @@ static void testMap(void)
 		print_map(mapa_2);
 		line();
 
-	line(); std::cout << "\t13.0 erase position\n"; line();
+	line(); std::cout << "\t12.0 erase position\n"; line();
 		ft::map<int, int>::iterator i8;
 		std::cout << "Erasing position begin() + 2 : \n";
 		i8 = mapa_2.begin();
@@ -670,7 +672,7 @@ static void testMap(void)
 		print_map(mapa_2);
 		line();
 
-	line(); std::cout << "\t14.0 erase range\n"; line();
+	line(); std::cout << "\t13.0 erase range\n"; line();
 		ft::map<int, int>::iterator i9, i10;
 		i9 = mapa_3.begin();
 		i10 = mapa_3.end();
@@ -682,7 +684,7 @@ static void testMap(void)
 		print_map(mapa_3);
 		line();
 
-	line(); std::cout << "\t15.0 swap\n"; line();
+	line(); std::cout << "\t14.0 swap\n"; line();
 		ft::map<int,int> mapa_a(mapa_2), mapa_b(mapa_3);
 		ft::map<int,int>::iterator first_a, first_b;
 		first_a = mapa_a.begin();
@@ -953,4 +955,334 @@ static void testStack(void)
 		std::cout << std::endl;
 
 		line();
+		std::cout << std::endl;
+		std::cout << std::endl;
+}
+
+static void testSet(void)
+{
+	std::cout << "=========================================\n";
+	std::cout << "              SET TESTS					\n";
+	std::cout << "=========================================\n";
+
+	line(); std::cout << "1.0 Empty constructor:\n"; line();
+		std::cout << "Initializing empty set:\n:";
+		ft::set<int> setter;
+		print_set(setter);
+		std::cout << "Adding some elements: \n";
+		setter.insert(70);
+		setter.insert(50);
+		setter.insert(20);
+		setter.insert(10);
+		setter.insert(80);
+		setter.insert(40);
+		setter.insert(60);
+		setter.insert(30);
+		setter.insert(30);
+		print_set(setter);
+		std::cout << "Iterating: \n";
+		ft::set<int>::iterator itm;
+		itm = setter.begin();
+		while (itm != setter.end())
+		{
+			std::cout << *itm << " ";;
+			itm++;
+		}
+		std::cout << std::endl;
+
+	line(); std::cout << "\t2.0 Range constructor:\n"; line();
+		ft::set<int>::iterator i1, i2;
+		i1 = setter.begin();
+		i2 = setter.end();
+		i1++;
+		i2--; i2--;
+		ft::set<int> setter_1(i1, i2);
+		std::cout << "Setter: \n";
+		print_set(setter);
+		std::cout << "Range constructor from " << *i1 << " to " << *i2 << "(exclusive)" << std::endl;
+		std::cout << "Setter_1: \n";
+		print_set(setter_1);
+		line();
+
+	line(); std::cout << "\t3.0 Copy  constructor:\n"; line();
+		ft::set<int> setter_2(setter_1);
+		std::cout << "Setter_1: \n";
+		print_set(setter_1);
+		std::cout << "Setter_2: \n";
+		print_set(setter_2);
+
+	line(); std::cout << "4.0 Iterators\n"; line();
+		ft::set<int>::iterator i3;
+		std::cout << "Iterating over setter_2\n";
+		for (i3 = setter_2.begin(); i3 != setter_2.end(); i3++)
+			std::cout << "iterator: " << *i3 << std::endl;
+		line();
+
+	line(); std::cout << "4.1 Const Iterators\n"; line();
+		ft::set<int>::const_iterator const_i3;
+		std::cout << "Const Iterating over setter_2\n";
+		for (const_i3 = setter_2.begin(); const_i3 != setter_2.end(); const_i3++)
+			std::cout << "iterator: " << *const_i3 << std::endl;
+		line();
+
+	line(); std::cout << "5.0 Reverse Iterators\n"; line();
+		ft::set<int>::reverse_iterator i4;
+		std::cout << "Reverse Iterating over setter_2\n";
+		for (i4 = setter_2.rbegin(); i4 != setter_2.rend(); i4++)
+			std::cout << "iterator: " << *i4 << std::endl;
+		line();
+
+	line(); std::cout << "5.1 Const Reverse Iterators\n"; line();
+		ft::set<int>::reverse_iterator const_i4;
+		std::cout << "Reverse Const Iterating over setter_2\n";
+		for (const_i4 = setter_2.rbegin(); const_i4 != setter_2.rend(); const_i4++)
+			std::cout << "iterator: " << *const_i4 << std::endl;
+		line();
+
+	line(); std::cout << "6.0 Size, max_size & Empty\n"; line();
+		std::cout << "Setter_1: \n";
+		print_set(setter_1);
+		std::cout << "Size: " << setter_1.size() << std::endl;
+		std::cout << "Max_size: " << setter_1.max_size() << std::endl;
+		std::cout << "Empty ? " << setter_1.empty() << std::endl;
+		line();
+		std::cout << "Setter_2: \n";
+		print_set(setter_2);
+		std::cout << "Size: " << setter_2.size() << std::endl;
+		std::cout << "Max_size: " << setter_2.max_size() << std::endl;
+		std::cout << "Empty ? " << setter_2.empty() << std::endl;
+		line();
+
+	line(); std::cout << "\t7.0 insert_single\n"; line();
+		ft::set<int>::iterator it;
+		std::cout << "inserting 345345 in setter_2:\n";
+		setter_2.insert(345345);
+		print_set(setter_2);
+		std::cout << "Iterating ... \n";
+		for (it = setter_2.begin(); it != setter_2.end(); it++)
+			std::cout << *it << ", ";
+		std::cout << std::endl;
+		std::cout << "inserting -12314 in setter_2:\n";
+		setter_2.insert(-12314);
+		print_set(setter_2);
+		std::cout << "Iterating ... \n";
+		for (it = setter_2.begin(); it != setter_2.end(); it++)
+			std::cout << *it << ", ";
+		std::cout << std::endl;
+		std::cout << "inserting again 345345 in setter_2 (can't repeat):\n";
+		setter_2.insert(345345);
+		print_set(setter_2);
+		std::cout << " Itens are always ordered by key\n";
+		line();
+
+	line(); std::cout << "\t8.0 insert hint\n"; line();
+		ft::set<int>::iterator i5;
+		i5 = setter_2.begin();
+		i5++; i5++;
+		std::cout << "Hint begin() + 2. Inserting 58 in setter_2:\n";
+		setter_2.insert(i5, 58);
+		print_set(setter_2);
+		line();
+
+	line(); std::cout << "\t9.0 insert range\n"; line();
+		ft::set<int>::iterator i6, i7;
+		i6 = setter_2.begin();
+		i7 = setter_2.end();
+		i6++;
+		i7--; i7--;
+		ft::set<int> setter_3;
+		std::cout << "Setter_2: \n";
+		print_set(setter_2);
+		std::cout << "Insert range from " << *i6 << " to " << *i7 << " (exclusive)" << std::endl;
+		setter_3.insert(i6,i7);
+		std::cout << "Setter_3: \n";
+		print_set(setter_3);
+		line();
+
+	line(); std::cout << "\t10.0 erase key\n"; line();
+		std::cout << "Erasing key 30: \n";
+		size_t already_exists = setter_2.erase(30);
+		std::cout << "Key 30 already exists:" << already_exists << "\n";
+		already_exists = setter_2.erase(30);
+		std::cout << "Key 30 already exists:" << already_exists << "\n";
+		print_set(setter_2);
+		line();
+
+	line(); std::cout << "\t11.0 erase position\n"; line();
+		ft::set<int>::iterator i8;
+		std::cout << "Erasing position begin() + 2 : \n";
+		i8 = setter_2.begin();
+		i8++; i8++;
+		setter_2.erase(i8);
+		print_set(setter_2);
+		line();
+
+	line(); std::cout << "\t12.0 erase range\n"; line();
+		ft::set<int>::iterator i9, i10;
+		i9 = setter_3.begin();
+		i10 = setter_3.end();
+		i9++;
+		i10--; i10--;
+		print_set(setter_3);
+		std::cout << "Erasing setter_3 from " << *i9 << " to " << *i10 << " (exclusive)" << std::endl;
+		setter_3.erase(i9, i10);
+		print_set(setter_3);
+		line();
+
+	line(); std::cout << "\t13.0 swap\n"; line();
+		ft::set<int> setter_a(setter_2), setter_b(setter_3);
+		ft::set<int>::iterator first_a, first_b;
+		first_a = setter_a.begin();
+		first_b = setter_b.begin();
+		std::cout << "setter_a: \n"; print_set(setter_a);
+		std::cout << "first_a: " << *first_a << std::endl;
+		std::cout << "setter_b: \n"; print_set(setter_b);
+		std::cout << "first_b: " << *first_b << std::endl;
+		setter_a.swap(setter_b);
+		std::cout << "Apos Swap: \n";
+		std::cout << "setter_a: \n"; print_set(setter_a);
+		std::cout << "first_a: " << *first_a << std::endl;
+		std::cout << "first_a++: " << *(++first_a) << std::endl;
+		std::cout << "setter_b: \n"; print_set(setter_b);
+		std::cout << "first_b: " << *first_b << std::endl;
+		std::cout << "first_b++: " << *(++first_b) << std::endl;
+		line();
+
+	line(); std::cout << "\t14.1 Iterator vs Const Iterator\n"; line();
+		ft::set<int>::iterator it_normal = setter_a.begin();
+		ft::set<int>::const_iterator it_const = setter_a.begin();
+		std::cout << "it_normal: " << *it_normal << std::endl;
+		std::cout << "it_const: " << *it_const << std::endl;
+		std::cout << "Iguais ? " << (it_normal == it_const) << std::endl;
+		line();
+
+	line(); std::cout << "15.0 clear\n"; line();
+		std::cout << "setter_a.clear(): \n";
+		setter_a.clear();
+		print_set(setter_a);
+		line();
+
+	line(); std::cout << "16.0 find\n"; line();
+		ft::set<int>::iterator i11;
+		print_set(setter_2);
+		std::cout << "find 30 in setter_2: \n";
+		i11 = setter_2.find(30);
+		if (i11 != setter_2.end())
+			std::cout << "value: " << *i11 << std::endl;
+		else
+			std::cout << "Nao achou !\n";
+		std::cout << "find 60 in seta_3: \n";
+		i11 = setter_2.find(60);
+		if (i11 != setter_2.end())
+			std::cout << "value: " << *i11 << std::endl;
+		else
+			std::cout << "Nao achou !\n";
+		line();
+
+	line(); std::cout << "\t17.0 count\n"; line();
+		std::cout << "Setter_2.count(30) :" << setter_2.count(30) << std::endl;
+		std::cout << "Setter_2.count(60) :" << setter_2.count(60) << std::endl;
+		line();
+
+	line(); std::cout << "\t 18.0 lower bound, upper bound\n"; line();
+		print_set(setter_2);
+		ft::set<int>::iterator itm_bound;
+		int numero = 1;
+		itm_bound = setter_2.lower_bound(numero);
+		std::cout << "lb: " << numero <<  "---> ";
+		if (itm_bound == setter_2.end()) std::cout << "end !\n";
+		else
+			 std::cout << *itm_bound << std::endl;
+		numero = 20;
+		itm_bound = setter_2.lower_bound(numero);
+		std::cout << "lb: " << numero <<  "---> ";
+		if (itm_bound == setter_2.end()) std::cout << "end !\n";
+		else
+			 std::cout << *itm_bound << std::endl;
+		numero = 40;
+		itm_bound = setter_2.lower_bound(numero);
+		std::cout << "lb: " << numero <<  "---> ";
+		if (itm_bound == setter_2.end()) std::cout << "end !\n";
+		else
+			 std::cout << *itm_bound << std::endl;
+		numero = 200;
+		itm_bound = setter_2.lower_bound(numero);
+		std::cout << "lb: " << numero <<  "---> ";
+		if (itm_bound == setter_2.end()) std::cout << "end !\n";
+		else
+			 std::cout << *itm_bound << std::endl;
+		numero = 1;
+		itm_bound = setter_2.upper_bound(numero);
+		std::cout << "ub: " << numero <<  "---> ";
+		if (itm_bound == setter_2.end()) std::cout << "end !\n";
+		else
+			 std::cout << *itm_bound << std::endl;
+		numero = 20;
+		itm_bound = setter_2.upper_bound(numero);
+		std::cout << "ub: " << numero <<  "---> ";
+		if (itm_bound == setter_2.end()) std::cout << "end !\n";
+		else
+			 std::cout << *itm_bound << std::endl;
+		numero = 40;
+		itm_bound = setter_2.upper_bound(numero);
+		std::cout << "ub: " << numero <<  "---> ";
+		if (itm_bound == setter_2.end()) std::cout << "end !\n";
+		else
+			 std::cout << *itm_bound << std::endl;
+		numero = 200;
+		itm_bound = setter_2.upper_bound(numero);
+		std::cout << "ub: " << numero <<  "---> ";
+		if (itm_bound == setter_2.end()) std::cout << "end !\n";
+		else
+			 std::cout << *itm_bound << std::endl;
+		line();
+
+		line(); std::cout << "\t19.0 equal range\n"; line();
+			ft::pair<ft::set<int>::iterator , ft::set<int>::iterator > ie;
+			print_set(setter_2);
+			std::cout << "equal range_50: \n";
+			ie = setter_2.equal_range(50);
+			std::cout << "ie->first: " << *(ie.first);
+			std::cout << " ie->second: " << *(ie.second);
+			std::cout << std::endl;
+			line();
+			std::cout << "equal range_61: \n";
+			ie = setter_2.equal_range(61);
+			std::cout << "ie->first: " << *(ie.first);
+			std::cout << " ie->second: " << *(ie.second);
+			std::cout << std::endl;
+			line();
+
+		line(); std::cout << "\t20.0 Non-Member Functions\n"; line();
+			ft::set<int> s1(setter_2);
+			ft::set<int> s2(setter_2);
+			std::cout << "s1:  \n"; print_set(s1);
+			std::cout << "s2:  \n"; print_set(s2);
+			std::cout << "s1 ==  s2 ? : " << (s1 == s2) << std::endl;
+			std::cout << "s1 !=  s2 ? : " << (s1 != s2) << std::endl;
+			std::cout << "s1 <  s2 ? : " << (s1 < s2) << std::endl;
+			std::cout << "s1 <= s2 ? : " << (s1 <= s2) << std::endl;
+			std::cout << "s1 >  s2 ? : " << (s1 > s2) << std::endl;
+			std::cout << "s1 >= s2 ? : " << (s1 >= s2) << std::endl;
+			std::cout << std::endl;
+			s1.insert(4242);
+			std::cout << "s1:  \n"; print_set(s1);
+			std::cout << "s2:  \n"; print_set(s2);
+			std::cout << "s1 ==  s2 ? : " << (s1 == s2) << std::endl;
+			std::cout << "s1 !=  s2 ? : " << (s1 != s2) << std::endl;
+			std::cout << "s1 <  s2 ? : " << (s1 < s2) << std::endl;
+			std::cout << "s1 <= s2 ? : " << (s1 <= s2) << std::endl;
+			std::cout << "s1 >  s2 ? : " << (s1 > s2) << std::endl;
+			std::cout << "s1 >= s2 ? : " << (s1 >= s2) << std::endl;
+			line();
+
+		line(); std::cout << "\tBIG SIZE TEST\n"; line();
+			size_t NUM = 100000;
+			size_t j;
+
+			ft::set<int>	s;
+			for (j = 0; j < NUM; j++)
+				s.insert(j);
+			std::cout << "s.size: " << s.size() << "\n";
+			s.clear();
 }
