@@ -201,6 +201,60 @@ namespace ft {
 
 			void clear() { clear_all(_root); }
 
+			key_compare key_comp() const { return _comp; }
+
+			iterator lower_bound(const data_type& k) {
+				node_ptr x = _root;
+				node_ptr y = _end;
+
+				while (x != NULL)
+				if (!_comp(x->data, k))
+					y = x, x = x->left;
+				else
+					x = x->right;
+
+				return (iterator(y));
+			}
+
+			const_iterator lower_bound(const data_type& k) const {
+				node_ptr x = _root;
+				node_ptr y = _end;
+
+				while (x != NULL)
+				if (!_comp(x->data, k))
+					y = x, x = x->left;
+				else
+					x = x->right;
+
+				return (const_iterator(y));
+			}
+
+			iterator upper_bound(const data_type& k) {
+				node_ptr x = _root;
+				node_ptr y = _end;
+
+				while (x != NULL)
+				if (_comp(k, x->data))
+					y = x, x = x->left;
+				else
+					x = x->right;
+
+				return (iterator(y));
+			}
+
+			const_iterator upper_bound(const data_type& k) const {
+				node_ptr x = _root;
+				node_ptr y = _end;
+
+				while (x != NULL)
+				if (_comp(k, x->data))
+					y = x, x = x->left;
+				else
+					x = x->right;
+
+				return (const_iterator(y));
+			}
+
 		private:
 			void free_node(node_ptr nd) {
 				_alloc.destroy(nd);

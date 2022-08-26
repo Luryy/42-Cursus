@@ -170,50 +170,24 @@ namespace ft {
 
 			iterator lower_bound(const key_type& k)
 			{
-				iterator _ite = begin();
-				while (_ite != end())
-				{
-					if (!_key_comp(_ite->first, k))
-						break;
-					_ite++;
-				}
-				return _ite;
+				return _rb_tree.lower_bound(value_type(k, mapped_type()));
+
 			}
 
 			const_iterator lower_bound(const key_type& k) const
 			{
-				const_iterator _ite = begin();
-				while (_ite != end())
-				{
-					if (!_key_comp(_ite->first, k))
-						break;
-					_ite++;
-				}
-				return _ite;
+				return _rb_tree.lower_bound(value_type(k, mapped_type()));
+
 			}
 
 			iterator upper_bound(const key_type& k)
 			{
-				iterator _ite = begin();
-				while (_ite != end())
-				{
-					if (_key_comp(k, _ite->first))
-						break;
-					_ite++;
-				}
-				return _ite;
+				return _rb_tree.upper_bound(value_type(k, mapped_type()));
 			}
 
 			const_iterator upper_bound(const key_type& k) const
 			{
-				const_iterator _ite = begin();
-				while (_ite != end())
-				{
-					if (_key_comp(k, _ite->first))
-						break;
-					_ite++;
-				}
-				return _ite;
+				return _rb_tree.upper_bound(value_type(k, mapped_type()));
 			}
 
 			pair<iterator, iterator> equal_range(const key_type& k) { return (ft::make_pair(lower_bound(k), upper_bound(k))); }

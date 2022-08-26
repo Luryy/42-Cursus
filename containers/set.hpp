@@ -142,26 +142,13 @@ namespace ft {
 
 			iterator lower_bound(const value_type& val) const
 			{
-				iterator _ite = begin();
-				while (_ite != end())
-				{
-					if (!_key_comp(*_ite, val))
-						break;
-					_ite++;
-				}
-				return _ite;
+				return _rb_tree.lower_bound(val);
+
 			};
 
 			iterator upper_bound(const value_type& val) const
 			{
-				iterator _ite = begin();
-				while (_ite != end())
-				{
-					if (_key_comp(val, *_ite))
-						break;
-					_ite++;
-				}
-				return _ite;
+				return _rb_tree.upper_bound(val);
 			};
 
 			ft::pair<iterator, iterator> equal_range(const value_type& val) const
