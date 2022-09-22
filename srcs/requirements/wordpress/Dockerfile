@@ -13,9 +13,10 @@ RUN chmod a+x wp-cli.phar && mv wp-cli.phar /usr/local/bin/wp
 RUN wp cli update
 
 WORKDIR /var/www/localhost/htdocs
-RUN wp core download --path=/var/www/localhost/htdocs --allow-root
+
 COPY ./conf/wp-config.php ./
+COPY ./tools/init.sh /
 
 EXPOSE 9000
 
-ENTRYPOINT [ "php-fpm7", "--nodaemonize" ]
+ENTRYPOINT [ "sh", "/init.sh" ]

@@ -41,6 +41,16 @@ services:
     networks:
         - 42-vogosphere
 
+  redis:
+    build: ./requirements/bonus/redis/
+    image: redis:1.0
+    restart: unless-stopped
+    container_name: redis
+    networks:
+      - 42-vogosphere
+    depends_on:
+      - wordpress
+
 networks:
   42-vogosphere:
     driver: bridge
