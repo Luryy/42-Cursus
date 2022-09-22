@@ -2,6 +2,7 @@ const express = require('express');
 const mariadb = require('mariadb');
 const https = require('https');
 const axios = require('axios');
+const path = require('path');
 
 const app = express();
 const pool = mariadb.createPool({
@@ -24,6 +25,19 @@ app.get('/nodejs', async (req, res) => {
 	})
 })
 
+app.get('/nodejs/resume', async (req, res) => {
+	const root = path.dirname(require.main.filename)
+	const filePath = './site/resume.html';
+	const file = path.join(root, filePath)
+	res.sendFile(file)
+})
+
+app.get('/nodejs/resume.css', async (req, res) => {
+	const root = path.dirname(require.main.filename)
+	const filePath = './site/resume.css';
+	const file = path.join(root, filePath)
+	res.sendFile(file)
+})
 
 
 async function getMariadbStatus() {
