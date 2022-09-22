@@ -51,6 +51,15 @@ services:
     depends_on:
       - wordpress
 
+  nodejs:
+    build: ./requirements/bonus/nodejs/
+    image: nodejs:1.0
+    env_file: .env
+    restart: unless-stopped
+    container_name: nodejs
+    networks:
+      - 42-vogosphere
+
 networks:
   42-vogosphere:
     driver: bridge
