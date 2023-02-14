@@ -1,0 +1,77 @@
+version: '3'
+
+services:
+  nginx:
+    build: ./requirements/nginx
+    image: nginx:1.0
+    container_name: nginx
+    restart: unless-stopped
+    ports:
+      - "443:443"
+    env_file: .env
+    volumes:
+      - wordpress-volume:/var/www/localhost/htdocs
+    networks:
+      - 42-vogosphere
+    depends_on:
+      - wordpress
+      - mariadb
+
+  mariadb:
+    build: ./requirements/mariadb
+    image: mariadb:1.0
+    restart: unless-stopped
+    container_name: mariadb
+    env_file: .env
+    volumes:
+        - mariadb-volume:/var/lib/mysql
+    networks:
+        - 42-vogosphere
+
+  wordpress:
+    build: ./requirements/wordpress
+    image: wordpress:1.0
+    restart: unless-stopped
+    container_name: wordpress
+    env_file: .env
+    depends_on:
+        - mariadb
+    volumes:
+      - wordpress-volume:/var/www/localhost/htdocs
+    networks:
+        - 42-vogosphere
+
+  redis:
+    build: ./requirements/bonus/redis/
+    image: redis:1.0
+    restart: unless-stopped
+    container_name: redis
+    networks:
+      - 42-vogosphere
+    depends_on:
+      - wordpress
+
+  nodejs:
+    build: ./requirements/bonus/nodejs/
+    image: nodejs:1.0
+    env_file: .env
+    restart: unless-stopped
+    container_name: nodejs
+    networks:
+      - 42-vogosphere
+
+networks:
+  42-vogosphere:
+    driver: bridge
+
+volumes:
+  mariadb-volume:
+    driver_opts:
+      device: ${VOLUME_PATH}/mariadb
+      o: bind
+      type: none
+  wordpress-volume:
+    driver_opts:
+      device: ${VOLUME_PATH}/wordpress
+      o: bind
+      type: none
