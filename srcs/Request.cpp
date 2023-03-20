@@ -3,7 +3,6 @@
 Request::Request(void) {}
 
 Request::Request(pollfd const &pollfd, int client_fd): _pollfd(pollfd), _client_fd(client_fd), _headers_error(false), _is_complete(0), _parse_steps(0), _chunk_parse(0), _chunk_total_size(0) {
-	// _buffer = new char[BUFFER_SIZE];
 }
 
 Request::Request(Request const &request) {
@@ -50,7 +49,6 @@ Request &Request::operator=(Request const &request) {
 }
 
 Request::~Request(void) {
-	// delete[] _buffer;
 }
 
 void	Request::handle(void) {
@@ -167,7 +165,6 @@ void	Request::_parse_first_line() {
 		_set_query(tokens[1].substr(question_pos + 1));
 	_set_path(tokens[1].substr(0, question_pos));
 	_set_protocol_info(tokens[2]);
-	// addLog(logFile,"Request first line> Protocol:" + tokens[2]);
 	_total_buffer.erase(0, 1);
 	_parse_steps = 1;
 }
@@ -223,7 +220,6 @@ void	Request::_parse_chunked_body() {
 	}
 
 	if (_chunk_parse == 3) {
-		// convert _chunk_total_size to string
 		std::stringstream string_chunk_size_stream;
 		string_chunk_size_stream << _chunk_total_size;
 		std::string chunk_total_size_string;

@@ -225,26 +225,12 @@ void Response::ReadHTML(std::string code_pag, std::string msgStatusCode, std::st
 }
 
 void Response::send_safe() {
+	ssize_t bytes =	send(_client_fd, _response_buffer.c_str(), _response_buffer.length(), MSG_NOSIGNAL);
 
-	// TODO after submit - could improve response sending in chunks
-	// while (_response_buffer.length()) {
-	// 	std::string buffer;
-
-	// 	buffer = _response_buffer;
-
-	// 	if (_response_buffer.length() > 1000) {
-	// 		buffer.erase(1000, _response_buffer.length());
-	// 		_response_buffer.erase(0, 1000);
-	// 	} else
-	// 		_response_buffer.clear();
-
-		ssize_t bytes =	send(_client_fd, _response_buffer.c_str(), _response_buffer.length(), MSG_NOSIGNAL);
-
-		if (bytes == -1 || bytes == 0) {
-			close(_client_fd);
-			throw SendError();
-		}
-	// }
+	if (bytes == -1 || bytes == 0) {
+		close(_client_fd);
+		throw SendError();
+	}
 }
 
 std::ostream &operator<<(std::ostream &out, const Response &response) {

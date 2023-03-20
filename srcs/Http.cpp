@@ -53,16 +53,11 @@ Http::~Http(void) {}
 void Http::handle() {
 	char temp[100];
 
-	// std::cout << "FD " << _pollfd.fd << std::endl;
-	// std::cout << _pollfd.revents << std::endl;
-
 	sprintf(temp, "%d", _pollfd.fd);
 	sprintf(temp, "%d", _pollfd.revents);
 
 	if (_client_fd == -1)
 		throw ClientConnectionError();
-
-	// std::cout << _request << std::endl;
 
 	try {
 		if (!_request.is_complete())
@@ -87,12 +82,8 @@ void Http::handle() {
 		return ;
 	}
 
-	// std::cout << _request << std::endl;
-
-
 	sprintf(temp, "%d", _client_fd);
 	_set_http_server();
-	// std::cout << _http_server << std::endl;
 	_set_location();
 	if (_validate_request())
 		return;
