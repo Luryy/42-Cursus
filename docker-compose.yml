@@ -1,0 +1,44 @@
+version: "3"
+services:
+  postgres:
+    image: postgres:11-alpine
+    environment:
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    container_name: postgres.transpong.42.com
+    ports:
+      - 5432:5432
+    networks:
+      - transpong
+
+  server:
+    build:
+      context: ./server
+    depends_on:
+      - postgres
+    env_file:
+      - .env
+    ports:
+      - 3001:3001
+    networks:
+      - transpong
+
+  client:
+    build:
+      context: ./client
+      args:
+        VITE_API_42_URL: ${VITE_API_42_URL}
+        VITE_API_42_CLIENT_ID: ${VITE_API_42_CLIENT_ID}
+        VITE_API_42_REDIRECT_URL: ${VITE_API_42_REDIRECT_URL}
+        VITE_API_URL: ${VITE_API_URL}
+    depends_on:
+      - server
+    ports:
+      - 5173:5173
+    networks:
+      - transpong
+    env_file:
+      - .env
+
+networks:
+  transpong:
+    driver: bridge
